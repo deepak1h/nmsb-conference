@@ -1,49 +1,519 @@
+/* Agora Theme Exact Color Palette & Design Tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --agora-dark-bg: #1D1F23;
+  --agora-dark-navy: #000309;
+  --agora-light-bg: #F8F8FF;
+  --agora-card-bg: #FFFFFF;
+  --agora-border-light: #E0E0F2;
+  
+  --agora-blue: #4361EE; /* Primary Cobalt Blue */
+  --agora-blue-hover: #1E3FDB;
+  --agora-red: #F32321;
+  --agora-purple: #8D43EE;
+  
+  --agora-text-dark: #000000;
+  --agora-text-muted: #9FA0A7;
+  --agora-text-white: #FFFFFF;
+
+  --shadow-agora: 0 12px 35px rgba(0, 0, 0, 0.08);
+  --shadow-agora-hover: 0 20px 45px rgba(67, 97, 238, 0.2);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[data-theme="dark"] {
+  --agora-light-bg: #0d1117;
+  --agora-card-bg: #161b22;
+  --agora-border-light: rgba(255, 255, 255, 0.1);
+  --agora-text-dark: #FFFFFF;
+  --agora-text-muted: #8b949e;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-a {
-  color: inherit;
+html, body {
+  background-color: var(--agora-light-bg);
+  color: var(--agora-text-dark);
+  font-family: var(--font-outfit), "DM Sans", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-outfit), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--agora-text-dark);
+}
+
+.agora-hero-headline {
+  font-size: clamp(3rem, 7.5vw, 6.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  text-align: left !important;
+}
+
+.agora-subtitle-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--agora-blue);
+  margin-bottom: 20px;
+  text-align: left !important;
+}
+
+/* Agora Rectangular Action Button */
+.btn-agora-blue {
+  background-color: var(--agora-blue);
+  color: #FFFFFF !important;
+  font-weight: 700;
+  padding: 18px 38px;
+  border-radius: 2px;
+  border: 2px solid var(--agora-blue);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.btn-agora-blue:hover {
+  background-color: var(--agora-blue-hover);
+  border-color: var(--agora-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+}
+
+.btn-agora-outlined {
+  background-color: transparent;
+  color: var(--agora-text-dark) !important;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 2px;
+  border: 2px solid var(--agora-text-dark);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-agora-outlined:hover {
+  background-color: var(--agora-text-dark);
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+/* Agora Navbar (Dark Charcoal Header) */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--agora-dark-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  height: 84px;
+}
+
+.navbar.is-transparent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 100;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Logo Flower Icon */
+.agora-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.agora-flower-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--agora-blue);
+  flex-shrink: 0;
+}
+
+.agora-logo-text {
+  font-weight: 900;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+/* Nav Menu Links with Underline Hover Animation */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-link {
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  position: relative;
+  padding: 6px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--agora-blue);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: #FFFFFF;
+}
+
+/* Nav Dropdown Menu */
+.dropdown {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 240px;
+  background-color: #16181B;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 12px 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  padding: 12px 24px;
+  color: #9FA0A7;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #FFFFFF;
+  border-left-color: var(--agora-blue);
+  padding-left: 28px;
+}
+
+/* Header Action Tools (Search, Cart, Grid Icons) */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-action-icon {
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-action-icon:hover {
+  color: var(--agora-blue);
+  transform: translateY(-1px);
+}
+
+/* Agora Hero Carousel Background */
+.agora-hero-carousel-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--agora-dark-navy);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.agora-hero-slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 4s ease-out;
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.agora-hero-slide-bg.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.agora-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 3, 9, 0.92) 0%, rgba(0, 3, 9, 0.65) 60%, rgba(0, 3, 9, 0.4) 100%);
+  z-index: 1;
+}
+
+/* Hero Slide Pagination Indicator */
+.hero-pagination-bar {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.hero-pagination-line {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-pagination-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--agora-blue);
+  transition: width 0.3s ease;
+}
+
+/* Ticket Cards */
+.agora-pricing-card {
+  background-color: var(--agora-card-bg);
+  border: 1px solid var(--agora-border-light);
+  border-radius: 4px;
+  padding: 48px 36px;
+  text-align: center;
+  box-shadow: var(--shadow-agora);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.agora-pricing-card.featured {
+  border: 2px solid var(--agora-blue);
+}
+
+.agora-pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-agora-hover);
+}
+
+.pricing-icon-deco {
+  font-size: 2.2rem;
+  color: var(--agora-blue);
+  margin-bottom: 20px;
+}
+
+.pricing-amount {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--agora-text-dark);
+  line-height: 1;
+  margin: 16px 0 8px;
+}
+
+.pricing-period {
+  color: var(--agora-text-muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
+  text-align: center;
+}
+
+.pricing-features li {
+  padding: 12px 0;
+  color: var(--agora-text-dark);
+  font-size: 0.95rem;
+  border-bottom: 1px dashed var(--agora-border-light);
+}
+
+/* Schedule Rows */
+.agora-schedule-tab {
+  background-color: transparent;
+  color: var(--agora-text-muted);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 16px 32px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.agora-schedule-tab.active {
+  color: var(--agora-blue);
+  border-bottom-color: var(--agora-blue);
+}
+
+.agora-schedule-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--agora-border-light);
+  gap: 24px;
+  transition: background-color 0.2s ease;
+}
+
+.agora-schedule-row:hover {
+  background-color: rgba(67, 97, 238, 0.03);
+}
+
+/* Marquee */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: var(--agora-dark-bg);
+  color: #FFFFFF;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 0 24px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Footer */
+.footer {
+  background-color: var(--agora-dark-bg);
+  color: #FFFFFF;
+  padding: 80px 0 30px;
+  margin-top: 100px;
+}
+
+.footer h3, .footer h4 {
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer p, .footer a {
+  color: var(--agora-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer a:hover {
+  color: var(--agora-blue);
 }
