@@ -8,19 +8,46 @@ export const config = {
     contactEmail: "contact@nmsb2-dummy.org.in", // [TO BE PROVIDED]
   },
   dates: {
-    abstractOpens: "1 September 2026", // [TO BE PROVIDED]
-    abstractDeadline: "15 October 2026", // [TO BE PROVIDED]
-    acceptanceNotification: "1 November 2026", // [TO BE PROVIDED]
-    earlyBirdDeadline: "10 November 2026", // [TO BE PROVIDED]
-    regularDeadline: "20 November 2026", // [TO BE PROVIDED]
+    abstractOpens: "1 September 2026",
+    abstractDeadline: "15 October 2026",
+    acceptanceNotification: "1 November 2026",
+    earlyBirdDeadline: "1 November 2026",
+    regularDeadline: "20 November 2026",
   },
+  googleSheetWebhookUrl: process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL || "", // Google Apps Script Webhook URL for live Google Sheet sync
   fees: {
-    student: { category: "Student (UG/PG/PhD)", earlyBird: "₹3000", regular: "₹4000", onSpot: "₹5000" },
-    postDoc: { category: "Post-doc / Research Staff", earlyBird: "₹4000", regular: "₹5000", onSpot: "₹6000" },
-    faculty: { category: "Faculty / Academia", earlyBird: "₹6000", regular: "₹7500", onSpot: "₹9000" },
-    industry: { category: "Industry Delegate", earlyBird: "₹10000", regular: "₹12000", onSpot: "₹15000" },
-    startup: { category: "Start-up Showcase participant", earlyBird: "₹8000", regular: "₹10000", onSpot: "₹12000" },
-    accompanying: { category: "Accompanying person", earlyBird: "₹2500", regular: "₹3000", onSpot: "₹4000" },
+    gstRate: 0.18, // 18% GST
+    earlyBirdCutoff: "1 November 2026",
+    startup: { earlyBird: "INR 12,750", regular: "INR 17,000" },
+    notes: {
+      taxExclusion: "The above figures exclude taxes (18% GST), which will be added during final payment via the gateway.",
+      refundPolicy: "Registration fee is non-refundable.",
+      inclusions: "Conference registration includes admission to all lectures/talks, panel discussions, exhibits, posters, refreshments, and lunches, as per the conference schedule."
+    },
+    matrix: [
+      {
+        category: "Faculty and Scientist",
+        categoryKey: "faculty_scientist",
+        nonBrs: { earlyBird: 9000, standard: 12000 },
+        brsMember: { earlyBird: 7650, standard: 10200 },
+        description: "For academic faculty and scientists from research institutions"
+      },
+      {
+        category: "Student / Post-doc / Project staff",
+        categoryKey: "student_postdoc",
+        nonBrs: { earlyBird: 5000, standard: 6500 },
+        brsMember: { earlyBird: 4250, standard: 5525 },
+        description: "Student registration opens shortly",
+        disabled: true
+      },
+      {
+        category: "From Industry",
+        categoryKey: "industry",
+        nonBrs: { earlyBird: 15000, standard: 20000 },
+        brsMember: { earlyBird: 12750, standard: 17000 },
+        description: "For corporate delegates and industry professionals"
+      }
+    ]
   },
   sponsors: {
     email: "sponsorship@nmsb2-dummy.org.in" // [TO BE PROVIDED]

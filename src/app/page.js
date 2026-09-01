@@ -5,6 +5,7 @@ import { config } from "../config/variables";
 import MarqueeText from "../components/MarqueeText";
 import ScrollParallaxText from "../components/ScrollParallaxText";
 import ParticleEnergyCanvas from "../components/ParticleEnergyCanvas";
+import SodiumAtomAnimation from "../components/SodiumAtomAnimation";
 
 export default function Home() {
   const [activeDay, setActiveDay] = useState(1);
@@ -64,8 +65,8 @@ export default function Home() {
 
   return (
     <div>
-      {/* Agora Hero Section with Translucent Subtly Floating Ion Particle Canvas */}
-      <div className="agora-hero-carousel-container">
+      {/* Agora Hero Section with Translucent Particle Overlay & Giant Half-Overflow Sodium Atom */}
+      <div className="agora-hero-carousel-container" style={{ overflow: "hidden", position: "relative" }}>
         {heroSlides.map((slideImg, index) => (
           <div
             key={index}
@@ -75,23 +76,43 @@ export default function Home() {
         ))}
         <div className="agora-hero-overlay" />
 
-        {/* Subtle Translucent Sodium-Ion Canvas Floating over Carousel */}
+        {/* Translucent Sodium-Ion Canvas Floating over Carousel */}
         <ParticleEnergyCanvas isBackground={true} />
 
-        <div style={{ position: "relative", zIndex: 5, padding: "84px 5vw 40px", width: "100%" }}>
-          {/* Strictly Left Aligned Hero Container */}
-          <div style={{ textAlign: "left", maxWidth: "850px", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+        {/* Massive 1400px Half-Overflow 2D Concentric Sodium Atom on Right Edge */}
+        <div style={{
+          position: "absolute",
+          right: "-686px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 3,
+          pointerEvents: "none",
+          opacity: 0.55
+        }}>
+          <SodiumAtomAnimation />
+        </div>
+
+        <div style={{
+          position: "relative",
+          zIndex: 5,
+          padding: "84px 5vw 40px",
+          width: "100%",
+          maxWidth: "1350px",
+          margin: "0 auto"
+        }}>
+          {/* Left Column: Headline & Content */}
+          <div style={{ textAlign: "left", maxWidth: "680px", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
             <span className="agora-subtitle-badge" style={{ textAlign: "left", marginLeft: 0 }}>
               NATIONAL MEETING ON SODIUM-ION BATTERIES • IIT BOMBAY
             </span>
-            
+
             <h1 className="agora-hero-headline" style={{ marginBottom: "24px", textAlign: "left", alignSelf: "flex-start" }}>
               CONNECT<br />
               INSPIRE<br />
               INNOVATE
             </h1>
-            
-            <p style={{ fontSize: "1.2rem", color: "#9FA0A7", marginBottom: "36px", maxWidth: "680px", lineHeight: "1.6", textAlign: "left" }}>
+
+            <p style={{ fontSize: "1.2rem", color: "#9FA0A7", marginBottom: "36px", maxWidth: "620px", lineHeight: "1.6", textAlign: "left" }}>
               {config.conference.tagline}
             </p>
 
@@ -106,10 +127,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero Battery Charging Indicator (Fixed inside 100vh Viewport) */}
+        {/* Hero Battery Charging Indicator */}
         <div className="hero-pagination-bar" style={{ position: "absolute", bottom: "24px", right: "5vw", display: "flex", alignItems: "center", gap: "14px", zIndex: 10 }}>
           <span>SLIDE 0{currentSlide + 1}</span>
-          
+
           <div style={{
             width: "70px",
             height: "18px",
@@ -153,9 +174,9 @@ export default function Home() {
         <div className="container">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "60px", alignItems: "center" }}>
             <div>
-              <img 
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" 
-                alt="Conference Keynote" 
+              <img
+                src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
+                alt="Conference Keynote"
                 style={{ width: "100%", borderRadius: "4px", boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
               />
             </div>
@@ -167,7 +188,7 @@ export default function Home() {
               <p style={{ fontSize: "1.1rem", color: "var(--agora-text-muted)", marginBottom: "32px" }}>
                 NMSB-2 brings together academia, industry leaders, and government stakeholders to accelerate sodium-ion battery research and commercial deployment across India.
               </p>
-              
+
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "36px" }}>
                 <div style={{ borderLeft: "3px solid var(--agora-blue)", paddingLeft: "16px" }}>
                   <h4 style={{ fontSize: "1.1rem" }}>Prof. Amartya Mukhopadhyay</h4>
@@ -203,9 +224,9 @@ export default function Home() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "30px" }}>
             {speakersList.map((sp, idx) => (
               <div key={idx} className="agora-pricing-card" style={{ padding: "32px 24px", textAlign: "center" }}>
-                <img 
-                  src={sp.image} 
-                  alt={sp.name} 
+                <img
+                  src={sp.image}
+                  alt={sp.name}
                   style={{ width: "130px", height: "130px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 20px", border: "3px solid var(--agora-blue)" }}
                 />
                 <h3 style={{ fontSize: "1.3rem", marginBottom: "6px" }}>{sp.name}</h3>
@@ -220,7 +241,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section 3: Programme Schedule (Reverted to Previous Clean Light Card Style) */}
+      {/* Section 3: Programme Schedule */}
       <div style={{ padding: "100px 0", backgroundColor: "var(--agora-card-bg)" }}>
         <div className="container">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap", gap: "20px" }}>
@@ -282,9 +303,9 @@ export default function Home() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "30px" }}>
             {teamList.map((tm, idx) => (
               <div key={idx} className="agora-pricing-card" style={{ padding: "32px 24px", textAlign: "center" }}>
-                <img 
-                  src={tm.image} 
-                  alt={tm.name} 
+                <img
+                  src={tm.image}
+                  alt={tm.name}
                   style={{ width: "120px", height: "120px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 20px", border: "3px solid var(--agora-text-dark)" }}
                 />
                 <h3 style={{ fontSize: "1.25rem", marginBottom: "6px" }}>{tm.name}</h3>
@@ -296,75 +317,78 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section 5: Ticket Pricing Cards */}
+      {/* Section 5: Official Registration Fee Matrix Overview */}
       <div style={{ padding: "100px 0", backgroundColor: "var(--agora-light-bg)" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "60px" }}>
-            <span className="agora-subtitle-badge">REGISTRATION PASSES</span>
-            <h2 style={{ fontSize: "3rem", lineHeight: "1.1" }}>CHOOSE YOUR PASS</h2>
+            <span className="agora-subtitle-badge">CONFERENCE DELEGATE REGISTRATION</span>
+            <h2 style={{ fontSize: "3rem", lineHeight: "1.1" }}>REGISTRATION TARIFFS</h2>
+            <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px" }}>
+              Early bird deadline: 1 November 2026. 15% discount available for BRS Members.
+            </p>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "30px" }}>
-            <div className="agora-pricing-card">
+            <div className="agora-pricing-card featured">
+              <div style={{ position: "absolute", top: "-14px", left: "50%", transform: "translateX(-50%)", background: "var(--agora-blue)", color: "#fff", padding: "4px 16px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: "800", textTransform: "uppercase" }}>
+                15% BRS DISCOUNT AVAILABLE
+              </div>
               <div>
                 <div className="pricing-icon-deco">▲</div>
-                <h3 style={{ fontSize: "1.4rem" }}>STUDENT PASS</h3>
-                <div className="pricing-amount">₹3,000</div>
-                <div className="pricing-period">Early Bird (UG/PG/PhD)</div>
+                <h3 style={{ fontSize: "1.4rem" }}>FACULTY & SCIENTIST</h3>
+                <div className="pricing-amount" style={{ color: "var(--agora-blue)" }}>INR 7,650*</div>
+                <div className="pricing-period">Early Bird (BRS Member Rate) / Standard: ₹9,000</div>
                 
                 <ul className="pricing-features">
                   <li>Full 3-Day Technical Access ✔</li>
                   <li>Conference Kit & Abstract Book ✔</li>
-                  <li>Poster Presentation Entry ✔</li>
+                  <li>Technical Sessions & Poster Entry ✔</li>
                   <li>Lunch & Tea Refreshments ✔</li>
                 </ul>
               </div>
 
-              <Link href="/registration" className="btn-agora-outlined">
-                GET NOW
+              <Link href="/registration" className="btn-agora-blue">
+                REGISTER NOW
               </Link>
             </div>
 
-            <div className="agora-pricing-card featured">
-              <div style={{ position: "absolute", top: "-14px", left: "50%", transform: "translateX(-50%)", background: "var(--agora-blue)", color: "#fff", padding: "4px 16px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: "800", textTransform: "uppercase" }}>
-                RECOMMENDED
-              </div>
+            <div className="agora-pricing-card" style={{ opacity: 0.85 }}>
               <div>
                 <div className="pricing-icon-deco">✱</div>
-                <h3 style={{ fontSize: "1.4rem" }}>FACULTY PASS</h3>
-                <div className="pricing-amount" style={{ color: "var(--agora-blue)" }}>₹6,000</div>
-                <div className="pricing-period">Early Bird (Academia)</div>
+                <h3 style={{ fontSize: "1.4rem" }}>STUDENT / POST-DOC</h3>
+                <div className="pricing-amount">INR 4,250*</div>
+                <div className="pricing-period">Early Bird (BRS Member Rate) / Standard: ₹5,000</div>
                 
                 <ul className="pricing-features">
-                  <li>Full 3-Day Technical Access ✔</li>
-                  <li>Keynote & Panel Discussions ✔</li>
-                  <li>Conference Dinner Pass ✔</li>
-                  <li>Certificate of Participation ✔</li>
+                  <li>Full 3-Day Student Access ✔</li>
+                  <li>Poster & Student Award Entries ✔</li>
+                  <li>Refreshments & Lunch Included ✔</li>
+                  <li style={{ color: "var(--agora-blue)", fontWeight: "700" }}>* Opens Shortly</li>
                 </ul>
               </div>
 
-              <Link href="/registration" className="btn-agora-blue">
-                GET NOW
+              <Link href="/registration" className="btn-agora-outlined">
+                DETAILS & SCHEDULE
               </Link>
             </div>
 
             <div className="agora-pricing-card">
               <div>
                 <div className="pricing-icon-deco">◬</div>
-                <h3 style={{ fontSize: "1.4rem" }}>INDUSTRY PASS</h3>
-                <div className="pricing-amount">₹10,000</div>
-                <div className="pricing-period">Early Bird (Industry)</div>
+                <h3 style={{ fontSize: "1.4rem" }}>INDUSTRY DELEGATE</h3>
+                <div className="pricing-amount">INR 12,750*</div>
+                <div className="pricing-period">Early Bird (BRS Member Rate) / Standard: ₹15,000</div>
                 
                 <ul className="pricing-features">
                   <li>Full Access + B2B Networking ✔</li>
-                  <li>Start-up Showcase Access ✔</li>
-                  <li>VIP Conference Dinner ✔</li>
+                  <li>Start-up & Tech Showcase Access ✔</li>
+                  <li>VIP Lunches & Refreshments ✔</li>
                   <li>Delegates Directory Access ✔</li>
                 </ul>
               </div>
 
               <Link href="/registration" className="btn-agora-outlined">
-                GET NOW
+                REGISTER NOW
               </Link>
             </div>
           </div>

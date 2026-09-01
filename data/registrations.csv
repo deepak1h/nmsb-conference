@@ -1,0 +1,4 @@
+Registration ID,Date & Time,Title,Full Name,Email,Mobile,Category,Organization,BRS Member,BRS Number,Food Preference,Base Fee (INR),GST (INR),Total Paid (INR),Payment Method,Transaction Ref
+"NMSB2-260567","2026-08-31T16:04:20.567Z","Dr.","John Doe","john.doe@example.com","9876543210","faculty","IIT Bombay","YES","BRS-2026-123","Non-vegetarian",7650,1377,9027,"razorpay","TXN-IZ25SDG"
+"NMSB2-422847","2026-08-31T16:07:02.847Z","Dr.","Deepak Kumar Pandey","d.pandey1h@gmail.com","+917268969885","faculty","iit h","NO","N/A","Vegetarian",9000,1620,10620,"razorpay","TXN-LVVU4LE"
+"NMSB2-940850","2026-08-31T18:45:40.850Z","Dr.","Deepak Kumar Pandey","d.pandey1h@gmail.com","+917268969885","scientist","iith","NO","N/A","Vegetarian",9000,1620,10620,"razorpay","TXN-LLKD5RW"

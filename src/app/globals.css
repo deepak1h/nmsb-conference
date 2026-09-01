@@ -108,7 +108,7 @@ h1, h2, h3, h4 {
 
 .btn-agora-outlined {
   background-color: transparent;
-  color: var(--agora-text-dark) !important;
+  color: var(--agora-text-dark);
   font-weight: 700;
   padding: 16px 36px;
   border-radius: 2px;
