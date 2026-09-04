@@ -47,9 +47,15 @@ export default function Footer() {
           {/* Column 4: Contact Secretariat */}
           <div>
             <h3>SECRETARIAT</h3>
-            <p style={{ color: "var(--agora-text-muted)", fontSize: "0.95rem", lineHeight: "1.7" }}>
-              📍 ASPIRE, IIT Bombay, Mumbai<br />
-              ✉️ <a href={`mailto:${config.conference.contactEmail}`} style={{ color: "var(--agora-blue)" }}>{config.conference.contactEmail}</a>
+            <p style={{ color: "var(--agora-text-muted)", fontSize: "0.95rem", lineHeight: "1.7", display: "flex", flexDirection: "column", gap: "8px" }}>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                <svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                ASPIRE, IIT Bombay, Mumbai
+              </span>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                <svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <a href={`mailto:${config.conference.contactEmail}`} style={{ color: "var(--agora-blue)" }}>{config.conference.contactEmail}</a>
+              </span>
             </p>
             <div style={{ marginTop: "16px", display: "flex", gap: "12px", fontSize: "0.85rem" }}>
               <Link href="/terms">Terms</Link> • <Link href="/privacy">Privacy</Link> • <Link href="/refund">Refund</Link>

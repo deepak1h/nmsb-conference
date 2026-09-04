@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <div className="container" style={{ paddingTop: "40px" }}>
       <div style={{ textAlign: "center", marginBottom: "40px" }}>
-        <span className="pill-badge" style={{ marginBottom: "12px" }}>✉️ We're Here to Help</span>
+        <span className="pill-badge" style={{ marginBottom: "12px" }}>We're Here to Help</span>
         <h1 style={{ fontSize: "2.8rem", marginBottom: "12px" }}>
           Contact <span className="gradient-text">Organizing Secretariat</span>
         </h1>
@@ -16,7 +16,7 @@ export default function Contact() {
       </div>
 
       <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-        <AccordionCard title="Official Contact Details" badge="Razorpay Compliant" defaultOpen={true} icon="📞">
+        <AccordionCard title="Official Contact Details" badge="Razorpay Compliant" defaultOpen={true}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px", marginTop: "16px" }}>
             <div className="glass-card">
               <h4 style={{ color: "var(--primary-neon)", marginBottom: "4px" }}>Email</h4>
@@ -35,7 +35,7 @@ export default function Contact() {
           </div>
         </AccordionCard>
 
-        <AccordionCard title="Send Us an Enquiry" badge="Enquiry Form" defaultOpen={true} icon="📨">
+        <AccordionCard title="Send Us an Enquiry" badge="Enquiry Form" defaultOpen={true}>
           <form style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "16px" }} onSubmit={(e) => { e.preventDefault(); alert("Enquiry submitted!"); }}>
             <input type="text" placeholder="Your Name *" required />
             <input type="email" placeholder="Your Email *" required />

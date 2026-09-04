@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { config } from "../../config/variables";
 import RegistrationReceipt from "../../components/RegistrationReceipt";
 
@@ -22,13 +22,23 @@ export default function Registration() {
     isBrsMember: false,
     brsNumber: "",
     foodPreference: "Vegetarian",
-    paymentMethod: "razorpay" // 'razorpay', 'card', 'netbanking'
   });
 
-  // Calculate pricing
+  // Dynamically load Razorpay Checkout JS script
+  useEffect(() => {
+    const scriptId = "razorpay-checkout-script";
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  // Frontend Tariff Calculation for Live Preview
   const getSelectedBaseFee = () => {
     const isBrs = formData.isBrsMember;
-    
     if (formData.category === "industry") {
       return isBrs ? (isEarlyBird ? 12750 : 17000) : (isEarlyBird ? 15000 : 20000);
     } else {
@@ -50,50 +60,126 @@ export default function Registration() {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
+  // Production Razorpay Order Creation & Verification Flow
   const handleFinalSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const registrationId = `NMSB2-${Date.now().toString().slice(-6)}`;
-    const transactionRef = `TXN-${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
-
-    const payload = {
-      registrationId,
-      timestamp: new Date().toISOString(),
-      title: formData.title,
-      fullName: formData.fullName,
-      email: formData.email,
-      mobile: formData.mobile,
-      category: formData.category,
-      organization: formData.organization,
-      isBrsMember: formData.isBrsMember,
-      brsNumber: formData.brsNumber,
-      foodPreference: formData.foodPreference,
-      baseFee,
-      gstAmount,
-      totalAmount,
-      paymentMethod: formData.paymentMethod,
-      transactionRef
-    };
-
     try {
-      const res = await fetch("/api/register", {
+      // Step 1: Call Backend to Create Razorpay Order & Validate Fees Server-Side
+      const orderRes = await fetch("/api/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(formData)
       });
 
-      const json = await res.json();
-      if (json.success) {
-        setSubmittedRecord(json.data);
-      } else {
-        alert("Registration failed. Please try again.");
+      const orderData = await orderRes.json();
+      if (!orderData.success) {
+        alert(`Order Creation Error: ${orderData.error}`);
+        setIsSubmitting(false);
+        return;
       }
+
+      // Step 2: In Mock Mode (Dev without Keys), Simulate Instant Verification
+      if (orderData.isMock && (typeof window.Razorpay === "undefined" || !process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID)) {
+        console.log("Mock Mode Active: Simulating Payment Verification...");
+        
+        const mockVerifyRes = await fetch("/api/verify-payment", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            razorpay_order_id: orderData.orderId,
+            razorpay_payment_id: `pay_mock_${Math.random().toString(36).substring(2, 10)}`,
+            razorpay_signature: "mock_signature_valid",
+            registrationData: {
+              ...formData,
+              baseFee: orderData.baseFee,
+              gstAmount: orderData.gstAmount,
+              totalAmount: orderData.totalAmount
+            }
+          })
+        });
+
+        const mockVerifyData = await mockVerifyRes.json();
+        if (mockVerifyData.success) {
+          setSubmittedRecord(mockVerifyData.data);
+        } else {
+          alert(`Verification Error: ${mockVerifyData.error}`);
+        }
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Step 3: Open Production Razorpay Checkout Modal
+      const options = {
+        key: orderData.keyId,
+        amount: orderData.amount,
+        currency: orderData.currency || "INR",
+        name: "NMSB-2 Conference",
+        description: `Delegate Registration (${formData.category.toUpperCase()})`,
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=150&q=80",
+        order_id: orderData.orderId,
+        prefill: {
+          name: `${formData.title} ${formData.fullName}`,
+          email: formData.email,
+          contact: formData.mobile
+        },
+        theme: {
+          color: "#4361EE"
+        },
+        handler: async function (response) {
+          // Payment Succeeded — Call Backend HMAC SHA256 Verification Endpoint
+          try {
+            const verifyRes = await fetch("/api/verify-payment", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                registrationData: {
+                  ...formData,
+                  baseFee: orderData.baseFee,
+                  gstAmount: orderData.gstAmount,
+                  totalAmount: orderData.totalAmount
+                }
+              })
+            });
+
+            const verifyData = await verifyRes.json();
+
+            if (verifyData.success) {
+              setSubmittedRecord(verifyData.data);
+            } else {
+              alert(`Payment Verification Error: ${verifyData.error}`);
+            }
+          } catch (verifyErr) {
+            console.error("Verification Call Failed:", verifyErr);
+            alert("Payment verification network error. Please contact conference secretariat.");
+          } finally {
+            setIsSubmitting(false);
+          }
+        },
+        modal: {
+          ondismiss: function () {
+            console.log("Razorpay Checkout Modal Dismissed by User");
+            setIsSubmitting(false);
+          }
+        }
+      };
+
+      const razorpayInstance = new window.Razorpay(options);
+      razorpayInstance.on("payment.failed", function (failResponse) {
+        console.error("Payment Failed:", failResponse.error);
+        alert(`Payment Failed: ${failResponse.error.description}`);
+        setIsSubmitting(false);
+      });
+
+      razorpayInstance.open();
+
     } catch (err) {
-      console.error("Submission error:", err);
-      // Fallback display receipt if network error
-      setSubmittedRecord(payload);
-    } finally {
+      console.error("Payment Checkout Error:", err);
+      alert("An unexpected error occurred. Please try again.");
       setIsSubmitting(false);
     }
   };
@@ -111,7 +197,6 @@ export default function Registration() {
       isBrsMember: false,
       brsNumber: "",
       foodPreference: "Vegetarian",
-      paymentMethod: "razorpay"
     });
   };
 
@@ -119,12 +204,13 @@ export default function Registration() {
     <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0" }}>
       <div className="container">
         
-        {/* If registration has been completed successfully, render the Printable Receipt */}
+        {/* Render Printable Receipt on Verified Payment Success */}
         {submittedRecord ? (
           <div>
             <div style={{ textAlign: "center", marginBottom: "32px" }}>
-              <span className="pill-badge" style={{ backgroundColor: "#2E7D32", color: "#FFFFFF", padding: "6px 16px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: "700" }}>
-                ✔ REGISTRATION & PAYMENT CONFIRMED
+              <span className="pill-badge" style={{ backgroundColor: "#2E7D32", color: "#FFFFFF", padding: "6px 18px", borderRadius: "20px", fontSize: "0.85rem", fontWeight: "700", display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                REGISTRATION & PAYMENT CONFIRMED
               </span>
               <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "2.8rem", marginTop: "12px" }}>
                 REGISTRATION RECEIPT
@@ -149,7 +235,7 @@ export default function Registration() {
               </p>
             </div>
 
-            {/* Official Fee Schedule Reference Table */}
+            {/* Fee Schedule Reference Table */}
             <div style={{ 
               backgroundColor: "var(--agora-card-bg)", 
               padding: "36px 40px", 
@@ -479,8 +565,9 @@ export default function Registration() {
                         <label style={{ display: "block", fontSize: "1.1rem", fontWeight: "800", marginBottom: "8px" }}>
                           Are you a Battery Research Society (BRS) member? *
                         </label>
-                        <p style={{ fontSize: "0.9rem", color: "var(--agora-blue)", fontWeight: "700", marginBottom: "16px" }}>
-                          ⚡ 15% discount for BRS members is applicable on registration fee!
+                        <p style={{ fontSize: "0.9rem", color: "var(--agora-blue)", fontWeight: "700", marginBottom: "16px", display: "flex", alignItems: "center", gap: "6px" }}>
+                          <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                          15% discount for BRS members is applicable on registration fee!
                         </p>
 
                         <div style={{ display: "flex", gap: "20px" }}>
@@ -550,11 +637,11 @@ export default function Registration() {
                   </form>
                 )}
 
-                {/* STEP 4: Payment Summary & Checkout */}
+                {/* STEP 4: Payment Summary & Unified Razorpay Checkout */}
                 {currentStep === 4 && (
                   <form onSubmit={handleFinalSubmit}>
                     <h3 style={{ fontSize: "1.5rem", marginBottom: "20px", color: "var(--agora-text-dark)" }}>
-                      STEP 4 — PAYMENT & FEE BREAKDOWN
+                      STEP 4 — PAYMENT SUMMARY & CHECKOUT
                     </h3>
 
                     {/* Summary Table */}
@@ -564,7 +651,7 @@ export default function Registration() {
                       </h4>
 
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", fontSize: "0.95rem", marginBottom: "20px" }}>
-                        <div><strong>Delegate Name:</strong> {formData.title} {formData.fullName}</div>
+                        <div><strong>Delegate Name:</strong> {formData.fullName.startsWith(formData.title) ? formData.fullName : `${formData.title} ${formData.fullName}`}</div>
                         <div><strong>Email:</strong> {formData.email}</div>
                         <div><strong>Category:</strong> {formData.category.toUpperCase()}</div>
                         <div><strong>Affiliation:</strong> {formData.organization}</div>
@@ -590,57 +677,27 @@ export default function Registration() {
                       </div>
                     </div>
 
-                    {/* Payment Option Selector */}
-                    <div style={{ marginBottom: "28px" }}>
-                      <label style={{ display: "block", fontSize: "0.9rem", fontWeight: "800", marginBottom: "12px" }}>
-                        SELECT PAYMENT GATEWAY OPTION *
-                      </label>
-
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
-                        <div 
-                          onClick={() => setFormData({ ...formData, paymentMethod: "razorpay" })}
-                          style={{ 
-                            padding: "16px", 
-                            borderRadius: "6px", 
-                            border: formData.paymentMethod === "razorpay" ? "2px solid var(--agora-blue)" : "1px solid var(--agora-border-light)",
-                            backgroundColor: formData.paymentMethod === "razorpay" ? "rgba(67, 97, 238, 0.05)" : "var(--agora-card-bg)",
-                            cursor: "pointer",
-                            textAlign: "center"
-                          }}
-                        >
-                          <h4 style={{ fontSize: "1rem" }}>Razorpay / UPI / QR</h4>
-                          <p style={{ fontSize: "0.75rem", color: "var(--agora-text-muted)" }}>Instant QR Code, GPay, PhonePe</p>
-                        </div>
-
-                        <div 
-                          onClick={() => setFormData({ ...formData, paymentMethod: "card" })}
-                          style={{ 
-                            padding: "16px", 
-                            borderRadius: "6px", 
-                            border: formData.paymentMethod === "card" ? "2px solid var(--agora-blue)" : "1px solid var(--agora-border-light)",
-                            backgroundColor: formData.paymentMethod === "card" ? "rgba(67, 97, 238, 0.05)" : "var(--agora-card-bg)",
-                            cursor: "pointer",
-                            textAlign: "center"
-                          }}
-                        >
-                          <h4 style={{ fontSize: "1rem" }}>Credit / Debit Card</h4>
-                          <p style={{ fontSize: "0.75rem", color: "var(--agora-text-muted)" }}>Visa, Mastercard, RuPay</p>
-                        </div>
-
-                        <div 
-                          onClick={() => setFormData({ ...formData, paymentMethod: "netbanking" })}
-                          style={{ 
-                            padding: "16px", 
-                            borderRadius: "6px", 
-                            border: formData.paymentMethod === "netbanking" ? "2px solid var(--agora-blue)" : "1px solid var(--agora-border-light)",
-                            backgroundColor: formData.paymentMethod === "netbanking" ? "rgba(67, 97, 238, 0.05)" : "var(--agora-card-bg)",
-                            cursor: "pointer",
-                            textAlign: "center"
-                          }}
-                        >
-                          <h4 style={{ fontSize: "1rem" }}>Netbanking</h4>
-                          <p style={{ fontSize: "0.75rem", color: "var(--agora-text-muted)" }}>All Major Indian Banks</p>
-                        </div>
+                    {/* Razorpay Unified Gateway Callout */}
+                    <div style={{
+                      backgroundColor: "rgba(67, 97, 238, 0.04)",
+                      border: "1px solid rgba(67, 97, 238, 0.2)",
+                      padding: "20px",
+                      borderRadius: "6px",
+                      marginBottom: "28px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "16px"
+                    }}>
+                      <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "rgba(67, 97, 238, 0.12)", color: "var(--agora-blue)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                      </div>
+                      <div>
+                        <h4 style={{ fontSize: "1rem", marginBottom: "4px", color: "var(--agora-text-dark)" }}>
+                          Secure 256-bit Encrypted Checkout via Razorpay
+                        </h4>
+                        <p style={{ fontSize: "0.82rem", color: "var(--agora-text-muted)", margin: 0 }}>
+                          Supports all payment modes inside one popup: <strong>UPI (GPay / PhonePe / Paytm / QR)</strong>, <strong>Credit & Debit Cards (Visa, Mastercard, RuPay)</strong>, <strong>Netbanking (All Major Banks)</strong>, and <strong>Wallets</strong>.
+                        </p>
                       </div>
                     </div>
 
@@ -649,7 +706,7 @@ export default function Registration() {
                         ← BACK
                       </button>
                       <button type="submit" className="btn-agora-blue" style={{ fontSize: "1rem", padding: "18px 40px" }} disabled={isSubmitting}>
-                        {isSubmitting ? "PROCESSING PAYMENT..." : `CONFIRM & PAY INR ${totalAmount.toLocaleString('en-IN')} →`}
+                        {isSubmitting ? "PROCESSING CHECKOUT..." : `CONFIRM & PAY INR ${totalAmount.toLocaleString('en-IN')} WITH RAZORPAY →`}
                       </button>
                     </div>
                   </form>

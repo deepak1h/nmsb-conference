@@ -317,79 +317,68 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section 5: Official Registration Fee Matrix Overview */}
+      {/* Section 5: Delegate Registration Information & Callout Banner */}
       <div style={{ padding: "100px 0", backgroundColor: "var(--agora-light-bg)" }}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "60px" }}>
-            <span className="agora-subtitle-badge">CONFERENCE DELEGATE REGISTRATION</span>
-            <h2 style={{ fontSize: "3rem", lineHeight: "1.1" }}>REGISTRATION TARIFFS</h2>
-            <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px" }}>
-              Early bird deadline: 1 November 2026. 15% discount available for BRS Members.
-            </p>
-          </div>
+          <div style={{
+            backgroundColor: "var(--agora-dark-bg)",
+            color: "#FFFFFF",
+            borderRadius: "8px",
+            padding: "60px 48px",
+            position: "relative",
+            overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "40px",
+            alignItems: "center"
+          }}>
+            <div>
+              <span className="agora-subtitle-badge" style={{ color: "var(--agora-blue)", borderBottomColor: "var(--agora-blue)" }}>
+                NATIONAL DELEGATE PORTAL
+              </span>
+              <h2 style={{ fontSize: "2.8rem", lineHeight: "1.15", margin: "16px 0", color: "#FFFFFF" }}>
+                REGISTER FOR NMSB-2 AT IIT BOMBAY
+              </h2>
+              <p style={{ fontSize: "1.1rem", color: "#A0A5B5", lineHeight: "1.7", marginBottom: "24px" }}>
+                Registration is open for Academic Faculty, Scientists, Industry Delegates, and Researchers. Passes include full access to technical lectures, poster sessions, exhibits, networking dinners, refreshments, and conference kits.
+              </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "30px" }}>
-            <div className="agora-pricing-card featured">
-              <div style={{ position: "absolute", top: "-14px", left: "50%", transform: "translateX(-50%)", background: "var(--agora-blue)", color: "#fff", padding: "4px 16px", borderRadius: "20px", fontSize: "0.75rem", fontWeight: "800", textTransform: "uppercase" }}>
-                15% BRS DISCOUNT AVAILABLE
+              <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+                <Link href="/registration" className="btn-agora-blue">
+                  PROCEED TO REGISTRATION PORTAL →
+                </Link>
+                <Link href="/programme" className="btn-agora-outlined" style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }}>
+                  VIEW PROGRAMME SCHEDULE
+                </Link>
               </div>
-              <div>
-                <div className="pricing-icon-deco">▲</div>
-                <h3 style={{ fontSize: "1.4rem" }}>FACULTY & SCIENTIST</h3>
-                <div className="pricing-amount" style={{ color: "var(--agora-blue)" }}>INR 7,650*</div>
-                <div className="pricing-period">Early Bird (BRS Member Rate) / Standard: ₹9,000</div>
-                
-                <ul className="pricing-features">
-                  <li>Full 3-Day Technical Access ✔</li>
-                  <li>Conference Kit & Abstract Book ✔</li>
-                  <li>Technical Sessions & Poster Entry ✔</li>
-                  <li>Lunch & Tea Refreshments ✔</li>
-                </ul>
-              </div>
-
-              <Link href="/registration" className="btn-agora-blue">
-                REGISTER NOW
-              </Link>
             </div>
 
-            <div className="agora-pricing-card" style={{ opacity: 0.85 }}>
-              <div>
-                <div className="pricing-icon-deco">✱</div>
-                <h3 style={{ fontSize: "1.4rem" }}>STUDENT / POST-DOC</h3>
-                <div className="pricing-amount">INR 4,250*</div>
-                <div className="pricing-period">Early Bird (BRS Member Rate) / Standard: ₹5,000</div>
-                
-                <ul className="pricing-features">
-                  <li>Full 3-Day Student Access ✔</li>
-                  <li>Poster & Student Award Entries ✔</li>
-                  <li>Refreshments & Lunch Included ✔</li>
-                  <li style={{ color: "var(--agora-blue)", fontWeight: "700" }}>* Opens Shortly</li>
-                </ul>
-              </div>
-
-              <Link href="/registration" className="btn-agora-outlined">
-                DETAILS & SCHEDULE
-              </Link>
-            </div>
-
-            <div className="agora-pricing-card">
-              <div>
-                <div className="pricing-icon-deco">◬</div>
-                <h3 style={{ fontSize: "1.4rem" }}>INDUSTRY DELEGATE</h3>
-                <div className="pricing-amount">INR 12,750*</div>
-                <div className="pricing-period">Early Bird (BRS Member Rate) / Standard: ₹15,000</div>
-                
-                <ul className="pricing-features">
-                  <li>Full Access + B2B Networking ✔</li>
-                  <li>Start-up & Tech Showcase Access ✔</li>
-                  <li>VIP Lunches & Refreshments ✔</li>
-                  <li>Delegates Directory Access ✔</li>
-                </ul>
-              </div>
-
-              <Link href="/registration" className="btn-agora-outlined">
-                REGISTER NOW
-              </Link>
+            <div style={{
+              backgroundColor: "rgba(255, 255, 255, 0.05)",
+              padding: "36px",
+              borderRadius: "6px",
+              border: "1px solid rgba(255, 255, 255, 0.12)"
+            }}>
+              <h4 style={{ fontSize: "1.2rem", color: "#FFFFFF", marginBottom: "16px" }}>KEY DEADLINES & INFO</h4>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: "0.95rem", color: "#D0D5E5", display: "flex", flexDirection: "column", gap: "14px" }}>
+                <li style={{ borderBottom: "1px dashed rgba(255,255,255,0.15)", paddingBottom: "10px", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span><strong>Conference Dates:</strong> 22–24 November 2026</span>
+                </li>
+                <li style={{ borderBottom: "1px dashed rgba(255,255,255,0.15)", paddingBottom: "10px", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  <span><strong>Venue:</strong> ASPIRE - IIT Bombay Research Park</span>
+                </li>
+                <li style={{ borderBottom: "1px dashed rgba(255,255,255,0.15)", paddingBottom: "10px", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span><strong>Early Bird Deadline:</strong> November 1, 2026</span>
+                </li>
+                <li style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  <span><strong>BRS Member Special:</strong> 15% Discount Applicable</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

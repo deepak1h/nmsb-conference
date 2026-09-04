@@ -80,19 +80,21 @@ export default function RegistrationReceipt({ record, onReset }) {
           </div>
 
           <div style={{ textAlign: "right" }}>
-            <div style={{
-              display: "inline-block",
-              backgroundColor: "#E8F5E9",
-              color: "#2E7D32",
-              border: "1px solid #A5D6A7",
-              padding: "6px 14px",
-              borderRadius: "20px",
-              fontSize: "0.8rem",
-              fontWeight: "900",
-              textTransform: "uppercase",
-              marginBottom: "8px"
-            }}>
-              ✔ PAYMENT SUCCESSFUL
+            <div style={{ marginBottom: "8px" }}>
+              <span style={{
+                backgroundColor: "#E8F5E9",
+                color: "#2E7D32",
+                padding: "4px 12px",
+                borderRadius: "12px",
+                fontSize: "0.75rem",
+                fontWeight: "900",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px"
+              }}>
+                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                PAYMENT SUCCESSFUL
+              </span>
             </div>
             <p style={{ fontSize: "0.8rem", color: "#666", margin: 0 }}>
               Date: <strong>{new Date(record.timestamp).toLocaleDateString("en-IN", { day: 'numeric', month: 'short', year: 'numeric' })}</strong>
@@ -128,7 +130,7 @@ export default function RegistrationReceipt({ record, onReset }) {
             DELEGATE PROFILE
           </h3>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", fontSize: "0.9rem", color: "#333" }}>
-            <div><strong>Delegate Name:</strong> {record.title} {record.fullName}</div>
+            <div><strong>Delegate Name:</strong> {record.fullName.startsWith(record.title) ? record.fullName : `${record.title} ${record.fullName}`}</div>
             <div><strong>Email Address:</strong> {record.email}</div>
             <div><strong>Mobile Number:</strong> {record.mobile}</div>
             <div><strong>Category:</strong> {record.category.toUpperCase()}</div>
@@ -223,9 +225,10 @@ export default function RegistrationReceipt({ record, onReset }) {
           <button 
             onClick={handlePrint}
             className="btn-agora-blue" 
-            style={{ fontSize: "0.95rem", padding: "14px 32px", display: "flex", alignItems: "center", gap: "8px" }}
+            style={{ fontSize: "0.95rem", padding: "14px 32px", display: "inline-flex", alignItems: "center", gap: "8px" }}
           >
-            🖨️ PRINT RECEIPT / SAVE PDF
+            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            PRINT RECEIPT / SAVE PDF
           </button>
 
           <button 

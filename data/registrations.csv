@@ -2,3 +2,6 @@ Registration ID,Date & Time,Title,Full Name,Email,Mobile,Category,Organization,B
 "NMSB2-260567","2026-08-31T16:04:20.567Z","Dr.","John Doe","john.doe@example.com","9876543210","faculty","IIT Bombay","YES","BRS-2026-123","Non-vegetarian",7650,1377,9027,"razorpay","TXN-IZ25SDG"
 "NMSB2-422847","2026-08-31T16:07:02.847Z","Dr.","Deepak Kumar Pandey","d.pandey1h@gmail.com","+917268969885","faculty","iit h","NO","N/A","Vegetarian",9000,1620,10620,"razorpay","TXN-LVVU4LE"
 "NMSB2-940850","2026-08-31T18:45:40.850Z","Dr.","Deepak Kumar Pandey","d.pandey1h@gmail.com","+917268969885","scientist","iith","NO","N/A","Vegetarian",9000,1620,10620,"razorpay","TXN-LLKD5RW"
+"NMSB2-642031","2026-09-01T16:04:02.031Z","Dr.","Dr. Alex Rivera","alex.rivera@example.com","9876543210","faculty","IIT Bombay","NO","N/A","Vegetarian",9000,1620,10620,"Razorpay","pay_mock_vcjjt1du","order_mock_6xngbbls4e"
+"NMSB2-216494","2026-09-04T05:20:16.494Z","Dr.","deepak","d.pandey2h@gmail.com","7268969885","industry","IITH","YES","XYZ","Non-vegetarian",12750,2295,15045,"Razorpay","pay_mock_8gpg57wi","order_mock_wpzqbltq7v"
+"NMSB2-412617","2026-09-04T05:23:32.617Z","Dr.","deepak","d.pandey2h@gmail.com","7268969885","scientist","iith ","NO","N/A","Vegetarian",9000,1620,10620,"Razorpay","pay_mock_s0zfgst8","order_mock_38h98mbjaf"
