@@ -7,31 +7,27 @@ import ScrollParallaxText from "../components/ScrollParallaxText";
 import ParticleEnergyCanvas from "../components/ParticleEnergyCanvas";
 import SodiumAtomAnimation from "../components/SodiumAtomAnimation";
 
+const HERO_SLIDES = [
+  "/images/hero/1.JPG",
+  "/images/hero/2.JPG",
+  "/images/hero/3.JPG",
+];
+
 export default function Home() {
   const [activeDay, setActiveDay] = useState(1);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [chargePercent, setChargePercent] = useState(0);
+  const [ticks, setTicks] = useState(0);
 
-  const heroSlides = [
-    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-    "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
-  ];
-
-  // Battery Charging Level Hero Carousel timer (Changes slide at 100%)
+  // Hero Carousel Timer (Monotonically increasing tick counter: 1 -> 2 -> 3 -> 1)
   useEffect(() => {
     const timer = setInterval(() => {
-      setChargePercent((prev) => {
-        if (prev >= 100) {
-          setCurrentSlide((slide) => (slide + 1) % heroSlides.length);
-          return 0;
-        }
-        return prev + 1;
-      });
-    }, 25); // 2500ms per slide
+      setTicks((t) => t + 1);
+    }, 35); // 3500ms duration per slide (100 ticks * 35ms)
 
     return () => clearInterval(timer);
-  }, [heroSlides.length]);
+  }, []);
+
+  const currentSlide = Math.floor(ticks / 100) % HERO_SLIDES.length;
+  const chargePercent = ticks % 100;
 
   const scheduleData = {
     1: [
@@ -67,7 +63,7 @@ export default function Home() {
     <div>
       {/* Agora Hero Section with Translucent Particle Overlay & Giant Half-Overflow Sodium Atom */}
       <div className="agora-hero-carousel-container" style={{ overflow: "hidden", position: "relative" }}>
-        {heroSlides.map((slideImg, index) => (
+        {HERO_SLIDES.map((slideImg, index) => (
           <div
             key={index}
             className={`agora-hero-slide-bg ${index === currentSlide ? "active" : ""}`}
@@ -120,8 +116,8 @@ export default function Home() {
               <Link href="/registration" className="btn-agora-blue">
                 REGISTER NOW
               </Link>
-              <Link href="/abstracts" className="btn-agora-outlined" style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }}>
-                SUBMIT ABSTRACT
+              <Link href="/recap" className="btn-agora-outlined" style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }}>
+                EXPLORE NMSB-1 RECAP →
               </Link>
             </div>
           </div>
@@ -175,8 +171,8 @@ export default function Home() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "60px", alignItems: "center" }}>
             <div>
               <img
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80"
-                alt="Conference Keynote"
+                src="/images/hero/4.JPG"
+                alt="Connecting minds, creating future"
                 style={{ width: "100%", borderRadius: "4px", boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
               />
             </div>

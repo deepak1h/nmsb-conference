@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { config } from "../../config/variables";
 
 export default function About() {
@@ -6,7 +7,7 @@ export default function About() {
     <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0" }}>
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
-          <span className="agora-subtitle-badge">BUSINESS FORUM</span>
+          <span className="agora-subtitle-badge">NATIONAL FORUM</span>
           <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "3.5rem" }}>
             ABOUT NMSB-2
           </h1>
@@ -19,21 +20,24 @@ export default function About() {
           <div className="agora-pricing-card" style={{ textAlign: "left" }}>
             <h3 style={{ fontSize: "1.5rem", marginBottom: "16px", color: "var(--agora-blue)" }}>MISSION & VISION</h3>
             <p style={{ color: "var(--agora-text-muted)", lineHeight: "1.8" }}>
-              NMSB-2 serves as the nationwide forum to bridge academic breakthroughs with industrial battery scaling. As India accelerates renewable energy adoption, sodium-ion technology provides a strategic, cost-effective alternative to lithium.
+              NMSB-2 serves as the premier nationwide forum to bridge academic breakthroughs with industrial battery scaling. As India accelerates renewable energy adoption, sodium-ion technology provides a strategic, sustainable, and cost-effective alternative to lithium-ion systems.
             </p>
           </div>
 
           <div className="agora-pricing-card" style={{ textAlign: "left" }}>
-            <h3 style={{ fontSize: "1.5rem", marginBottom: "16px", color: "var(--agora-blue)" }}>NMSB-1 RECAP</h3>
-            <p style={{ color: "var(--agora-text-muted)", lineHeight: "1.8" }}>
-              [TO BE PROVIDED: Short recap of NMSB-1 — where and when it was held, number of participants, photographs.]
+            <h3 style={{ fontSize: "1.5rem", marginBottom: "16px", color: "var(--agora-blue)" }}>NMSB-1 LEGACY</h3>
+            <p style={{ color: "var(--agora-text-muted)", lineHeight: "1.8", marginBottom: "16px" }}>
+              The 1st National Meeting on Sodium(-ion) Batteries held on October 4–6, 2024, at IIT Bombay brought together 250+ delegates, 28 invited lectures, 42 posters, and marked the official launch of the Battery Research Society (of India).
             </p>
+            <Link href="/recap" style={{ color: "var(--agora-blue)", fontWeight: "700", fontSize: "0.9rem", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+              EXPLORE NMSB-1 RETROSPECTIVE & GALLERY →
+            </Link>
           </div>
 
           <div className="agora-pricing-card" style={{ textAlign: "left" }}>
-            <h3 style={{ fontSize: "1.5rem", marginBottom: "16px", color: "var(--agora-blue)" }}>ORGANIZERS</h3>
+            <h3 style={{ fontSize: "1.5rem", marginBottom: "16px", color: "var(--agora-blue)" }}>ORGANIZERS & SPONSORS</h3>
             <p style={{ color: "var(--agora-text-muted)", lineHeight: "1.8" }}>
-              Co-organized by <strong>GESH (Department of Energy Science and Engineering, IIT Bombay)</strong> and <strong>Battery Research Society (BRS)</strong>, supported by IoE, IIT Bombay.
+              Organized by the <strong>IITB Research Hub for Green Energy and Sustainability (GESH)</strong> and the <strong>Advanced Batteries & Ceramics Laboratory</strong>, endorsed by the <strong>Battery Research Society (of India)</strong> and <strong>The Electrochemical Society of India</strong>.
             </p>
           </div>
         </div>

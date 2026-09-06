@@ -10,12 +10,18 @@
 !.yarn/releases
 !.yarn/versions
 
+
+*.png
+*.jpg
+*.JPG
+
 # testing
 /coverage
 
 # next.js
 /.next/
 /out/
+/data/*.csv
 
 # production
 /build
@@ -39,3 +45,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+

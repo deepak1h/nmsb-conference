@@ -24,9 +24,26 @@ export default function Footer() {
             <p style={{ color: "var(--agora-text-muted)", fontSize: "0.9rem", marginBottom: "16px" }}>
               Subscribe for conference deadline reminders and keynote announcements.
             </p>
-            <form style={{ display: "flex", gap: "8px" }} onSubmit={(e) => { e.preventDefault(); alert("Subscribed for updates!"); }}>
-              <input type="email" placeholder="Your Email Address..." required style={{ flex: 1, padding: "12px 16px", borderRadius: "4px" }} />
-              <button type="submit" className="btn-agora-blue" style={{ padding: "12px 20px", fontSize: "0.8rem" }}>
+            <form style={{ display: "flex", flexDirection: "column", gap: "10px" }} onSubmit={(e) => { e.preventDefault(); alert("Subscribed for updates!"); }}>
+              <input 
+                type="email" 
+                placeholder="Your Email Address..." 
+                required 
+                style={{ 
+                  width: "100%", 
+                  padding: "12px 16px", 
+                  borderRadius: "4px",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  background: "rgba(255, 255, 255, 0.05)",
+                  color: "#ffffff",
+                  fontSize: "0.9rem"
+                }} 
+              />
+              <button 
+                type="submit" 
+                className="btn-agora-blue" 
+                style={{ width: "100%", justifyContent: "center", padding: "12px 20px", fontSize: "0.8rem" }}
+              >
                 SUBSCRIBE
               </button>
             </form>
@@ -37,6 +54,7 @@ export default function Footer() {
             <h3>NAVIGATION</h3>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", fontSize: "0.95rem" }}>
               <Link href="/about">About NMSB-2</Link>
+              <Link href="/recap">NMSB-1 Retrospective</Link>
               <Link href="/programme">Programme Schedule</Link>
               <Link href="/speakers">Invited Speakers</Link>
               <Link href="/registration">Registration Passes</Link>

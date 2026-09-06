@@ -322,6 +322,7 @@ h1, h2, h3, h4 {
 .agora-hero-slide-bg.active {
   opacity: 1;
   transform: scale(1);
+  z-index: 1;
 }
 
 .agora-hero-overlay {
@@ -517,3 +518,113 @@ h1, h2, h3, h4 {
 .footer a:hover {
   color: var(--agora-blue);
 }
+
+/* Photo Gallery Interactive Hover Effects */
+.gallery-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(67, 97, 238, 0.18) !important;
+  border-color: var(--agora-blue) !important;
+}
+
+.gallery-card-hover:hover img {
+  transform: scale(1.06) !important;
+}
+
+.gallery-card-hover:hover .gallery-zoom-overlay {
+  opacity: 1 !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Hamburger Button Styling */
+.mobile-hamburger-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-hamburger-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--agora-blue);
+}
+
+/* Comprehensive Mobile & Tablet Responsive Media Queries */
+@media (max-width: 992px) {
+  .mobile-hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 84px);
+    background-color: #121418;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 24px;
+    gap: 20px;
+    overflow-y: auto;
+    display: none;
+    z-index: 999;
+  }
+
+  .nav-links.mobile-active {
+    display: flex;
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  .dropdown-menu.mobile-show {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background-color: rgba(255, 255, 255, 0.04);
+    box-shadow: none;
+    border: none;
+    margin-top: 8px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .agora-hero-headline {
+    font-size: clamp(2.2rem, 9vw, 3.8rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  .hero-pagination-bar {
+    right: 16px !important;
+    bottom: 16px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .btn-agora-blue, .btn-agora-outlined {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: 0.8rem;
+  }
+
+  .footer {
+    padding: 60px 0 30px;
+    margin-top: 60px;
+  }
+}
+
+

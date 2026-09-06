@@ -3,6 +3,7 @@ import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 import { config } from "../../../config/variables";
+import { sendRegistrationEmail } from "../../../lib/emailService";
 
 export async function POST(request) {
   try {
@@ -99,9 +100,16 @@ export async function POST(request) {
       }
     }
 
+    // 3. Send Automated Registration Confirmation HTML Email to Delegate
+    try {
+      await sendRegistrationEmail(registrationRecord);
+    } catch (emailErr) {
+      console.error("Automated Email Send Exception:", emailErr);
+    }
+
     return NextResponse.json({
       success: true,
-      message: "Payment verified and registration recorded successfully",
+      message: "Payment verified, registration recorded, and confirmation email dispatched.",
       data: registrationRecord
     });
 
