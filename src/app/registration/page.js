@@ -163,6 +163,15 @@ export default function Registration() {
         modal: {
           ondismiss: function () {
             console.log("Razorpay Checkout Modal Dismissed by User");
+            fetch("/api/record-payment-failure", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                registrationData: formData,
+                orderId: orderData.orderId,
+                failureReason: "User dismissed payment modal before completing transaction"
+              })
+            });
             setIsSubmitting(false);
           }
         }
@@ -171,7 +180,17 @@ export default function Registration() {
       const razorpayInstance = new window.Razorpay(options);
       razorpayInstance.on("payment.failed", function (failResponse) {
         console.error("Payment Failed:", failResponse.error);
-        alert(`Payment Failed: ${failResponse.error.description}`);
+        fetch("/api/record-payment-failure", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            registrationData: formData,
+            orderId: orderData.orderId,
+            paymentId: failResponse.error?.metadata?.payment_id || "N/A",
+            failureReason: failResponse.error?.description || "Payment failed at bank/gateway level"
+          })
+        });
+        alert(`Payment Failed: ${failResponse.error?.description || "Payment could not be completed."}`);
         setIsSubmitting(false);
       });
 
