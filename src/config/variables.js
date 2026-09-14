@@ -4,20 +4,20 @@ export const config = {
     shortName: "NMSB-2",
     dates: "22-24 November 2026",
     venue: "ASPIRE - IIT Bombay Research Park, Mumbai, India",
-    tagline: "Building on the success of NMSB-1, NMSB-2 brings together academia, industry and government to advance sodium-ion battery science, technology and commercialization.",
+    tagline: "Building on the success of NMSB-1 (in 2024), NMSB-2 will again bring together representatives from academia, industry/startups, and government agencies to discuss, deliberate, and pave the way towards advancing Sodium Ion battery technology, deployment, and commercialisation.",
     contactEmail: "contact@nmsb2-dummy.org.in", // [TO BE PROVIDED]
   },
   dates: {
     abstractOpens: "1 September 2026",
     abstractDeadline: "15 October 2026",
     acceptanceNotification: "1 November 2026",
-    earlyBirdDeadline: "1 November 2026",
+    earlyBirdDeadline: "31 October 2026",
     regularDeadline: "20 November 2026",
   },
   googleSheetWebhookUrl: process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL || "", // Google Apps Script Webhook URL for live Google Sheet sync
   fees: {
     gstRate: 0.18, // 18% GST
-    earlyBirdCutoff: "1 November 2026",
+    earlyBirdCutoff: "31 October 2026",
     startup: { earlyBird: "INR 12,750", regular: "INR 17,000" },
     notes: {
       taxExclusion: "The above figures exclude taxes (18% GST), which will be added during final payment via the gateway.",
@@ -35,9 +35,9 @@ export const config = {
       {
         category: "Student / Post-doc / Project staff",
         categoryKey: "student_postdoc",
-        nonBrs: { earlyBird: 5000, standard: 6500 },
-        brsMember: { earlyBird: 4250, standard: 5525 },
-        description: "Student registration opens shortly",
+        nonBrs: { earlyBird: "Opens shortly", standard: "Opens shortly" },
+        brsMember: { earlyBird: "Opens shortly", standard: "Opens shortly" },
+        description: "Registration opens shortly",
         disabled: true
       },
       {

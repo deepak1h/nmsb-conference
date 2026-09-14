@@ -20,7 +20,7 @@ export default function About() {
           <div className="agora-pricing-card" style={{ textAlign: "left" }}>
             <h3 style={{ fontSize: "1.5rem", marginBottom: "16px", color: "var(--agora-blue)" }}>MISSION & VISION</h3>
             <p style={{ color: "var(--agora-text-muted)", lineHeight: "1.8" }}>
-              NMSB-2 serves as the premier nationwide forum to bridge academic breakthroughs with industrial battery scaling. As India accelerates renewable energy adoption, sodium-ion technology provides a strategic, sustainable, and cost-effective alternative to lithium-ion systems.
+              NMSB-2 serves as the premier nationwide forum to bridge academic breakthroughs with industrial battery scaling. As India accelerates renewable energy adoption, sodium-ion technology provides a strategic, sustainable, and cost-effective energy storage technologies.
             </p>
           </div>
 

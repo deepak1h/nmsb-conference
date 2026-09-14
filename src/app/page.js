@@ -97,19 +97,62 @@ export default function Home() {
           margin: "0 auto"
         }}>
           {/* Left Column: Headline & Content */}
-          <div style={{ textAlign: "left", maxWidth: "680px", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-            <span className="agora-subtitle-badge" style={{ textAlign: "left", marginLeft: 0 }}>
-              NATIONAL MEETING ON SODIUM-ION BATTERIES • IIT BOMBAY
-            </span>
+          <div style={{ textAlign: "left", maxWidth: "850px", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+            {/* Top Venue & Date Badge (Above Title) */}
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              padding: "8px 18px",
+              backgroundColor: "rgba(67, 97, 238, 0.15)",
+              border: "1px solid rgba(67, 97, 238, 0.4)",
+              borderRadius: "50px",
+              color: "#60A5FA",
+              fontSize: "0.85rem",
+              fontWeight: "700",
+              letterSpacing: "1.2px",
+              textTransform: "uppercase",
+              marginBottom: "20px",
+              backdropFilter: "blur(8px)"
+            }}>
+              <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>ASPIRE - IITB RESEARCH PARK, MUMBAI • 22–24 NOVEMBER 2026</span>
+            </div>
 
-            <h1 className="agora-hero-headline" style={{ marginBottom: "24px", textAlign: "left", alignSelf: "flex-start" }}>
-              CONNECT<br />
-              INSPIRE<br />
-              INNOVATE
+            {/* Giant Prominent Main Title: NMSB-2 */}
+            <h1 style={{
+              fontSize: "clamp(4.5rem, 9.5vw, 7.5rem)",
+              fontWeight: "900",
+              lineHeight: "0.95",
+              letterSpacing: "-2px",
+              color: "#FFFFFF",
+              margin: "0 0 14px 0",
+              textTransform: "uppercase",
+              display: "flex",
+              alignItems: "baseline",
+              gap: "2px"
+            }}>
+              NMSB<span style={{ color: "var(--agora-blue)" }}>-2</span>
             </h1>
 
-            <p style={{ fontSize: "1.2rem", color: "#9FA0A7", marginBottom: "36px", maxWidth: "620px", lineHeight: "1.6", textAlign: "left" }}>
-              {config.conference.tagline}
+            {/* Subtitle: 2nd National Meeting on Sodium(-ion) Batteries */}
+            <h2 style={{
+              fontSize: "clamp(1.25rem, 2.5vw, 1.85rem)",
+              fontWeight: "700",
+              color: "#E2E8F0",
+              letterSpacing: "1px",
+              textTransform: "uppercase",
+              marginBottom: "24px",
+              lineHeight: "1.3"
+            }}>
+              2ND NATIONAL MEETING ON <span style={{ color: "#60A5FA" }}>SODIUM(-ION) BATTERIES</span>
+            </h2>
+
+            <p style={{ fontSize: "1.1rem", color: "#B0B4C0", marginBottom: "36px", maxWidth: "680px", lineHeight: "1.7", textAlign: "left" }}>
+              Building on the success of NMSB-1 (in 2024), NMSB-2 will again bring together representatives from academia, industry/startups, and government agencies to discuss, deliberate, and pave the way towards advancing Sodium Ion battery technology, deployment, and commercialisation.
             </p>
 
             <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", alignItems: "center", justifyContent: "flex-start" }}>

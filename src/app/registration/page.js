@@ -268,7 +268,7 @@ export default function Registration() {
                   FEE SCHEDULE MATRIX
                 </h3>
                 <span className="pill-badge" style={{ backgroundColor: "var(--agora-blue)", color: "#FFFFFF", padding: "6px 14px", borderRadius: "20px", fontSize: "0.8rem", fontWeight: "700" }}>
-                  EARLY BIRD DEADLINE: NOVEMBER 1, 2026
+                  EARLY BIRD DEADLINE: OCTOBER 31, 2026
                 </span>
               </div>
 
@@ -277,8 +277,8 @@ export default function Registration() {
                   <thead>
                     <tr style={{ borderBottom: "2px solid var(--agora-border-light)", backgroundColor: "var(--agora-light-bg)" }}>
                       <th style={{ padding: "14px 16px" }}>Registration Category</th>
-                      <th style={{ padding: "14px 16px" }}>Before Nov 1, 2026 (Early Bird)</th>
-                      <th style={{ padding: "14px 16px" }}>After Nov 1, 2026</th>
+                      <th style={{ padding: "14px 16px" }}>Till Oct 31, 2026 (Early Bird)</th>
+                      <th style={{ padding: "14px 16px" }}>From Nov 1, 2026</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -301,16 +301,16 @@ export default function Registration() {
                         <strong>Student / Post-doc / Project staff</strong> (non-BRS member)
                         <span style={{ display: "block", fontSize: "0.8rem", color: "var(--agora-blue)", fontWeight: "700" }}>* Opens shortly</span>
                       </td>
-                      <td style={{ padding: "14px 16px" }}>INR 5,000</td>
-                      <td style={{ padding: "14px 16px" }}>INR 6,500</td>
+                      <td style={{ padding: "14px 16px", color: "var(--agora-blue)", fontWeight: "700" }}>Opens shortly</td>
+                      <td style={{ padding: "14px 16px", color: "var(--agora-blue)", fontWeight: "700" }}>Opens shortly</td>
                     </tr>
                     <tr style={{ borderBottom: "1px solid var(--agora-border-light)", backgroundColor: "rgba(67, 97, 238, 0.03)", opacity: 0.75 }}>
                       <td style={{ padding: "14px 16px" }}>
                         <strong>Student / Post-doc / Project staff</strong> (BRS member)
                         <span style={{ display: "block", fontSize: "0.8rem", color: "var(--agora-blue)", fontWeight: "700" }}>* Opens shortly</span>
                       </td>
-                      <td style={{ padding: "14px 16px" }}>INR 4,250</td>
-                      <td style={{ padding: "14px 16px" }}>INR 5,525</td>
+                      <td style={{ padding: "14px 16px", color: "var(--agora-blue)", fontWeight: "700" }}>Opens shortly</td>
+                      <td style={{ padding: "14px 16px", color: "var(--agora-blue)", fontWeight: "700" }}>Opens shortly</td>
                     </tr>
                     <tr style={{ borderBottom: "1px solid var(--agora-border-light)" }}>
                       <td style={{ padding: "14px 16px" }}>
@@ -675,7 +675,7 @@ export default function Registration() {
                         <div><strong>Category:</strong> {formData.category.toUpperCase()}</div>
                         <div><strong>Affiliation:</strong> {formData.organization}</div>
                         <div><strong>BRS Status:</strong> {formData.isBrsMember ? `Yes (ID: ${formData.brsNumber})` : "No"}</div>
-                        <div><strong>Rate Tariff:</strong> {isEarlyBird ? "Early Bird Tariff (Before Nov 1)" : "Standard Tariff"}</div>
+                        <div><strong>Rate Tariff:</strong> {isEarlyBird ? "Early Bird Tariff (Till Oct 31)" : "Standard Tariff (From Nov 1)"}</div>
                       </div>
 
                       <div style={{ borderTop: "2px dashed var(--agora-border-light)", paddingTop: "16px" }}>

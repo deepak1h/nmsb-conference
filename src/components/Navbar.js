@@ -55,13 +55,16 @@ export default function Navbar() {
 
           {/* Programme Dropdown */}
           <div className="dropdown">
-            <span 
-              className="nav-link" 
+            <div 
+              className="nav-link dropdown-trigger" 
               style={{ cursor: "pointer" }}
               onClick={() => setProgrammeDropdownOpen(!programmeDropdownOpen)}
             >
-              Programme ▼
-            </span>
+              <span>Programme</span>
+              <svg className={`dropdown-arrow ${programmeDropdownOpen ? "rotated" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "6px" }}>
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
             <div className={`dropdown-menu ${programmeDropdownOpen ? "mobile-show" : ""}`}>
               <Link href="/programme" className="dropdown-item" onClick={closeMobileMenu}>Programme Schedule</Link>
               <Link href="/speakers" className="dropdown-item" onClick={closeMobileMenu}>Keynote Speakers</Link>
@@ -70,13 +73,16 @@ export default function Navbar() {
 
           {/* Info Dropdown */}
           <div className="dropdown">
-            <span 
-              className="nav-link" 
+            <div 
+              className="nav-link dropdown-trigger" 
               style={{ cursor: "pointer" }}
               onClick={() => setInfoDropdownOpen(!infoDropdownOpen)}
             >
-              Info ▼
-            </span>
+              <span>Info</span>
+              <svg className={`dropdown-arrow ${infoDropdownOpen ? "rotated" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "6px" }}>
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
             <div className={`dropdown-menu ${infoDropdownOpen ? "mobile-show" : ""}`}>
               <Link href="/recap" className="dropdown-item" onClick={closeMobileMenu}>NMSB-1 Retrospective</Link>
               <Link href="/venue" className="dropdown-item" onClick={closeMobileMenu}>Venue & Travel</Link>
