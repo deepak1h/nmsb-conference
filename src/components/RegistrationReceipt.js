@@ -97,7 +97,13 @@ export default function RegistrationReceipt({ record, onReset }) {
               </span>
             </div>
             <p style={{ fontSize: "0.8rem", color: "#666", margin: 0 }}>
-              Date: <strong>{new Date(record.timestamp).toLocaleDateString("en-IN", { day: 'numeric', month: 'short', year: 'numeric' })}</strong>
+              Date: <strong>{(() => {
+                const ts = record.timestamp;
+                if (!ts) return new Date().toLocaleDateString("en-IN", { day: 'numeric', month: 'short', year: 'numeric' });
+                if (typeof ts === "string" && (ts.includes("IST") || ts.includes("/"))) return ts;
+                const parsed = new Date(ts);
+                return !isNaN(parsed.getTime()) ? parsed.toLocaleDateString("en-IN", { day: 'numeric', month: 'short', year: 'numeric' }) : String(ts);
+              })()}</strong>
             </p>
           </div>
         </div>

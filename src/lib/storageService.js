@@ -22,6 +22,20 @@ export function calculateFeeServerSide(category, isBrsMember) {
   return { baseFee, gstAmount, totalAmount };
 }
 
+export function getISTTimestamp(dateInput) {
+  const d = dateInput ? new Date(dateInput) : new Date();
+  return d.toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true
+  }) + " IST";
+}
+
 /**
  * Record payment (SUCCESS or FAILED) to local CSV and Google Sheets Webhook
  */
@@ -29,7 +43,7 @@ export async function recordPaymentAttempt(record) {
   try {
     const formattedRecord = {
       registrationId: record.registrationId || `NMSB2-${Date.now().toString().slice(-6)}`,
-      timestamp: record.timestamp || new Date().toISOString(),
+      timestamp: getISTTimestamp(record.timestamp),
       status: record.status || "SUCCESS", // "SUCCESS" or "FAILED"
       failureReason: record.failureReason || "N/A",
       title: record.title || "",
@@ -92,20 +106,17 @@ export async function recordPaymentAttempt(record) {
       console.log("[CSV LOCAL DISK NOTICE] Serverless / Read-only environment detected. Skipping local CSV file write.");
     }
 
-    // 2. Google Sheets Webhook Sync
+    // 2. Google Sheets Webhook Sync (Non-blocking background execution for instant UI response)
     const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBHOOK_URL || config.googleSheetWebhookUrl;
 
     if (webhookUrl && webhookUrl.trim().length > 0) {
-      try {
-        await fetch(webhookUrl.trim(), {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formattedRecord),
-        });
-        console.log(`[STORAGE SYNC] Record (${formattedRecord.status}) synced to Google Sheets Webhook.`);
-      } catch (sheetErr) {
-        console.error("[GOOGLE SHEETS SYNC ERROR]:", sheetErr);
-      }
+      fetch(webhookUrl.trim(), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formattedRecord),
+      })
+      .then(() => console.log(`[STORAGE SYNC] Record (${formattedRecord.status}) synced to Google Sheets Webhook.`))
+      .catch((sheetErr) => console.error("[GOOGLE SHEETS SYNC ERROR]:", sheetErr));
     } else {
       console.log(`[STORAGE SYNC NOTICE] Record (${formattedRecord.status}) saved to CSV. GOOGLE_SHEET_WEBHOOK_URL not configured.`);
     }

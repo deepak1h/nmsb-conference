@@ -79,12 +79,10 @@ export async function POST(request) {
     // 1. Record SUCCESS attempt in local CSV and Google Sheets Webhook
     const savedRecord = await recordPaymentAttempt(registrationRecordData);
 
-    // 2. Send Automated Registration Confirmation HTML Email to Delegate
-    try {
-      await sendRegistrationEmail(savedRecord);
-    } catch (emailErr) {
+    // 2. Send Automated Registration Confirmation HTML Email to Delegate (Non-blocking background execution for instant UI response)
+    sendRegistrationEmail(savedRecord).catch(emailErr => {
       console.error("Automated Email Send Exception:", emailErr);
-    }
+    });
 
     return NextResponse.json({
       success: true,
