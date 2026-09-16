@@ -1,57 +1,120 @@
 "use client";
+import { config } from "../../config/variables";
 
 export default function Committees() {
-  const chairs = [
-    { name: "Prof. Amartya Mukhopadhyay", role: "Conference Chair", org: "IIT Bombay", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-    { name: "Prof. Srinivasan Ramakrishnan", role: "Conference Chair", org: "IIT Bombay", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-  ];
-
-  const team = [
-    { name: "Dr. Convenor Member", role: "Organizing Secretary", org: "GESH, IIT Bombay", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-    { name: "Dr. Technical Member", role: "Scientific Chair", org: "Battery Research Society", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-    { name: "Prof. Advisory Member", role: "Advisory Board", org: "CSIR-CECRI", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-    { name: "Dr. Finance Member", role: "Treasurer", org: "IIT Bombay", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+  const organizers = config.organizers || [
+    {
+      name: "Prof. Amartya Mukhopadhyay",
+      role: "Conference Chair",
+      department: "Dept. of Metallurgical Engineering & Materials Science",
+      org: "IIT Bombay",
+      image: "/images/organiser/amartya_mukhopadhyay.jpg"
+    },
+    {
+      name: "Prof. Srinivasan Ramakrishnan",
+      role: "Conference Chair",
+      department: "Department of Chemistry",
+      org: "IIT Bombay",
+      image: "/images/organiser/srinivasan_ramakrishnan.jpg"
+    }
   ];
 
   return (
-    <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0" }}>
+    <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0", minHeight: "100vh" }}>
       <div className="container">
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
-          <span className="agora-subtitle-badge">ORGANIZING BODIES</span>
+          <span className="agora-subtitle-badge">LEADERSHIP & COMMITTEE</span>
           <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "3.5rem" }}>
-            COMMITTEES & TEAM
+            CONFERENCE CHAIRS
           </h1>
-          <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px" }}>
-            Leadership, organizing committee, and technical review board for NMSB-2.
+          <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px", maxWidth: "700px", margin: "12px auto 0" }}>
+            Leading scientists and academic convenors spearheading NMSB-2 at IIT Bombay.
           </p>
         </div>
 
-        {/* Chairs */}
-        <h2 style={{ fontSize: "2rem", marginBottom: "30px", borderBottom: "2px solid var(--agora-blue)", paddingBottom: "10px" }}>
-          CONFERENCE CHAIRS
-        </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "30px", marginBottom: "60px" }}>
-          {chairs.map((c, idx) => (
-            <div key={idx} className="agora-pricing-card" style={{ textAlign: "center" }}>
-              <img src={c.image} alt={c.name} style={{ width: "120px", height: "120px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 16px", border: "3px solid var(--agora-blue)" }} />
-              <h3 style={{ fontSize: "1.3rem", marginBottom: "4px" }}>{c.name}</h3>
-              <p style={{ fontSize: "0.9rem", color: "var(--agora-blue)", fontWeight: "700" }}>{c.role}</p>
-              <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>{c.org}</p>
-            </div>
-          ))}
-        </div>
+        {/* Conference Chairs Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: "36px",
+          maxWidth: "900px",
+          margin: "0 auto"
+        }}>
+          {organizers.map((c, idx) => (
+            <div
+              key={idx}
+              className="agora-pricing-card speaker-card-hover"
+              style={{
+                padding: "40px 28px",
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                borderRadius: "20px",
+                border: "1px solid var(--agora-border-light)",
+                backgroundColor: "#FFFFFF"
+              }}
+            >
+              {/* Black Ring Avatar Frame */}
+              <div
+                className="speaker-avatar-ring"
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  borderRadius: "50%",
+                  padding: "4px",
+                  border: "3px solid #000000",
+                  backgroundColor: "#FFFFFF",
+                  margin: "0 auto 24px",
+                  boxShadow: "0 6px 18px rgba(0, 0, 0, 0.1)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  position: "relative"
+                }}
+              >
+                <img
+                  src={c.image}
+                  alt={c.name}
+                  className="speaker-avatar-img"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    objectPosition: "center 15%",
+                    backgroundColor: "#F1F5F9"
+                  }}
+                />
+              </div>
 
-        {/* Team Grid */}
-        <h2 style={{ fontSize: "2rem", marginBottom: "30px", borderBottom: "2px solid var(--agora-blue)", paddingBottom: "10px" }}>
-          ORGANIZING TEAM & BOARD
-        </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "30px" }}>
-          {team.map((t, idx) => (
-            <div key={idx} className="agora-pricing-card" style={{ textAlign: "center" }}>
-              <img src={t.image} alt={t.name} style={{ width: "100px", height: "100px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 16px", border: "2px solid var(--agora-text-dark)" }} />
-              <h3 style={{ fontSize: "1.2rem", marginBottom: "4px" }}>{t.name}</h3>
-              <p style={{ fontSize: "0.85rem", color: "var(--agora-blue)", fontWeight: "700" }}>{t.role}</p>
-              <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>{t.org}</p>
+              {/* Details */}
+              <h3 style={{ fontSize: "1.4rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                {c.name}
+              </h3>
+
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "5px 16px",
+                backgroundColor: "rgba(67, 97, 238, 0.08)",
+                borderRadius: "20px",
+                color: "var(--agora-blue)",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                marginBottom: "12px"
+              }}>
+                <span>{c.role}</span>
+              </div>
+
+              <p style={{ fontSize: "0.9rem", color: "var(--agora-text-dark)", fontWeight: "600", marginBottom: "4px" }}>
+                {c.department}
+              </p>
+
+              <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)", fontWeight: "500" }}>
+                {c.org}
+              </p>
             </div>
           ))}
         </div>

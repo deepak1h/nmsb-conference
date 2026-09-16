@@ -45,18 +45,23 @@ export default function Home() {
     ]
   };
 
-  const speakersList = [
-    { name: "Dr. Jane Doe", role: "Keynote Speaker", org: "National Energy Lab", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", talk: "Next-Gen Sodium Layered Oxides" },
-    { name: "Prof. John Smith", role: "Invited Speaker", org: "University of Technology", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", talk: "Solid Electrolytes for Na-Ion" },
-    { name: "Dr. Alice Johnson", role: "Industry Speaker", org: "Advanced Energy Systems", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", talk: "Prismatic Cell Scaling in India" },
-    { name: "Prof. Robert Chen", role: "Panellist", org: "Institute of Science", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", talk: "Hard Carbon Anode Interphases" },
-  ];
+  const speakersList = config.speakers || [];
 
-  const teamList = [
-    { name: "Prof. Amartya Mukhopadhyay", role: "Conference Chair", org: "IIT Bombay", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-    { name: "Prof. Srinivasan Ramakrishnan", role: "Conference Chair", org: "IIT Bombay", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-    { name: "Dr. Convenor Member", role: "Organizing Secretary", org: "GESH, IIT Bombay", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
-    { name: "Dr. Scientific Chair", role: "Technical Chair", org: "Battery Research Society", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+  const teamList = config.organizers || [
+    {
+      name: "Prof. Amartya Mukhopadhyay",
+      role: "Conference Chair",
+      department: "Dept. of Metallurgical Engineering & Materials Science",
+      org: "IIT Bombay",
+      image: "/images/organiser/amartya_mukhopadhyay.jpg"
+    },
+    {
+      name: "Prof. Srinivasan Ramakrishnan",
+      role: "Conference Chair",
+      department: "Department of Chemistry",
+      org: "IIT Bombay",
+      image: "/images/organiser/srinivasan_ramakrishnan.jpg"
+    }
   ];
 
   return (
@@ -261,19 +266,81 @@ export default function Home() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "30px" }}>
-            {speakersList.map((sp, idx) => (
-              <div key={idx} className="agora-pricing-card" style={{ padding: "32px 24px", textAlign: "center" }}>
-                <img
-                  src={sp.image}
-                  alt={sp.name}
-                  style={{ width: "130px", height: "130px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 20px", border: "3px solid var(--agora-blue)" }}
-                />
-                <h3 style={{ fontSize: "1.3rem", marginBottom: "6px" }}>{sp.name}</h3>
-                <p style={{ fontSize: "0.85rem", color: "var(--agora-blue)", fontWeight: "700", marginBottom: "4px" }}>{sp.role}</p>
-                <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)", marginBottom: "16px" }}>{sp.org}</p>
-                <p style={{ fontSize: "0.85rem", color: "var(--agora-text-dark)", borderTop: "1px dashed var(--agora-border-light)", paddingTop: "12px" }}>
-                  "{sp.talk}"
-                </p>
+            {speakersList.slice(0, 4).map((sp, idx) => (
+              <div
+                key={idx}
+                className="agora-pricing-card speaker-card-hover"
+                style={{
+                  padding: "32px 20px",
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  position: "relative",
+                  overflow: "hidden",
+                  borderRadius: "20px",
+                  border: "1px solid var(--agora-border-light)",
+                  backgroundColor: "#FFFFFF"
+                }}
+              >
+                <div>
+                  {/* Speaker Circular Avatar: Black Ring Design */}
+                  <div
+                    className="speaker-avatar-ring"
+                    style={{
+                      width: "135px",
+                      height: "135px",
+                      borderRadius: "50%",
+                      padding: "4px",
+                      border: "3px solid #000000",
+                      backgroundColor: "#FFFFFF",
+                      margin: "0 auto 18px",
+                      boxShadow: "0 6px 18px rgba(0, 0, 0, 0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative"
+                    }}
+                  >
+                    <img
+                      src={sp.image}
+                      alt={sp.name}
+                      className="speaker-avatar-img"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        objectPosition: "center 15%",
+                        backgroundColor: "#F1F5F9"
+                      }}
+                    />
+                  </div>
+
+                  <h3 style={{ fontSize: "1.2rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                    {sp.name}
+                  </h3>
+                  {sp.designation && sp.designation.trim() !== "" && (
+                    <div style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      padding: "5px 14px",
+                      backgroundColor: "rgba(67, 97, 238, 0.08)",
+                      borderRadius: "20px",
+                      color: "var(--agora-blue)",
+                      fontSize: "0.85rem",
+                      fontWeight: "700"
+                    }}>
+                      <span>{sp.designation}</span>
+                    </div>
+                  )}
+                  {sp.topic && sp.topic !== "NA" && sp.topic.trim() !== "" && (
+                    <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)", borderTop: "1px dashed var(--agora-border-light)", paddingTop: "12px", marginTop: "12px" }}>
+                      "{sp.topic}"
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -339,16 +406,80 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "30px" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "36px",
+            maxWidth: "900px",
+            margin: "0 auto"
+          }}>
             {teamList.map((tm, idx) => (
-              <div key={idx} className="agora-pricing-card" style={{ padding: "32px 24px", textAlign: "center" }}>
-                <img
-                  src={tm.image}
-                  alt={tm.name}
-                  style={{ width: "120px", height: "120px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 20px", border: "3px solid var(--agora-text-dark)" }}
-                />
-                <h3 style={{ fontSize: "1.25rem", marginBottom: "6px" }}>{tm.name}</h3>
-                <p style={{ fontSize: "0.85rem", color: "var(--agora-blue)", fontWeight: "700", marginBottom: "4px" }}>{tm.role}</p>
+              <div
+                key={idx}
+                className="agora-pricing-card speaker-card-hover"
+                style={{
+                  padding: "36px 24px",
+                  textAlign: "center",
+                  borderRadius: "20px",
+                  border: "1px solid var(--agora-border-light)",
+                  backgroundColor: "#FFFFFF"
+                }}
+              >
+                {/* Black Ring Avatar Frame */}
+                <div
+                  className="speaker-avatar-ring"
+                  style={{
+                    width: "140px",
+                    height: "140px",
+                    borderRadius: "50%",
+                    padding: "4px",
+                    border: "3px solid #000000",
+                    backgroundColor: "#FFFFFF",
+                    margin: "0 auto 20px",
+                    boxShadow: "0 6px 18px rgba(0, 0, 0, 0.1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative"
+                  }}
+                >
+                  <img
+                    src={tm.image}
+                    alt={tm.name}
+                    className="speaker-avatar-img"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                      objectPosition: "center 15%",
+                      backgroundColor: "#F1F5F9"
+                    }}
+                  />
+                </div>
+
+                <h3 style={{ fontSize: "1.3rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "6px" }}>
+                  {tm.name}
+                </h3>
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "5px 14px",
+                  backgroundColor: "rgba(67, 97, 238, 0.08)",
+                  borderRadius: "20px",
+                  color: "var(--agora-blue)",
+                  fontSize: "0.85rem",
+                  fontWeight: "700",
+                  marginBottom: "8px"
+                }}>
+                  <span>{tm.role}</span>
+                </div>
+                {tm.department && (
+                  <p style={{ fontSize: "0.85rem", color: "var(--agora-text-dark)", fontWeight: "600", marginBottom: "2px" }}>
+                    {tm.department}
+                  </p>
+                )}
                 <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>{tm.org}</p>
               </div>
             ))}

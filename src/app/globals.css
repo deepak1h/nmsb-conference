@@ -534,6 +534,21 @@ h1, h2, h3, h4 {
   opacity: 1 !important;
 }
 
+/* Speaker Card Hover Effects */
+.speaker-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: var(--agora-blue) !important;
+  box-shadow: 0 16px 36px rgba(67, 97, 238, 0.14) !important;
+}
+
+.speaker-card-hover img {
+  transition: transform 0.3s ease;
+}
+
+.speaker-card-hover:hover img {
+  transform: scale(1.05);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.98); }
   to { opacity: 1; transform: scale(1); }
@@ -685,10 +700,32 @@ h1, h2, h3, h4 {
     font-size: 0.8rem;
   }
 
-  .footer {
-    padding: 60px 0 30px;
-    margin-top: 60px;
-  }
+/* Circular Speaker Card Hover Animations */
+.speaker-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.speaker-card-hover:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.speaker-avatar-ring {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.speaker-card-hover:hover .speaker-avatar-ring {
+  transform: scale(1.06);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2) !important;
+}
+
+.speaker-avatar-img {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.speaker-card-hover:hover .speaker-avatar-img {
+  transform: scale(1.1);
 }
 
 

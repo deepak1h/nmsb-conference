@@ -1,42 +1,318 @@
 "use client";
+import { useState, useMemo } from "react";
+import { config } from "../../config/variables";
 
 export default function Speakers() {
-  const speakers = [
-    { name: "Dr. Jane Doe", title: "Chief Scientist, National Energy Lab", talk: "Layered Oxide Cathodes for High-Density Sodium Cells" },
-    { name: "Prof. John Smith", title: "Chair Professor, Univ of Technology", talk: "Non-flammable Liquid & Solid Electrolyte Formulations" },
-    { name: "Dr. Alice Johnson", title: "VP of R&D, Advanced Energy Corp", talk: "Commercial Pouch & Prismatic Na-Ion Cell Manufacturing" },
-    { name: "Prof. Robert Chen", title: "Head of Chemistry, Science Institute", talk: "Hard Carbon Anodes derived from Sustainable Biomass" },
-  ];
+  const allSpeakers = config.speakers || [];
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
+
+  const filteredSpeakers = useMemo(() => {
+    return allSpeakers.filter((sp) => {
+      const nameMatch = sp.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const desigMatch = sp.designation.toLowerCase().includes(searchTerm.toLowerCase());
+      const topicMatch = sp.topic && sp.topic !== "NA" && sp.topic.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSearch = nameMatch || desigMatch || topicMatch;
+
+      if (!matchesSearch) return false;
+
+      if (activeCategory === "iit") {
+        return sp.designation.toLowerCase().includes("iit");
+      }
+      if (activeCategory === "iisc_iiser") {
+        return sp.designation.toLowerCase().includes("iisc") || sp.designation.toLowerCase().includes("iiser");
+      }
+      if (activeCategory === "csir_labs") {
+        const d = sp.designation.toLowerCase();
+        return d.includes("csir") || d.includes("ncl") || d.includes("arci") || d.includes("tcg") || d.includes("iacs");
+      }
+
+      return true;
+    });
+  }, [allSpeakers, searchTerm, activeCategory]);
 
   return (
-    <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0" }}>
+    <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0", minHeight: "100vh" }}>
       <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
+        {/* Top Header Matching About & Other Pages */}
+        <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <span className="agora-subtitle-badge">INVITED SPEAKERS</span>
           <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "3.5rem" }}>
             WORLD-CLASS EXPERTS
           </h1>
-          <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px" }}>
-            [TO BE PROVIDED: Full speaker line-up will be updated incrementally.]
+          <p style={{ color: "var(--agora-text-muted)", fontSize: "1.15rem", marginTop: "12px", maxWidth: "800px", margin: "12px auto 0" }}>
+            Eminent researchers, faculty, and industry leaders from premier national institutes speaking at NMSB-2.
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "30px" }}>
-          {speakers.map((sp, idx) => (
-            <div key={idx} className="agora-pricing-card" style={{ padding: "36px 24px", textAlign: "center" }}>
-              <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
-                alt={sp.name} 
-                style={{ width: "120px", height: "120px", borderRadius: "50%", objectFit: "cover", margin: "0 auto 20px", border: "4px solid var(--agora-blue)" }}
+        {/* Search & Filter Toolbar */}
+        <div style={{
+          backgroundColor: "#FFFFFF",
+          borderRadius: "16px",
+          padding: "20px 24px",
+          boxShadow: "var(--shadow-agora)",
+          border: "1px solid var(--agora-border-light)",
+          marginBottom: "40px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px"
+        }}>
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "16px"
+          }}>
+            {/* Search Input Box */}
+            <div style={{ position: "relative", flex: "1 1 300px", maxWidth: "450px" }}>
+              <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2" viewBox="0 0 24 24" style={{
+                position: "absolute", left: "16px", top: "50%", transform: "translateY(-50%)"
+              }}>
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+
+              <input
+                type="text"
+                placeholder="Search speaker by name or institute (e.g., IIT, IISc, CSIR)..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "12px 16px 12px 46px",
+                  borderRadius: "10px",
+                  border: "1.5px solid var(--agora-border-light)",
+                  fontSize: "0.95rem",
+                  outline: "none",
+                  transition: "all 0.2s ease",
+                  backgroundColor: "var(--agora-light-bg)"
+                }}
               />
-              <h3 style={{ fontSize: "1.3rem", marginBottom: "6px" }}>{sp.name}</h3>
-              <p style={{ fontSize: "0.85rem", color: "var(--agora-blue)", fontWeight: "700", marginBottom: "12px" }}>{sp.title}</p>
-              <p style={{ fontSize: "0.9rem", color: "var(--agora-text-muted)", borderTop: "1px dashed var(--agora-border-light)", paddingTop: "12px" }}>
-                <strong>Talk:</strong> "{sp.talk}"
-              </p>
+
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  style={{
+                    position: "absolute", right: "14px", top: "50%", transform: "translateY(-50%)",
+                    background: "none", border: "none", cursor: "pointer", color: "var(--agora-text-muted)", fontWeight: "bold"
+                  }}
+                >
+                  ✕
+                </button>
+              )}
             </div>
-          ))}
+
+            {/* Filter Pills */}
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", alignItems: "center" }}>
+              <button
+                onClick={() => setActiveCategory("all")}
+                style={{
+                  padding: "8px 18px",
+                  borderRadius: "20px",
+                  fontSize: "0.85rem",
+                  fontWeight: "700",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  backgroundColor: activeCategory === "all" ? "var(--agora-blue)" : "var(--agora-light-bg)",
+                  color: activeCategory === "all" ? "#FFFFFF" : "var(--agora-text-muted)"
+                }}
+              >
+                All ({allSpeakers.length})
+              </button>
+
+              <button
+                onClick={() => setActiveCategory("iit")}
+                style={{
+                  padding: "8px 18px",
+                  borderRadius: "20px",
+                  fontSize: "0.85rem",
+                  fontWeight: "700",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  backgroundColor: activeCategory === "iit" ? "var(--agora-blue)" : "var(--agora-light-bg)",
+                  color: activeCategory === "iit" ? "#FFFFFF" : "var(--agora-text-muted)"
+                }}
+              >
+                IITs
+              </button>
+
+              <button
+                onClick={() => setActiveCategory("iisc_iiser")}
+                style={{
+                  padding: "8px 18px",
+                  borderRadius: "20px",
+                  fontSize: "0.85rem",
+                  fontWeight: "700",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  backgroundColor: activeCategory === "iisc_iiser" ? "var(--agora-blue)" : "var(--agora-light-bg)",
+                  color: activeCategory === "iisc_iiser" ? "#FFFFFF" : "var(--agora-text-muted)"
+                }}
+              >
+                IISc & IISERs
+              </button>
+
+              <button
+                onClick={() => setActiveCategory("csir_labs")}
+                style={{
+                  padding: "8px 18px",
+                  borderRadius: "20px",
+                  fontSize: "0.85rem",
+                  fontWeight: "700",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                  backgroundColor: activeCategory === "csir_labs" ? "var(--agora-blue)" : "var(--agora-light-bg)",
+                  color: activeCategory === "csir_labs" ? "#FFFFFF" : "var(--agora-text-muted)"
+                }}
+              >
+                CSIR Labs & R&D
+              </button>
+            </div>
+          </div>
+
+          <div style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)", fontWeight: "600" }}>
+            Showing <strong>{filteredSpeakers.length}</strong> of {allSpeakers.length} speakers
+          </div>
         </div>
+
+        {/* 3 Speakers Per Line Grid */}
+        {filteredSpeakers.length > 0 ? (
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))",
+            gap: "32px"
+          }}>
+            {filteredSpeakers.map((sp, idx) => (
+              <div
+                key={idx}
+                className="agora-pricing-card speaker-card-hover"
+                style={{
+                  padding: "32px 24px",
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  position: "relative",
+                  overflow: "hidden",
+                  borderRadius: "20px",
+                  border: "1px solid var(--agora-border-light)",
+                  backgroundColor: "#FFFFFF"
+                }}
+              >
+                <div>
+                  {/* Speaker Circular Avatar: Black Ring Design */}
+                  <div
+                    className="speaker-avatar-ring"
+                    style={{
+                      width: "135px",
+                      height: "135px",
+                      borderRadius: "50%",
+                      padding: "4px",
+                      border: "3px solid #000000",
+                      backgroundColor: "#FFFFFF",
+                      margin: "0 auto 20px",
+                      boxShadow: "0 6px 18px rgba(0, 0, 0, 0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      position: "relative"
+                    }}
+                  >
+                    <img
+                      src={sp.image}
+                      alt={sp.name}
+                      className="speaker-avatar-img"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        objectPosition: "center 15%",
+                        backgroundColor: "#F1F5F9"
+                      }}
+                    />
+                  </div>
+
+                  {/* Speaker Details Section */}
+                  <h3 style={{
+                    fontSize: "1.25rem",
+                    fontWeight: "800",
+                    color: "var(--agora-text-dark)",
+                    marginBottom: "8px",
+                    lineHeight: "1.3"
+                  }}>
+                    {sp.name}
+                  </h3>
+
+                  {sp.designation && sp.designation.trim() !== "" && (
+                    <div style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      padding: "5px 14px",
+                      backgroundColor: "rgba(67, 97, 238, 0.08)",
+                      borderRadius: "20px",
+                      color: "var(--agora-blue)",
+                      fontSize: "0.85rem",
+                      fontWeight: "700"
+                    }}>
+                      <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                      </svg>
+                      <span>{sp.designation}</span>
+                    </div>
+                  )}
+
+                  {sp.topic && sp.topic !== "NA" && sp.topic.trim() !== "" && (
+                    <div style={{
+                      fontSize: "0.85rem",
+                      color: "var(--agora-text-muted)",
+                      backgroundColor: "var(--agora-light-bg)",
+                      padding: "12px 14px",
+                      borderRadius: "10px",
+                      border: "1px solid var(--agora-border-light)",
+                      marginTop: "14px",
+                      lineHeight: "1.5",
+                      textAlign: "left"
+                    }}>
+                      <strong style={{ color: "var(--agora-blue)", display: "block", marginBottom: "4px" }}>Talk Topic:</strong>
+                      "{sp.topic}"
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* Empty Search State */
+          <div style={{
+            backgroundColor: "#FFFFFF",
+            borderRadius: "16px",
+            padding: "60px 24px",
+            textAlign: "center",
+            border: "1px solid var(--agora-border-light)",
+            boxShadow: "var(--shadow-agora)"
+          }}>
+            <svg width="48" height="48" fill="none" stroke="var(--agora-blue)" strokeWidth="1.5" viewBox="0 0 24 24" style={{ margin: "0 auto 16px" }}>
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <h3 style={{ fontSize: "1.3rem", color: "var(--agora-text-dark)", marginBottom: "8px" }}>No Speakers Found</h3>
+            <p style={{ color: "var(--agora-text-muted)", marginBottom: "20px" }}>No speakers match "{searchTerm}". Try clearing your search query or filter.</p>
+            <button
+              onClick={() => { setSearchTerm(""); setActiveCategory("all"); }}
+              className="btn-agora-blue"
+              style={{ padding: "10px 24px", fontSize: "0.85rem" }}
+            >
+              Reset Search & Filters
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -59,5 +59,131 @@ export const config = {
       ifsc: "[TO BE PROVIDED]",
       branch: "[TO BE PROVIDED]"
     }
-  }
+  },
+  speakers: [
+    {
+      name: "Abhik Banerjee",
+      designation: "TCG Crest",
+      topic: "NA",
+      image: "/images/speakers/abhik_banerjee.jpg"
+    },
+    {
+      name: "A. S. Prakash",
+      designation: "CSIR-CECRI",
+      topic: "NA",
+      image: "/images/speakers/a._s._prakash.jpg"
+    },
+    {
+      name: "A. J. Bhattacharya",
+      designation: "IISc Bangalore",
+      topic: "NA",
+      image: "/images/speakers/a._j._bhttacharya.jpg"
+    },
+    {
+      name: "Manjusha Shelke",
+      designation: "NCL Pune",
+      topic: "NA",
+      image: "/images/speakers/manjusha_shelke.jpg"
+    },
+    {
+      name: "Mudit Dixit",
+      designation: "CSIR-CLRI",
+      topic: "NA",
+      image: "/images/speakers/mudit_dixit.jpg"
+    },
+    {
+      name: "Sai Gopalakrishnan",
+      designation: "IISc Bangalore",
+      topic: "NA",
+      image: "/images/speakers/sai_gopalakrishnan.jpg"
+    },
+    {
+      name: "M. M. Shaijumon",
+      designation: "IISER TVM",
+      topic: "NA",
+      image: "/images/speakers/m._Shaijumon.jpg"
+    },
+    {
+      name: "S. K. Martha",
+      designation: "IIT Hyderabad",
+      topic: "NA",
+      image: "/images/speakers/s._k._martra.jpg"
+    },
+    {
+      name: "Urmimala Maitra",
+      designation: "IACS",
+      topic: "NA",
+      image: "/images/speakers/urmimala_maitra.jpg"
+    },
+    {
+      name: "V. Aravindan",
+      designation: "IISER Tirupati",
+      topic: "NA",
+      image: "/images/speakers/v._aravindan.jpg"
+    },
+    {
+      name: "Yogesh K. Sharma",
+      designation: "IIT Roorkee",
+      topic: "NA",
+      image: "/images/speakers/yogesh_k._sharma.jpg"
+    },
+    {
+      name: "Naga Phani Aetukuri",
+      designation: "IISc",
+      topic: "NA",
+      image: "/images/speakers/naga_phani_aetukuri.jpg"
+    },
+    {
+      name: "Prof Rajendra Singh Dhaka",
+      designation: "IIT Delhi",
+      topic: "NA",
+      image: "/images/speakers/rajendra_singh_dhaka.jpg"
+    },
+    {
+      name: "Sudarshan Narayan",
+      designation: "IIT Kanpur",
+      topic: "NA",
+      image: "/images/speakers/sudarshan_narayan.jpg"
+    },
+    {
+      name: "Palaniselvam",
+      designation: "IIT Madras",
+      topic: "NA",
+      image: "/images/speakers/palaniselvam.jpg"
+    },
+    {
+      name: "Dr. B. V. Sarada",
+      designation: "ARCI",
+      topic: "NA",
+      image: "/images/speakers/dr._b._v._sarada.jpg"
+    },
+    {
+      name: "Dr. Srinivasan Anandan",
+      designation: "ARCI",
+      topic: "NA",
+      image: "/images/speakers/Dr._srinivasan_anandan.jpg"
+    },
+    {
+      name: "Prof. Rajendra K. Singh",
+      designation: "IIT BHU",
+      topic: "NA",
+      image: "/images/speakers/prof._rajendra_k._singh.jpg"
+    }
+  ],
+  organizers: [
+    {
+      name: "Prof. Amartya Mukhopadhyay",
+      role: "Conference Chair",
+      department: "Dept. of Metallurgical Engineering & Materials Science",
+      org: "IIT Bombay",
+      image: "/images/organiser/amartya_mukhopadhyay.jpg"
+    },
+    {
+      name: "Prof. Srinivasan Ramakrishnan",
+      role: "Conference Chair",
+      department: "Department of Chemistry",
+      org: "IIT Bombay",
+      image: "/images/organiser/srinivasan_ramakrishnan.jpg"
+    }
+  ]
 };
