@@ -428,7 +428,7 @@ export default function Home() {
                       {item.speaker} &nbsp;•&nbsp; Location: {item.location}
                     </p>
                   </div>
-                  <div>
+                  <div className="home-schedule-details-btn-wrapper">
                     <Link href="/programme" className="btn-agora-outlined" style={{ padding: "8px 16px", fontSize: "0.78rem" }}>
                       DETAILS →
                     </Link>
@@ -544,15 +544,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Central Vertical Divider Line | (Faded at both top & bottom ends) */}
-            <div style={{
-              width: "2px",
-              height: "100%",
-              minHeight: "150px",
-              background: "linear-gradient(to bottom, transparent 0%, var(--agora-blue) 20%, var(--agora-blue) 80%, transparent 100%)",
-              opacity: 0.8,
-              borderRadius: "2px"
-            }} />
+            {/* Central Divider Line */}
+            <div className="committee-divider-line" style={{ width: "3px", height: "160px", backgroundColor: "#4361EE", borderRadius: "2px", margin: "0 auto", opacity: 0.85 }} />
 
             {/* Right Member: Prof. Srinivasan Ramakrishnan (Photo2 | Details) */}
             <div style={{

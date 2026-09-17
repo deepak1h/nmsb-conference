@@ -19,41 +19,21 @@ export default function Refund() {
           </p>
         </div>
 
-        {/* Highlighted Strict No Refund Warning Callout Banner */}
+        {/* Subtle Policy Note */}
         <div style={{
-          backgroundColor: "#FFF5F5",
-          border: "2px solid #FEB2B2",
-          borderRadius: "16px",
-          padding: "24px 28px",
-          marginBottom: "36px",
-          boxShadow: "0 10px 25px rgba(243, 35, 33, 0.06)",
-          display: "flex",
-          gap: "18px",
-          alignItems: "flex-start"
+          backgroundColor: "var(--agora-card-bg)",
+          border: "1px solid var(--agora-border-light)",
+          borderRadius: "12px",
+          padding: "20px 24px",
+          marginBottom: "32px",
+          boxShadow: "var(--shadow-agora)"
         }}>
-          <div style={{
-            backgroundColor: "var(--agora-red)",
-            color: "#FFFFFF",
-            width: "42px",
-            height: "42px",
-            borderRadius: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
-            fontSize: "1.2rem",
-            fontWeight: "900"
-          }}>
-            !
-          </div>
-          <div>
-            <h3 style={{ fontSize: "1.25rem", color: "#C53030", fontWeight: "800", marginBottom: "6px" }}>
-              STRICT NO REFUND POLICY
-            </h3>
-            <p style={{ color: "#742A2A", fontSize: "0.95rem", lineHeight: "1.6", margin: 0 }}>
-              All registration fee payments made for {config.conference.name} ({config.conference.shortName}) are <strong>strictly non-refundable and non-transferable</strong>. By completing your registration and fee payment, you acknowledge and agree to these non-refundable terms.
-            </p>
-          </div>
+          <h3 style={{ fontSize: "1.1rem", color: "var(--agora-text-dark)", fontWeight: "700", marginBottom: "6px" }}>
+            Registration Fee Terms
+          </h3>
+          <p style={{ color: "var(--agora-text-muted)", fontSize: "0.92rem", lineHeight: "1.6", margin: 0 }}>
+            All registration fee payments made for {config.conference.name} ({config.conference.shortName}) are non-refundable and non-transferable. By completing your registration and fee payment, you acknowledge and agree to these terms.
+          </p>
         </div>
 
         {/* Detailed Policy Sections */}
