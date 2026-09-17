@@ -44,7 +44,7 @@ export default function Committees() {
             boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
             padding: "44px 36px",
             display: "grid",
-            gridTemplateColumns: "1fr auto 1fr",
+            gridTemplateColumns: "1fr 2px 1fr",
             gap: "36px",
             alignItems: "center"
           }}
@@ -117,15 +117,9 @@ export default function Committees() {
             </div>
           </div>
 
-          {/* Central Vertical Divider Line | (Faded at both top & bottom ends) */}
-          <div style={{
-            width: "2px",
-            height: "100%",
-            minHeight: "150px",
-            background: "linear-gradient(to bottom, transparent 0%, var(--agora-blue) 20%, var(--agora-blue) 80%, transparent 100%)",
-            opacity: 0.8,
-            borderRadius: "2px"
-          }} />
+          {/* Central Divider Line */}
+          <div className="committee-divider-line" style={{ borderLeft: "2px solid #4361EE", height: "140px", alignSelf: "center", margin: "0 auto" }} />
+
 
           {/* Right Member: Prof. Srinivasan Ramakrishnan (Photo2 | Details) */}
           <div style={{

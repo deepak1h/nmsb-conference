@@ -471,7 +471,7 @@ export default function Home() {
               boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
               padding: "44px 36px",
               display: "grid",
-              gridTemplateColumns: "1fr auto 1fr",
+              gridTemplateColumns: "1fr 2px 1fr",
               gap: "36px",
               alignItems: "center"
             }}
@@ -545,7 +545,7 @@ export default function Home() {
             </div>
 
             {/* Central Divider Line */}
-            <div className="committee-divider-line" style={{ width: "3px", height: "160px", backgroundColor: "#4361EE", borderRadius: "2px", margin: "0 auto", opacity: 0.85 }} />
+            <div className="committee-divider-line" style={{ borderLeft: "2px solid #4361EE", height: "140px", alignSelf: "center", margin: "0 auto" }} />
 
             {/* Right Member: Prof. Srinivasan Ramakrishnan (Photo2 | Details) */}
             <div style={{
