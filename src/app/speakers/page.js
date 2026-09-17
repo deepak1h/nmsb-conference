@@ -31,6 +31,166 @@ export default function Speakers() {
     });
   }, [allSpeakers, searchTerm, activeCategory]);
 
+  if (!config.showSpeakers) {
+    return (
+      <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "100px 0", minHeight: "85vh", display: "flex", alignItems: "center" }}>
+        <div className="container" style={{ maxWidth: "1000px" }}>
+          <div style={{
+            backgroundColor: "#FFFFFF",
+            borderRadius: "24px",
+            border: "1px solid var(--agora-border-light)",
+            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.08)",
+            padding: "60px 40px",
+            textAlign: "center",
+            position: "relative",
+            overflow: "hidden"
+          }}>
+            {/* Ambient Background Glow */}
+            <div style={{
+              position: "absolute",
+              top: "-100px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "400px",
+              height: "400px",
+              background: "radial-gradient(circle, rgba(67, 97, 238, 0.12) 0%, rgba(255, 255, 255, 0) 70%)",
+              pointerEvents: "none"
+            }} />
+
+            {/* Subtitle Badge */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
+              <span className="agora-subtitle-badge" style={{ margin: 0 }}>GUEST & SPEAKERS PORTAL</span>
+              <span style={{
+                backgroundColor: "var(--agora-blue)",
+                color: "#FFFFFF",
+                fontSize: "0.7rem",
+                fontWeight: "800",
+                padding: "4px 12px",
+                borderRadius: "12px",
+                letterSpacing: "1px"
+              }}>
+                ANNOUNCING SHORTLY
+              </span>
+            </div>
+
+            {/* Animated Micro Icon */}
+            <div style={{
+              width: "90px",
+              height: "90px",
+              borderRadius: "50%",
+              backgroundColor: "rgba(67, 97, 238, 0.08)",
+              border: "2px solid var(--agora-blue)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: "0 auto 28px",
+              color: "var(--agora-blue)",
+              boxShadow: "0 10px 25px rgba(67, 97, 238, 0.18)"
+            }}>
+              <svg width="44" height="44" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+
+            <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "clamp(2.5rem, 5vw, 3.8rem)", marginBottom: "16px" }}>
+              COMING SOON
+            </h1>
+
+            <p style={{ color: "var(--agora-text-muted)", fontSize: "1.15rem", lineHeight: "1.7", maxWidth: "720px", margin: "0 auto 40px" }}>
+              We are finalizing an esteemed panel of international and national keynote speakers, academic leaders from premier IITs, IISc & CSIR laboratories, and industry pioneers for <strong>NMSB-2</strong> at IIT Bombay.
+            </p>
+
+            {/* Feature Highlights Grid */}
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "24px",
+              textAlign: "left",
+              marginBottom: "44px"
+            }}>
+              <div style={{
+                backgroundColor: "var(--agora-light-bg)",
+                padding: "24px",
+                borderRadius: "16px",
+                border: "1px solid var(--agora-border-light)"
+              }}>
+                <div style={{ color: "var(--agora-blue)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  <strong style={{ fontSize: "1rem", color: "var(--agora-text-dark)" }}>Plenary & Keynotes</strong>
+                </div>
+                <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)", margin: 0, lineHeight: "1.5" }}>
+                  Distinguished lectures on cutting-edge Na-ion materials, cathode design, and solid-state electrolyte breakthroughs.
+                </p>
+              </div>
+
+              <div style={{
+                backgroundColor: "var(--agora-light-bg)",
+                padding: "24px",
+                borderRadius: "16px",
+                border: "1px solid var(--agora-border-light)"
+              }}>
+                <div style={{ color: "var(--agora-blue)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                  <strong style={{ fontSize: "1rem", color: "var(--agora-text-dark)" }}>Industry Stalwarts</strong>
+                </div>
+                <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)", margin: 0, lineHeight: "1.5" }}>
+                  Leadership talks from commercial battery cell manufacturers, raw material vendors, and energy storage startups.
+                </p>
+              </div>
+
+              <div style={{
+                backgroundColor: "var(--agora-light-bg)",
+                padding: "24px",
+                borderRadius: "16px",
+                border: "1px solid var(--agora-border-light)"
+              }}>
+                <div style={{ color: "var(--agora-blue)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                  <strong style={{ fontSize: "1rem", color: "var(--agora-text-dark)" }}>Academic Experts</strong>
+                </div>
+                <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)", margin: 0, lineHeight: "1.5" }}>
+                  Top scientists from IISc, IITs, IISERs, and CSIR research labs presenting state-of-the-art battery technologies.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom Contact Callout */}
+            <div style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "16px",
+              backgroundColor: "rgba(67, 97, 238, 0.05)",
+              padding: "16px 28px",
+              borderRadius: "50px",
+              border: "1px solid rgba(67, 97, 238, 0.2)",
+              flexWrap: "wrap",
+              justifyContent: "center"
+            }}>
+              <span style={{ fontSize: "0.95rem", color: "var(--agora-text-dark)", fontWeight: "600" }}>
+                For speaker inquiries or session proposals:
+              </span>
+              <a href="mailto:nmsb.iitb@gmail.com" className="btn-agora-blue" style={{ padding: "8px 20px", fontSize: "0.8rem" }}>
+                CONTACT SECRETARIAT →
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0", minHeight: "100vh" }}>
       <div className="container">

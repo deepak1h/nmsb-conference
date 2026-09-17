@@ -5,14 +5,14 @@ export default function Committees() {
   const organizers = config.organizers || [
     {
       name: "Prof. Amartya Mukhopadhyay",
-      role: "Conference Chair",
+      role: "Chair",
       department: "Dept. of Metallurgical Engineering & Materials Science",
       org: "IIT Bombay",
       image: "/images/organiser/amartya_mukhopadhyay.jpg"
     },
     {
       name: "Prof. Srinivasan Ramakrishnan",
-      role: "Conference Chair",
+      role: "Co-Chair",
       department: "Department of Chemistry",
       org: "IIT Bombay",
       image: "/images/organiser/srinivasan_ramakrishnan.jpg"
@@ -25,10 +25,10 @@ export default function Committees() {
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
           <span className="agora-subtitle-badge">LEADERSHIP & COMMITTEE</span>
           <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "3.5rem" }}>
-            CONFERENCE CHAIRS
+            CONFERENCE CHAIR & CO-CHAIR
           </h1>
           <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px", maxWidth: "700px", margin: "12px auto 0" }}>
-            Leading scientists and academic convenors spearheading NMSB-2 at IIT Bombay.
+            Leading scientists and academic chairs spearheading NMSB-2 at IIT Bombay.
           </p>
         </div>
 

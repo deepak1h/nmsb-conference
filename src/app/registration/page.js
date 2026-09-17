@@ -333,8 +333,20 @@ export default function Registration() {
               {/* Important Notices */}
               <div style={{ marginTop: "24px", paddingTop: "20px", borderTop: "1px dashed var(--agora-border-light)", fontSize: "0.88rem", color: "var(--agora-text-muted)", lineHeight: "1.7" }}>
                 <p>• {config.fees.notes.taxExclusion}</p>
-                <p>• {config.fees.notes.refundPolicy}</p>
+                <p style={{ color: "var(--agora-red)", fontWeight: "700" }}>• STRICT NO REFUND POLICY: Registration fees are non-refundable and non-transferable under any circumstances.</p>
                 <p>• {config.fees.notes.inclusions}</p>
+
+                <div style={{ marginTop: "14px", paddingTop: "14px", borderTop: "1px solid var(--agora-border-light)", display: "flex", gap: "16px", flexWrap: "wrap", fontSize: "0.85rem" }}>
+                  <a href="/refund" target="_blank" rel="noopener noreferrer" style={{ color: "var(--agora-blue)", fontWeight: "700", textDecoration: "underline" }}>
+                    Cancellation & Refund Policy →
+                  </a>
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "var(--agora-blue)", fontWeight: "700", textDecoration: "underline" }}>
+                    Terms & Conditions →
+                  </a>
+                  <a href="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--agora-blue)", fontWeight: "700", textDecoration: "underline" }}>
+                    Privacy Policy →
+                  </a>
+                </div>
               </div>
             </div>
 

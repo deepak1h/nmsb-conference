@@ -35,7 +35,7 @@ export default function Venue() {
             height: "360px"
           }}>
             <img
-              src="/images/venue/aspire_research_park.png"
+              src="/images/venue/aspire_research_park.jpg"
               alt="ASPIRE - IIT Bombay Research Park"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
@@ -82,7 +82,7 @@ export default function Venue() {
             height: "360px"
           }}>
             <img
-              src="/images/venue/iit_bombay_campus.png"
+              src="/images/venue/iit_bombay_campus.jpg"
               alt="IIT Bombay Powai Campus"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />

@@ -4,22 +4,12 @@ import { config } from "../../config/variables";
 
 export default function Programme() {
   const [activeDay, setActiveDay] = useState(1);
+  const scheduleData = config.schedule;
 
-  const scheduleData = {
-    1: [
-      { time: "08:30 - 09:30 AM", title: "Delegate Registration & Welcome Coffee", speaker: "Secretariat Desk", location: "ASPIRE Foyer" },
-      { time: "09:30 - 11:00 AM", title: "Inaugural Ceremony & Keynote Address", speaker: "Prof. Amartya Mukhopadhyay", location: "Main Auditorium" },
-      { time: "11:30 - 01:00 PM", title: "Technical Session 1: Cathode & Anode Chemistry", speaker: "Invited Speakers Panel", location: "Hall A & B" },
-      { time: "02:00 - 04:30 PM", title: "Poster Presentations & Student Award Judging", speaker: "Research Scholars", location: "Exhibition Bay" },
-    ],
-    2: [
-      { time: "09:30 - 11:30 AM", title: "Technical Session 2: Solid Electrolytes & SEI Dynamics", speaker: "Prof. Srinivasan Ramakrishnan", location: "Main Auditorium" },
-      { time: "02:00 - 04:00 PM", title: "Start-up Pitching Showcase & Investor Panel", speaker: "Energy Start-ups & VC Panel", location: "Hall B" },
-    ],
-    3: [
-      { time: "09:30 - 12:30 PM", title: "Technical Session 3: Cell Scale-up & Manufacturing", speaker: "Industry Stalwarts", location: "Main Auditorium" },
-      { time: "02:30 - 04:00 PM", title: "Poster Awards & Valedictory Ceremony", speaker: "Conference Chairs", location: "Main Auditorium" },
-    ]
+  const dayHeaders = {
+    1: { date: "DAY #1 — Sunday, 22 November 2026", theme: "Registration, Inaugural & Technical Session I" },
+    2: { date: "DAY #2 — Monday, 23 November 2026", theme: "Science, Innovation & Commercialization" },
+    3: { date: "DAY #3 — Tuesday, 24 November 2026", theme: "Advanced Research & Future Directions" }
   };
 
   return (
@@ -31,18 +21,29 @@ export default function Programme() {
             PROGRAMME SCHEDULE
           </h1>
           <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px" }}>
-            3-Day Comprehensive Technical Sessions, Keynotes & Start-up Showcases at IIT Bombay.
+            2nd National Meeting on Sodium(-ion) Batteries | 22–24 Nov 2026, Aspire Research Park, IIT Bombay, Mumbai
           </p>
 
           <div style={{ marginTop: "24px" }}>
-            <button className="btn-agora-blue" onClick={() => alert("Downloading PDF Programme...")}>
-              DOWNLOAD DETAILED PROGRAMME (PDF)
-            </button>
+            <a
+              href={config.conference.pdfScheduleUrl || "/files/NMSB-2_Programme_Schedule.pdf"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-agora-blue"
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none" }}
+            >
+              <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>DOWNLOAD OFFICIAL SCHEDULE (PDF)</span>
+            </a>
           </div>
         </div>
 
         <div style={{ backgroundColor: "var(--agora-card-bg)", padding: "48px", borderRadius: "12px", border: "1px solid var(--agora-border-light)", boxShadow: "var(--shadow-agora)" }}>
-          <div style={{ display: "flex", gap: "16px", borderBottom: "2px solid var(--agora-border-light)", marginBottom: "32px" }}>
+          <div style={{ display: "flex", gap: "16px", borderBottom: "2px solid var(--agora-border-light)", marginBottom: "24px", flexWrap: "wrap" }}>
             <button onClick={() => setActiveDay(1)} className={`agora-schedule-tab ${activeDay === 1 ? "active" : ""}`}>
               DAY #1 (22 NOV)
             </button>
@@ -54,17 +55,32 @@ export default function Programme() {
             </button>
           </div>
 
+          <div style={{ marginBottom: "28px", padding: "16px 20px", backgroundColor: "rgba(67, 97, 238, 0.05)", borderLeft: "4px solid var(--agora-blue)", borderRadius: "4px" }}>
+            <div style={{ fontWeight: "800", color: "var(--agora-blue)", fontSize: "1.1rem" }}>
+              {dayHeaders[activeDay].date}
+            </div>
+            <div style={{ color: "var(--agora-text-dark)", fontSize: "0.95rem", marginTop: "2px" }}>
+              Theme: <strong>{dayHeaders[activeDay].theme}</strong>
+            </div>
+          </div>
+
           <div>
             {scheduleData[activeDay].map((item, idx) => (
-              <div key={idx} className="agora-schedule-row">
-                <div style={{ flex: "0 0 220px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.1rem" }}>
+              <div key={idx} className="agora-schedule-row" style={{ padding: "20px 0" }}>
+                <div style={{ flex: "0 0 210px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.05rem" }}>
                   {item.time}
                 </div>
                 <div style={{ flex: "1 1 auto" }}>
-                  <h3 style={{ fontSize: "1.35rem", marginBottom: "6px" }}>{item.title}</h3>
-                  <p style={{ fontSize: "0.95rem", color: "var(--agora-text-muted)" }}>
-                    Speaker: {item.speaker} &nbsp;•&nbsp; Location: {item.location}
-                  </p>
+                  <h3 style={{ fontSize: "1.25rem", marginBottom: "4px" }}>{item.title}</h3>
+                  {item.details && (
+                    <p style={{ fontSize: "0.95rem", color: "var(--agora-text-dark)", marginBottom: "6px" }}>
+                      {item.details}
+                    </p>
+                  )}
+                  <div style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)", display: "flex", gap: "16px", flexWrap: "wrap" }}>
+                    <span>📍 <strong>Location:</strong> {item.location}</span>
+                    {item.speaker && <span>🗣️ <strong>Session / Speaker:</strong> {item.speaker}</span>}
+                  </div>
                 </div>
               </div>
             ))}

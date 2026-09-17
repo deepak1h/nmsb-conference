@@ -75,8 +75,10 @@ export default function Footer() {
                 <a href={`mailto:${config.conference.contactEmail}`} style={{ color: "var(--agora-blue)" }}>{config.conference.contactEmail}</a>
               </span>
             </p>
-            <div style={{ marginTop: "16px", display: "flex", gap: "12px", fontSize: "0.85rem" }}>
-              <Link href="/terms">Terms</Link> • <Link href="/privacy">Privacy</Link> • <Link href="/refund">Refund</Link>
+            <div style={{ marginTop: "16px", display: "flex", gap: "10px", flexWrap: "wrap", fontSize: "0.85rem" }}>
+              <Link href="/terms" style={{ color: "var(--agora-text-muted)" }}>Terms & Conditions</Link> • 
+              <Link href="/privacy" style={{ color: "var(--agora-text-muted)" }}>Privacy Policy</Link> • 
+              <Link href="/refund" style={{ color: "var(--agora-text-muted)" }}>Refund Policy</Link>
             </div>
           </div>
         </div>

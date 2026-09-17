@@ -29,35 +29,21 @@ export default function Home() {
   const currentSlide = Math.floor(ticks / 100) % HERO_SLIDES.length;
   const chargePercent = ticks % 100;
 
-  const scheduleData = {
-    1: [
-      { time: "09:00 - 10:30 AM", title: "Inaugural Ceremony & Plenary Keynote", speaker: "Prof. Amartya Mukhopadhyay", location: "Main Auditorium" },
-      { time: "11:00 - 01:00 PM", title: "Session 1: Na-Ion Cathode & Anode Chemistry", speaker: "Dr. Jane Doe & Panel", location: "Hall A" },
-      { time: "02:00 - 04:30 PM", title: "Poster Presentations & Student Award Session", speaker: "Research Delegates", location: "Exhibition Bay" },
-    ],
-    2: [
-      { time: "09:30 - 11:30 AM", title: "Session 2: Solid-State Electrolytes & SEI", speaker: "Prof. Srinivasan Ramakrishnan", location: "Main Auditorium" },
-      { time: "02:00 - 04:00 PM", title: "Start-up Showcase & Pitching Session", speaker: "Industry Delegates & VC Panel", location: "Hall B" },
-    ],
-    3: [
-      { time: "09:30 - 12:30 PM", title: "Session 3: Cell Manufacturing & Pack Design", speaker: "Invited Industry Stalwarts", location: "Main Auditorium" },
-      { time: "02:30 - 04:00 PM", title: "Valedictory & NMSB-3 Announcement", speaker: "Conference Chairs", location: "Main Auditorium" },
-    ]
-  };
+  const scheduleData = config.schedule || {};
 
   const speakersList = config.speakers || [];
 
   const teamList = config.organizers || [
     {
       name: "Prof. Amartya Mukhopadhyay",
-      role: "Conference Chair",
+      role: "Chair",
       department: "Dept. of Metallurgical Engineering & Materials Science",
       org: "IIT Bombay",
       image: "/images/organiser/amartya_mukhopadhyay.jpg"
     },
     {
       name: "Prof. Srinivasan Ramakrishnan",
-      role: "Conference Chair",
+      role: "Co-Chair",
       department: "Department of Chemistry",
       org: "IIT Bombay",
       image: "/images/organiser/srinivasan_ramakrishnan.jpg"
@@ -80,93 +66,106 @@ export default function Home() {
         {/* Translucent Sodium-Ion Canvas Floating over Carousel */}
         <ParticleEnergyCanvas isBackground={true} />
 
-        {/* Massive 1400px Half-Overflow 2D Concentric Sodium Atom on Right Edge */}
-        <div style={{
-          position: "absolute",
-          right: "-686px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: 3,
-          pointerEvents: "none",
-          opacity: 0.55
-        }}>
+        {/* Massive 1400px Half-Overflow 2D Concentric Sodium Atom on Right Edge (Right-to-Left entrance animation) */}
+        <div className="hero-sodium-atom-wrapper">
           <SodiumAtomAnimation />
         </div>
 
         <div style={{
           position: "relative",
           zIndex: 5,
-          padding: "84px 5vw 40px",
+          padding: "84px 3vw 40px 3vw",
           width: "100%",
-          maxWidth: "1350px",
-          margin: "0 auto"
+          maxWidth: "1450px",
+          margin: "0 auto 0 0"
         }}>
-          {/* Left Column: Headline & Content */}
-          <div style={{ textAlign: "left", maxWidth: "850px", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-            {/* Top Venue & Date Badge (Above Title) */}
-            <div style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              padding: "8px 18px",
-              backgroundColor: "rgba(67, 97, 238, 0.15)",
-              border: "1px solid rgba(67, 97, 238, 0.4)",
-              borderRadius: "50px",
-              color: "#60A5FA",
-              fontSize: "0.85rem",
-              fontWeight: "700",
-              letterSpacing: "1.2px",
-              textTransform: "uppercase",
-              marginBottom: "20px",
-              backdropFilter: "blur(8px)"
-            }}>
-              <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>ASPIRE - IITB RESEARCH PARK, MUMBAI • 22–24 NOVEMBER 2026</span>
+          <div style={{ display: "flex", gap: "28px", alignItems: "center" }}>
+            {/* Vertical Hero Logos Strip (Left side of NMSB-2) */}
+            <div className="hero-vertical-logos-container">
+              <div className="hero-logo-badge hero-logo-delay-1" title="Battery Research Society (BRS)">
+                <img src="/images/logo/brs.jpg" alt="BRS Logo" />
+              </div>
+              <div className="hero-logo-line" />
+              <div className="hero-logo-badge hero-logo-delay-2" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
+                <img src="/images/logo/abcl.jpg" alt="ABCL Logo" />
+              </div>
+              <div className="hero-logo-line" />
+              <div className="hero-logo-badge hero-logo-delay-3" title="Srinivasan Lab">
+                <img src="/images/logo/srinivasan_lab.jpg" alt="Srinivasan Lab Logo" />
+              </div>
+              <div className="hero-logo-line" />
+              <div className="hero-logo-badge hero-logo-delay-4" title="Group for Energy Storage and Harvesting (GESH)">
+                <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
+              </div>
             </div>
 
-            {/* Giant Prominent Main Title: NMSB-2 */}
-            <h1 style={{
-              fontSize: "clamp(4.5rem, 9.5vw, 7.5rem)",
-              fontWeight: "900",
-              lineHeight: "0.95",
-              letterSpacing: "-2px",
-              color: "#FFFFFF",
-              margin: "0 0 14px 0",
-              textTransform: "uppercase",
-              display: "flex",
-              alignItems: "baseline",
-              gap: "2px"
-            }}>
-              NMSB<span style={{ color: "var(--agora-blue)" }}>-2</span>
-            </h1>
+            {/* Left Column: Headline & Content */}
+            <div style={{ textAlign: "left", maxWidth: "850px", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+              {/* Top Venue & Date Badge (Above Title) */}
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "8px 18px",
+                backgroundColor: "rgba(67, 97, 238, 0.15)",
+                border: "1px solid rgba(67, 97, 238, 0.4)",
+                borderRadius: "50px",
+                color: "#60A5FA",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                letterSpacing: "1.2px",
+                textTransform: "uppercase",
+                marginBottom: "20px",
+                backdropFilter: "blur(8px)"
+              }}>
+                <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>ASPIRE - IITB RESEARCH PARK, MUMBAI • 22–24 NOVEMBER 2026</span>
+              </div>
 
-            {/* Subtitle: 2nd National Meeting on Sodium(-ion) Batteries */}
-            <h2 style={{
-              fontSize: "clamp(1.25rem, 2.5vw, 1.85rem)",
-              fontWeight: "700",
-              color: "#E2E8F0",
-              letterSpacing: "1px",
-              textTransform: "uppercase",
-              marginBottom: "24px",
-              lineHeight: "1.3"
-            }}>
-              2ND NATIONAL MEETING ON <span style={{ color: "#60A5FA" }}>SODIUM(-ION) BATTERIES</span>
-            </h2>
+              {/* Giant Prominent Main Title: NMSB-2 */}
+              <h1 style={{
+                fontSize: "clamp(4.5rem, 9.5vw, 7.5rem)",
+                fontWeight: "900",
+                lineHeight: "0.95",
+                letterSpacing: "-2px",
+                color: "#FFFFFF",
+                margin: "0 0 14px 0",
+                textTransform: "uppercase",
+                display: "flex",
+                alignItems: "baseline",
+                gap: "2px"
+              }}>
+                NMSB<span style={{ color: "var(--agora-blue)" }}>-2</span>
+              </h1>
 
-            <p style={{ fontSize: "1.1rem", color: "#B0B4C0", marginBottom: "36px", maxWidth: "680px", lineHeight: "1.7", textAlign: "left" }}>
-              Building on the success of NMSB-1 (in 2024), NMSB-2 will again bring together representatives from academia, industry/startups, and government agencies to discuss, deliberate, and pave the way towards advancing Sodium Ion battery technology, deployment, and commercialisation.
-            </p>
+              {/* Subtitle: 2nd National Meeting on Sodium(-ion) Batteries */}
+              <h2 style={{
+                fontSize: "clamp(1.25rem, 2.5vw, 1.85rem)",
+                fontWeight: "700",
+                color: "#E2E8F0",
+                letterSpacing: "1px",
+                textTransform: "uppercase",
+                marginBottom: "24px",
+                lineHeight: "1.3"
+              }}>
+                2ND NATIONAL MEETING ON <span style={{ color: "#60A5FA" }}>SODIUM(-ION) BATTERIES</span>
+              </h2>
 
-            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", alignItems: "center", justifyContent: "flex-start" }}>
-              <Link href="/registration" className="btn-agora-blue">
-                REGISTER NOW
-              </Link>
-              <Link href="/recap" className="btn-agora-outlined" style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }}>
-                EXPLORE NMSB-1 RECAP →
-              </Link>
+              <p style={{ fontSize: "1.1rem", color: "#B0B4C0", marginBottom: "36px", maxWidth: "680px", lineHeight: "1.7", textAlign: "left" }}>
+                Building on the success of NMSB-1 (in 2024), NMSB-2 will again bring together representatives from academia, industry/startups, and government agencies to discuss, deliberate, and pave the way towards advancing Sodium Ion battery technology, deployment, and commercialisation.
+              </p>
+
+              <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", alignItems: "center", justifyContent: "flex-start" }}>
+                <Link href="/registration" className="btn-agora-blue">
+                  REGISTER NOW
+                </Link>
+                <Link href="/recap" className="btn-agora-outlined" style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }}>
+                  EXPLORE NMSB-1 RECAP →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -236,11 +235,11 @@ export default function Home() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "36px" }}>
                 <div style={{ borderLeft: "3px solid var(--agora-blue)", paddingLeft: "16px" }}>
                   <h4 style={{ fontSize: "1.1rem" }}>Prof. Amartya Mukhopadhyay</h4>
-                  <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>Conference Chair, IIT Bombay</p>
+                  <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>Chair, IIT Bombay</p>
                 </div>
                 <div style={{ borderLeft: "3px solid var(--agora-blue)", paddingLeft: "16px" }}>
                   <h4 style={{ fontSize: "1.1rem" }}>Prof. S. Ramakrishnan</h4>
-                  <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>Conference Chair, IIT Bombay</p>
+                  <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>Co-Chair, IIT Bombay</p>
                 </div>
               </div>
 
@@ -265,85 +264,123 @@ export default function Home() {
             </Link>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "30px" }}>
-            {speakersList.slice(0, 4).map((sp, idx) => (
-              <div
-                key={idx}
-                className="agora-pricing-card speaker-card-hover"
-                style={{
-                  padding: "32px 20px",
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  position: "relative",
-                  overflow: "hidden",
-                  borderRadius: "20px",
-                  border: "1px solid var(--agora-border-light)",
-                  backgroundColor: "#FFFFFF"
-                }}
-              >
-                <div>
-                  {/* Speaker Circular Avatar: Black Ring Design */}
-                  <div
-                    className="speaker-avatar-ring"
-                    style={{
-                      width: "135px",
-                      height: "135px",
-                      borderRadius: "50%",
-                      padding: "4px",
-                      border: "3px solid #000000",
-                      backgroundColor: "#FFFFFF",
-                      margin: "0 auto 18px",
-                      boxShadow: "0 6px 18px rgba(0, 0, 0, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      position: "relative"
-                    }}
-                  >
-                    <img
-                      src={sp.image}
-                      alt={sp.name}
-                      className="speaker-avatar-img"
+          {config.showSpeakers ? (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "30px" }}>
+              {speakersList.slice(0, 4).map((sp, idx) => (
+                <div
+                  key={idx}
+                  className="agora-pricing-card speaker-card-hover"
+                  style={{
+                    padding: "32px 20px",
+                    textAlign: "center",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    position: "relative",
+                    overflow: "hidden",
+                    borderRadius: "20px",
+                    border: "1px solid var(--agora-border-light)",
+                    backgroundColor: "#FFFFFF"
+                  }}
+                >
+                  <div>
+                    {/* Speaker Circular Avatar: Black Ring Design */}
+                    <div
+                      className="speaker-avatar-ring"
                       style={{
-                        width: "100%",
-                        height: "100%",
+                        width: "135px",
+                        height: "135px",
                         borderRadius: "50%",
-                        objectFit: "cover",
-                        objectPosition: "center 15%",
-                        backgroundColor: "#F1F5F9"
+                        padding: "4px",
+                        border: "3px solid #000000",
+                        backgroundColor: "#FFFFFF",
+                        margin: "0 auto 18px",
+                        boxShadow: "0 6px 18px rgba(0, 0, 0, 0.1)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        position: "relative"
                       }}
-                    />
-                  </div>
-
-                  <h3 style={{ fontSize: "1.2rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
-                    {sp.name}
-                  </h3>
-                  {sp.designation && sp.designation.trim() !== "" && (
-                    <div style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      padding: "5px 14px",
-                      backgroundColor: "rgba(67, 97, 238, 0.08)",
-                      borderRadius: "20px",
-                      color: "var(--agora-blue)",
-                      fontSize: "0.85rem",
-                      fontWeight: "700"
-                    }}>
-                      <span>{sp.designation}</span>
+                    >
+                      <img
+                        src={sp.image}
+                        alt={sp.name}
+                        className="speaker-avatar-img"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          objectPosition: "center 15%",
+                          backgroundColor: "#F1F5F9"
+                        }}
+                      />
                     </div>
-                  )}
-                  {sp.topic && sp.topic !== "NA" && sp.topic.trim() !== "" && (
-                    <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)", borderTop: "1px dashed var(--agora-border-light)", paddingTop: "12px", marginTop: "12px" }}>
-                      "{sp.topic}"
-                    </p>
-                  )}
+
+                    <h3 style={{ fontSize: "1.2rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                      {sp.name}
+                    </h3>
+                    {sp.designation && sp.designation.trim() !== "" && (
+                      <div style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        padding: "5px 14px",
+                        backgroundColor: "rgba(67, 97, 238, 0.08)",
+                        borderRadius: "20px",
+                        color: "var(--agora-blue)",
+                        fontSize: "0.85rem",
+                        fontWeight: "700"
+                      }}>
+                        <span>{sp.designation}</span>
+                      </div>
+                    )}
+                    {sp.topic && sp.topic !== "NA" && sp.topic.trim() !== "" && (
+                      <p style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)", borderTop: "1px dashed var(--agora-border-light)", paddingTop: "12px", marginTop: "12px" }}>
+                        "{sp.topic}"
+                      </p>
+                    )}
+                  </div>
                 </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{
+              backgroundColor: "var(--agora-light-bg)",
+              borderRadius: "20px",
+              padding: "48px 32px",
+              textAlign: "center",
+              border: "1px solid var(--agora-border-light)"
+            }}>
+              <div style={{
+                width: "64px",
+                height: "64px",
+                borderRadius: "50%",
+                backgroundColor: "rgba(67, 97, 238, 0.08)",
+                border: "2px solid var(--agora-blue)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "0 auto 16px",
+                color: "var(--agora-blue)"
+              }}>
+                <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                </svg>
               </div>
-            ))}
-          </div>
+              <h3 style={{ fontSize: "1.8rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                SPEAKER LINEUP ANNOUNCING SHORTLY
+              </h3>
+              <p style={{ color: "var(--agora-text-muted)", fontSize: "1.05rem", maxWidth: "600px", margin: "0 auto 24px", lineHeight: "1.6" }}>
+                We are compiling an outstanding list of plenary speakers, academic leaders from IITs, IISc & CSIR, and industry executives.
+              </p>
+              <Link href="/speakers" className="btn-agora-blue" style={{ padding: "12px 28px", fontSize: "0.85rem" }}>
+                VIEW SPEAKERS PORTAL →
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
@@ -370,24 +407,40 @@ export default function Home() {
           </div>
 
           <div>
-            {scheduleData[activeDay].map((item, idx) => (
-              <div key={idx} className="agora-schedule-row">
-                <div style={{ flex: "0 0 200px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.05rem" }}>
-                  {item.time}
+            {(scheduleData[activeDay] || [])
+              .filter((item) => {
+                const titleLower = item.title.toLowerCase();
+                return (
+                  !titleLower.includes("registration") &&
+                  !titleLower.includes("lunch") &&
+                  !titleLower.includes("tea break") &&
+                  !titleLower.includes("board room")
+                );
+              })
+              .map((item, idx) => (
+                <div key={idx} className="agora-schedule-row">
+                  <div style={{ flex: "0 0 200px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.05rem" }}>
+                    {item.time}
+                  </div>
+                  <div style={{ flex: "1 1 auto" }}>
+                    <h3 style={{ fontSize: "1.2rem", marginBottom: "4px" }}>{item.title}</h3>
+                    <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)" }}>
+                      {item.speaker} &nbsp;•&nbsp; Location: {item.location}
+                    </p>
+                  </div>
+                  <div>
+                    <Link href="/programme" className="btn-agora-outlined" style={{ padding: "8px 16px", fontSize: "0.78rem" }}>
+                      DETAILS →
+                    </Link>
+                  </div>
                 </div>
-                <div style={{ flex: "1 1 auto" }}>
-                  <h3 style={{ fontSize: "1.3rem", marginBottom: "6px" }}>{item.title}</h3>
-                  <p style={{ fontSize: "0.9rem", color: "var(--agora-text-muted)" }}>
-                    {item.speaker} &nbsp;•&nbsp; {item.location}
-                  </p>
-                </div>
-                <div>
-                  <Link href="/programme" className="btn-agora-outlined" style={{ padding: "10px 20px", fontSize: "0.8rem" }}>
-                    DETAILS →
-                  </Link>
-                </div>
-              </div>
-            ))}
+              ))}
+          </div>
+
+          <div style={{ marginTop: "36px", textAlign: "center" }}>
+            <Link href="/programme" className="btn-agora-blue" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <span>VIEW FULL DETAILED SCHEDULE →</span>
+            </Link>
           </div>
         </div>
       </div>
