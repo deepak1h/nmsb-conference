@@ -9,12 +9,10 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [infoDropdownOpen, setInfoDropdownOpen] = useState(false);
-  const [programmeDropdownOpen, setProgrammeDropdownOpen] = useState(false);
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setInfoDropdownOpen(false);
-    setProgrammeDropdownOpen(false);
   };
 
   return (
@@ -52,24 +50,8 @@ export default function Navbar() {
         <div className={`nav-links ${mobileMenuOpen ? "mobile-active" : ""}`}>
           <Link href="/" className={`nav-link ${isHome ? "active" : ""}`} onClick={closeMobileMenu}>Home</Link>
           <Link href="/about" className={`nav-link ${pathname === "/about" ? "active" : ""}`} onClick={closeMobileMenu}>About</Link>
-
-          {/* Programme Dropdown */}
-          <div className="dropdown">
-            <div 
-              className="nav-link dropdown-trigger" 
-              style={{ cursor: "pointer" }}
-              onClick={() => setProgrammeDropdownOpen(!programmeDropdownOpen)}
-            >
-              <span>Programme</span>
-              <svg className={`dropdown-arrow ${programmeDropdownOpen ? "rotated" : ""}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "6px" }}>
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </div>
-            <div className={`dropdown-menu ${programmeDropdownOpen ? "mobile-show" : ""}`}>
-              <Link href="/programme" className="dropdown-item" onClick={closeMobileMenu}>Programme Schedule</Link>
-              <Link href="/speakers" className="dropdown-item" onClick={closeMobileMenu}>Keynote Speakers</Link>
-            </div>
-          </div>
+          <Link href="/speakers" className={`nav-link ${pathname === "/speakers" ? "active" : ""}`} onClick={closeMobileMenu}>Speakers</Link>
+          <Link href="/committees" className={`nav-link ${pathname === "/committees" ? "active" : ""}`} onClick={closeMobileMenu}>Organisers</Link>
 
           {/* Info Dropdown */}
           <div className="dropdown">
@@ -84,10 +66,25 @@ export default function Navbar() {
               </svg>
             </div>
             <div className={`dropdown-menu ${infoDropdownOpen ? "mobile-show" : ""}`}>
+              <Link href="/programme" className="dropdown-item" onClick={closeMobileMenu}>Programme Schedule</Link>
               <Link href="/recap" className="dropdown-item" onClick={closeMobileMenu}>NMSB-1 Retrospective</Link>
+              <Link href="/sponsors" className="dropdown-item" onClick={closeMobileMenu}>Sponsorship</Link>
+              <a 
+                href="https://brsindia.org.in/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="dropdown-item" 
+                onClick={closeMobileMenu}
+                style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}
+              >
+                <span>BRS (Battery Research Society)</span>
+                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
               <Link href="/venue" className="dropdown-item" onClick={closeMobileMenu}>Venue & Travel</Link>
-              <Link href="/committees" className="dropdown-item" onClick={closeMobileMenu}>Committees & Team</Link>
-              <Link href="/sponsors" className="dropdown-item" onClick={closeMobileMenu}>Sponsors</Link>
               <Link href="/contact" className="dropdown-item" onClick={closeMobileMenu}>Contact</Link>
             </div>
           </div>

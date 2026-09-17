@@ -5,7 +5,7 @@ export const config = {
     dates: "22-24 November 2026",
     venue: "ASPIRE - IIT Bombay Research Park, Mumbai, India",
     tagline: "Building on the success of NMSB-1 (in 2024), NMSB-2 will again bring together representatives from academia, industry/startups, and government agencies to discuss, deliberate, and pave the way towards advancing Sodium Ion battery technology, deployment, and commercialisation.",
-    contactEmail: "contact@nmsb2-dummy.org.in", // [TO BE PROVIDED]
+    contactEmail: "nmsb.iitb@gmail.com",
   },
   dates: {
     abstractOpens: "1 September 2026",
@@ -50,7 +50,7 @@ export const config = {
     ]
   },
   sponsors: {
-    email: "sponsorship@nmsb2-dummy.org.in" // [TO BE PROVIDED]
+    email: "nmsb.iitb@gmail.com"
   },
   payment: {
     bankDetails: {

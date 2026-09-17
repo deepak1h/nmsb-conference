@@ -728,4 +728,16 @@ h1, h2, h3, h4 {
   transform: scale(1.1);
 }
 
-
+/* Committees Responsive Layout Media Query */
+@media (max-width: 850px) {
+  .committees-layout-container {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding: 32px 20px !important;
+  }
+  .committees-layout-container > div {
+    justify-content: center !important;
+    text-align: center !important;
+    flex-direction: column !important;
+  }
+}
