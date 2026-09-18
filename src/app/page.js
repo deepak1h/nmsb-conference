@@ -82,19 +82,23 @@ export default function Home() {
           <div style={{ display: "flex", gap: "28px", alignItems: "center" }}>
             {/* Vertical Hero Logos Strip (Left side of NMSB-2) */}
             <div className="hero-vertical-logos-container">
-              <div className="hero-logo-badge hero-logo-delay-1" title="Battery Research Society (BRS)">
+              <div className="hero-logo-badge hero-logo-delay-1" title="IIT Bombay">
+                <img src="/images/logo/iitb.png" alt="IIT Bombay Logo" />
+              </div>
+              <div className="hero-logo-line" />
+              <div className="hero-logo-badge hero-logo-delay-2" title="Battery Research Society (BRS)">
                 <img src="/images/logo/brs.jpg" alt="BRS Logo" />
               </div>
               <div className="hero-logo-line" />
-              <div className="hero-logo-badge hero-logo-delay-2" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
+              <div className="hero-logo-badge hero-logo-delay-3" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
                 <img src="/images/logo/abcl.jpg" alt="ABCL Logo" />
               </div>
               <div className="hero-logo-line" />
-              <div className="hero-logo-badge hero-logo-delay-3" title="Srinivasan Lab">
+              <div className="hero-logo-badge hero-logo-delay-4" title="Srinivasan Lab">
                 <img src="/images/logo/srinivasan_lab.jpg" alt="Srinivasan Lab Logo" />
               </div>
               <div className="hero-logo-line" />
-              <div className="hero-logo-badge hero-logo-delay-4" title="Group for Energy Storage and Harvesting (GESH)">
+              <div className="hero-logo-badge hero-logo-delay-5" title="Group for Energy Storage and Harvesting (GESH)">
                 <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
               </div>
             </div>

@@ -324,6 +324,7 @@ h1, h2, h3, h4 {
 .hero-logo-delay-2 { animation-delay: 0.3s; }
 .hero-logo-delay-3 { animation-delay: 0.45s; }
 .hero-logo-delay-4 { animation-delay: 0.6s; }
+.hero-logo-delay-5 { animation-delay: 0.75s; }
 
 @keyframes heroVerticalSlideIn {
   from {

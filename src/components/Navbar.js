@@ -29,6 +29,10 @@ export default function Navbar() {
         {/* Right Controls for Mobile Header: Logos Strip + Hamburger Button */}
         <div className="mobile-header-right">
           <div className="mobile-logos-strip">
+            <div className="mobile-logo-item" title="IIT Bombay">
+              <img src="/images/logo/iitb.png" alt="IIT Bombay Logo" />
+            </div>
+            <span className="mobile-logo-divider">|</span>
             <div className="mobile-logo-item" title="Battery Research Society (BRS)">
               <img src="/images/logo/brs.jpg" alt="BRS Logo" />
             </div>
