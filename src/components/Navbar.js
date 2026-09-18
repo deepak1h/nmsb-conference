@@ -29,25 +29,25 @@ export default function Navbar() {
         {/* Right Controls for Mobile Header: Logos Strip + Hamburger Button */}
         <div className="mobile-header-right">
           <div className="mobile-logos-strip">
-            <div className="mobile-logo-item" title="IIT Bombay">
+            <a href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="IIT Bombay">
               <img src="/images/logo/iitb.png" alt="IIT Bombay Logo" />
-            </div>
+            </a>
             <span className="mobile-logo-divider">|</span>
-            <div className="mobile-logo-item" title="Battery Research Society (BRS)">
+            <a href="https://brsindia.org.in/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Battery Research Society (BRS)">
               <img src="/images/logo/brs.jpg" alt="BRS Logo" />
-            </div>
+            </a>
             <span className="mobile-logo-divider">|</span>
-            <div className="mobile-logo-item" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
+            <a href="https://htemlabiitb.wixsite.com/htem" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
               <img src="/images/logo/abcl.jpg" alt="ABCL Logo" />
-            </div>
+            </a>
             <span className="mobile-logo-divider">|</span>
-            <div className="mobile-logo-item" title="Srinivasan Lab">
+            <a href="https://www.srinivasan-lab.com/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Srinivasan Lab">
               <img src="/images/logo/srinivasan_lab.jpg" alt="Srinivasan Lab Logo" />
-            </div>
+            </a>
             <span className="mobile-logo-divider">|</span>
-            <div className="mobile-logo-item" title="Group for Energy Storage and Harvesting (GESH)">
+            <a href="https://gesh.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Group for Energy Storage and Harvesting (GESH)">
               <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
-            </div>
+            </a>
             <span className="mobile-logo-divider hamburger-separator">|</span>
           </div>
 

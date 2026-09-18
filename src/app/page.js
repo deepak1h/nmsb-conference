@@ -82,25 +82,25 @@ export default function Home() {
           <div style={{ display: "flex", gap: "28px", alignItems: "center" }}>
             {/* Vertical Hero Logos Strip (Left side of NMSB-2) */}
             <div className="hero-vertical-logos-container">
-              <div className="hero-logo-badge hero-logo-delay-1" title="IIT Bombay">
+              <a href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-1" title="IIT Bombay">
                 <img src="/images/logo/iitb.png" alt="IIT Bombay Logo" />
-              </div>
+              </a>
               <div className="hero-logo-line" />
-              <div className="hero-logo-badge hero-logo-delay-2" title="Battery Research Society (BRS)">
+              <a href="https://brsindia.org.in/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-2" title="Battery Research Society (BRS)">
                 <img src="/images/logo/brs.jpg" alt="BRS Logo" />
-              </div>
+              </a>
               <div className="hero-logo-line" />
-              <div className="hero-logo-badge hero-logo-delay-3" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
+              <a href="https://htemlabiitb.wixsite.com/htem" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-3" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
                 <img src="/images/logo/abcl.jpg" alt="ABCL Logo" />
-              </div>
+              </a>
               <div className="hero-logo-line" />
-              <div className="hero-logo-badge hero-logo-delay-4" title="Srinivasan Lab">
+              <a href="https://www.srinivasan-lab.com/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-4" title="Srinivasan Lab">
                 <img src="/images/logo/srinivasan_lab.jpg" alt="Srinivasan Lab Logo" />
-              </div>
+              </a>
               <div className="hero-logo-line" />
-              <div className="hero-logo-badge hero-logo-delay-5" title="Group for Energy Storage and Harvesting (GESH)">
+              <a href="https://gesh.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-5" title="Group for Energy Storage and Harvesting (GESH)">
                 <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
-              </div>
+              </a>
             </div>
 
             {/* Left Column: Headline & Content */}
