@@ -43,7 +43,7 @@ export default function Home() {
     },
     {
       name: "Prof. Srinivasan Ramakrishnan",
-      role: "Co-Chair",
+      role: "Vice Chair",
       department: "Department of Chemistry",
       org: "IIT Bombay",
       image: "/images/organiser/srinivasan_ramakrishnan.jpg"
@@ -86,20 +86,20 @@ export default function Home() {
                 <img src="/images/logo/iitb.png" alt="IIT Bombay Logo" />
               </a>
               <div className="hero-logo-line" />
-              <a href="https://brsindia.org.in/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-2" title="Battery Research Society (BRS)">
+              <a href="https://gesh.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-2" title="Group for Energy Storage and Harvesting (GESH)">
+                <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
+              </a>
+              <div className="hero-logo-line" />
+              <a href="https://brsindia.org.in/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-3" title="Battery Research Society (BRS)">
                 <img src="/images/logo/brs.jpg" alt="BRS Logo" />
               </a>
               <div className="hero-logo-line" />
-              <a href="https://htemlabiitb.wixsite.com/htem" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-3" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
-                <img src="/images/logo/abcl.jpg" alt="ABCL Logo" />
+              <a href="https://htemlabiitb.wixsite.com/htem" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-4" title="Advanced Batteries & Ceramics Laboratory (ABCL) / Amartya Lab">
+                <img src="/images/logo/abcl.jpg" alt="ABCL / Amartya Lab Logo" />
               </a>
               <div className="hero-logo-line" />
-              <a href="https://www.srinivasan-lab.com/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-4" title="Srinivasan Lab">
+              <a href="https://www.srinivasan-lab.com/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-5" title="Srinivasan Lab">
                 <img src="/images/logo/srinivasan_lab.jpg" alt="Srinivasan Lab Logo" />
-              </a>
-              <div className="hero-logo-line" />
-              <a href="https://gesh.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="hero-logo-badge hero-logo-delay-5" title="Group for Energy Storage and Harvesting (GESH)">
-                <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
               </a>
             </div>
 
@@ -110,19 +110,19 @@ export default function Home() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "10px",
-                padding: "8px 18px",
+                padding: "10px 22px",
                 backgroundColor: "rgba(67, 97, 238, 0.15)",
                 border: "1px solid rgba(67, 97, 238, 0.4)",
                 borderRadius: "50px",
                 color: "#60A5FA",
-                fontSize: "0.85rem",
+                fontSize: "1.05rem",
                 fontWeight: "700",
                 letterSpacing: "1.2px",
                 textTransform: "uppercase",
                 marginBottom: "20px",
                 backdropFilter: "blur(8px)"
               }}>
-                <svg width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
@@ -155,7 +155,7 @@ export default function Home() {
                 marginBottom: "24px",
                 lineHeight: "1.3"
               }}>
-                2ND NATIONAL MEETING ON <span style={{ color: "#60A5FA" }}>SODIUM(-ION) BATTERIES</span>
+                2<sup style={{ fontSize: "0.65em", verticalAlign: "super" }}>ND</sup> NATIONAL MEETING ON <span style={{ color: "#60A5FA" }}>SODIUM(-ION) BATTERIES</span>
               </h2>
 
               <p style={{ fontSize: "1.1rem", color: "#B0B4C0", marginBottom: "36px", maxWidth: "680px", lineHeight: "1.7", textAlign: "left" }}>

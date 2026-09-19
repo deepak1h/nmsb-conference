@@ -33,20 +33,20 @@ export default function Navbar() {
               <img src="/images/logo/iitb.png" alt="IIT Bombay Logo" />
             </a>
             <span className="mobile-logo-divider">|</span>
+            <a href="https://gesh.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Group for Energy Storage and Harvesting (GESH)">
+              <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
+            </a>
+            <span className="mobile-logo-divider">|</span>
             <a href="https://brsindia.org.in/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Battery Research Society (BRS)">
               <img src="/images/logo/brs.jpg" alt="BRS Logo" />
             </a>
             <span className="mobile-logo-divider">|</span>
-            <a href="https://htemlabiitb.wixsite.com/htem" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Advanced Batteries & Ceramics Laboratory (ABCL)">
-              <img src="/images/logo/abcl.jpg" alt="ABCL Logo" />
+            <a href="https://htemlabiitb.wixsite.com/htem" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Advanced Batteries & Ceramics Laboratory (ABCL) / Amartya Lab">
+              <img src="/images/logo/abcl.jpg" alt="ABCL / Amartya Lab Logo" />
             </a>
             <span className="mobile-logo-divider">|</span>
             <a href="https://www.srinivasan-lab.com/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Srinivasan Lab">
               <img src="/images/logo/srinivasan_lab.jpg" alt="Srinivasan Lab Logo" />
-            </a>
-            <span className="mobile-logo-divider">|</span>
-            <a href="https://gesh.iitb.ac.in/" target="_blank" rel="noopener noreferrer" className="mobile-logo-item" title="Group for Energy Storage and Harvesting (GESH)">
-              <img src="/images/logo/gesh.jpg" alt="GESH Logo" />
             </a>
             <span className="mobile-logo-divider hamburger-separator">|</span>
           </div>
@@ -87,7 +87,7 @@ export default function Navbar() {
             NMSB-1
           </Link>
           <Link href="/speakers" className={`nav-link ${pathname === "/speakers" ? "active" : ""}`} onClick={closeMobileMenu}>
-            Guest & Speaker
+            Guests & Speakers
           </Link>
           <Link href="/sponsors" className={`nav-link ${pathname === "/sponsors" ? "active" : ""}`} onClick={closeMobileMenu}>
             Sponsor

@@ -218,7 +218,7 @@ export const config = {
     },
     {
       name: "Prof. Srinivasan Ramakrishnan",
-      role: "Co-Chair",
+      role: "Vice Chair",
       department: "Department of Chemistry",
       org: "IIT Bombay",
       image: "/images/organiser/srinivasan_ramakrishnan.jpg"

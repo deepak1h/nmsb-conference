@@ -99,12 +99,12 @@ export default function Contact() {
 
             {/* Team Description & Highlights */}
             <div style={{ padding: "44px 40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <span className="agora-subtitle-badge" style={{ marginBottom: "12px" }}>CHAIR, CO-CHAIR & SECRETARIAT</span>
+              <span className="agora-subtitle-badge" style={{ marginBottom: "12px" }}>CHAIR, VICE CHAIR & SECRETARIAT</span>
               <h2 style={{ fontSize: "2rem", color: "var(--agora-text-dark)", marginBottom: "16px", lineHeight: "1.2" }}>
                 Dedicated to Advancing Energy Innovation
               </h2>
               <p style={{ color: "var(--agora-text-muted)", fontSize: "1rem", lineHeight: "1.7", marginBottom: "20px" }}>
-                Led by <strong>Prof. Amartya Mukhopadhyay</strong> (Chair) and <strong>Prof. Srinivasan Ramakrishnan</strong> (Co-Chair), our committee of faculty members, postdoctoral scholars, and research fellows at IIT Bombay ensures a seamless conference experience.
+                Led by <strong>Prof. Amartya Mukhopadhyay</strong> (Chair) and <strong>Prof. Srinivasan Ramakrishnan</strong> (Vice Chair), our committee of faculty members, postdoctoral scholars, and research fellows at IIT Bombay ensures a seamless conference experience.
               </p>
               <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", fontSize: "0.9rem", color: "var(--agora-text-dark)", fontWeight: "600" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -177,7 +177,7 @@ export default function Contact() {
               border: "1px solid var(--agora-border-light)",
               boxShadow: "var(--shadow-agora)"
             }}>
-              <h3 style={{ fontSize: "1.2rem", marginBottom: "12px", color: "var(--agora-text-dark)" }}>Chair & Co-Chair</h3>
+              <h3 style={{ fontSize: "1.2rem", marginBottom: "12px", color: "var(--agora-text-dark)" }}>Chair & Vice Chair</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "12px", fontSize: "0.95rem" }}>
                 <div>
                   <div style={{ fontWeight: "700", color: "var(--agora-text-dark)" }}>Prof. Amartya Mukhopadhyay</div>
@@ -185,7 +185,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div style={{ fontWeight: "700", color: "var(--agora-text-dark)" }}>Prof. Srinivasan Ramakrishnan</div>
-                  <div style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>Co-Chair, NMSB-2 • IIT Bombay</div>
+                  <div style={{ fontSize: "0.85rem", color: "var(--agora-text-muted)" }}>Vice Chair, NMSB-2 • IIT Bombay</div>
                 </div>
               </div>
             </div>

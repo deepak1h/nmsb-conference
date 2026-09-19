@@ -283,11 +283,11 @@ h1, h2, h3, h4 {
 }
 
 .hero-logo-badge {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
+  width: 66px;
+  height: 66px;
+  border-radius: 14px;
   background-color: #FFFFFF;
-  padding: 4px;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -309,12 +309,12 @@ h1, h2, h3, h4 {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .hero-logo-line {
   width: 2px;
-  height: 16px;
+  height: 10px;
   background: linear-gradient(to bottom, var(--agora-blue), rgba(67, 97, 238, 0.2));
   border-radius: 2px;
   animation: heroLinePulse 2s infinite ease-in-out;
@@ -737,9 +737,9 @@ h1, h2, h3, h4 {
   }
 
   .mobile-logo-item {
-    width: 26px;
-    height: 26px;
-    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
     background-color: #FFFFFF;
     padding: 2px;
     display: flex;

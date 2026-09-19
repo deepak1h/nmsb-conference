@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { config } from "../../config/variables";
 
 export default function Speakers() {
@@ -59,7 +60,7 @@ export default function Speakers() {
 
             {/* Subtitle Badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
-              <span className="agora-subtitle-badge" style={{ margin: 0 }}>GUEST & SPEAKERS PORTAL</span>
+              <span className="agora-subtitle-badge" style={{ margin: 0 }}>GUESTS & SPEAKERS PORTAL</span>
               <span style={{
                 backgroundColor: "var(--agora-blue)",
                 color: "#FFFFFF",
@@ -180,9 +181,9 @@ export default function Speakers() {
               <span style={{ fontSize: "0.95rem", color: "var(--agora-text-dark)", fontWeight: "600" }}>
                 For speaker inquiries or session proposals:
               </span>
-              <a href="mailto:nmsb.iitb@gmail.com" className="btn-agora-blue" style={{ padding: "8px 20px", fontSize: "0.8rem" }}>
+              <Link href="/contact" className="btn-agora-blue" style={{ padding: "8px 20px", fontSize: "0.8rem" }}>
                 CONTACT SECRETARIAT →
-              </a>
+              </Link>
             </div>
 
           </div>

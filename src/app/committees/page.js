@@ -12,7 +12,7 @@ export default function Committees() {
     },
     {
       name: "Prof. Srinivasan Ramakrishnan",
-      role: "Co-Chair",
+      role: "Vice Chair",
       department: "Department of Chemistry",
       org: "IIT Bombay",
       image: "/images/organiser/srinivasan_ramakrishnan.jpg"
@@ -25,7 +25,7 @@ export default function Committees() {
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
           <span className="agora-subtitle-badge">LEADERSHIP & COMMITTEE</span>
           <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "3.5rem" }}>
-            CONFERENCE CHAIR & CO-CHAIR
+            CONFERENCE CHAIR & VICE CHAIR
           </h1>
           <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "12px", maxWidth: "700px", margin: "12px auto 0" }}>
             Leading scientists and academic chairs spearheading NMSB-2 at IIT Bombay.
