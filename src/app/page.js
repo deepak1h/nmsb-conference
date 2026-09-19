@@ -408,11 +408,11 @@ export default function Home() {
               })
               .map((item, idx) => (
                 <div key={idx} className="agora-schedule-row">
-                  <div style={{ flex: "0 0 200px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.05rem" }}>
+                  <div className="schedule-time-badge" style={{ flex: "0 0 200px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.05rem" }}>
                     {item.time}
                   </div>
-                  <div style={{ flex: "1 1 auto" }}>
-                    <h3 style={{ fontSize: "1.2rem", marginBottom: "4px" }}>{item.title}</h3>
+                  <div style={{ flex: "1 1 auto", minWidth: 0 }}>
+                    <h3 style={{ fontSize: "1.2rem", marginBottom: "4px", wordBreak: "break-word" }}>{item.title}</h3>
                     <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)" }}>
                       {item.speaker} &nbsp;•&nbsp; Location: {item.location}
                     </p>
@@ -610,7 +610,7 @@ export default function Home() {
       {/* Section 5: Delegate Registration Information & Callout Banner */}
       <div style={{ padding: "100px 0", backgroundColor: "var(--agora-light-bg)" }}>
         <div className="container">
-          <div style={{
+          <div className="registration-callout-card" style={{
             backgroundColor: "var(--agora-dark-bg)",
             color: "#FFFFFF",
             borderRadius: "8px",
@@ -619,7 +619,7 @@ export default function Home() {
             overflow: "hidden",
             boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "40px",
             alignItems: "center"
           }}>
@@ -627,10 +627,10 @@ export default function Home() {
               <span className="agora-subtitle-badge" style={{ color: "var(--agora-blue)", borderBottomColor: "var(--agora-blue)" }}>
                 NATIONAL DELEGATE PORTAL
               </span>
-              <h2 style={{ fontSize: "2.8rem", lineHeight: "1.15", margin: "16px 0", color: "#FFFFFF" }}>
+              <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2.8rem)", lineHeight: "1.15", margin: "16px 0", color: "#FFFFFF", wordBreak: "break-word" }}>
                 REGISTER FOR NMSB-2 AT IIT BOMBAY
               </h2>
-              <p style={{ fontSize: "1.1rem", color: "#A0A5B5", lineHeight: "1.7", marginBottom: "24px" }}>
+              <p style={{ fontSize: "clamp(0.95rem, 2.5vw, 1.1rem)", color: "#A0A5B5", lineHeight: "1.7", marginBottom: "24px" }}>
                 Registration is open for Academic Faculty, Scientists, Industry Delegates, and Researchers. Passes include full access to technical lectures, poster sessions, exhibits, networking dinners, refreshments, and conference kits.
               </p>
 

@@ -813,8 +813,8 @@ h4 {
   }
 
   .mobile-logo-item {
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     border-radius: 6px;
     background-color: #FFFFFF;
     padding: 1.5px;
@@ -962,8 +962,8 @@ h4 {
   }
 
   .mobile-logo-item {
-    width: 24px !important;
-    height: 24px !important;
+    width: 28px !important;
+    height: 28px !important;
     padding: 2px !important;
   }
 
@@ -1065,5 +1065,55 @@ h4 {
     display: block !important;
     opacity: 1 !important;
     border-radius: 2px !important;
+  }
+}
+
+/* Registration Callout Mobile Fixes */
+@media (max-width: 768px) {
+  .registration-callout-card {
+    padding: 32px 20px !important;
+    gap: 24px !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-callout-card {
+    padding: 24px 16px !important;
+    gap: 20px !important;
+  }
+}
+
+/* Schedule Mobile Responsive Fixes */
+@media (max-width: 768px) {
+  .programme-schedule-card {
+    padding: 24px 16px !important;
+  }
+
+  .agora-schedule-tab {
+    padding: 10px 12px !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.5px !important;
+    flex: 1 !important;
+    text-align: center !important;
+  }
+
+  .agora-schedule-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 18px 0 !important;
+  }
+
+  .schedule-time-badge {
+    flex: none !important;
+    width: auto !important;
+    max-width: 100% !important;
+    font-size: 0.88rem !important;
+    background: rgba(67, 97, 238, 0.08) !important;
+    color: var(--agora-blue) !important;
+    padding: 4px 12px !important;
+    border-radius: 6px !important;
+    display: inline-block !important;
   }
 }

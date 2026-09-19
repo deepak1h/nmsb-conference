@@ -129,9 +129,6 @@ export default function Sponsors() {
               </div>
             </div>
 
-            {/* Central Divider */}
-            <div style={{ width: "2px", height: "80px", backgroundColor: "var(--agora-border-light)", borderRadius: "2px" }} />
-
             {/* GESH IIT Bombay Logo Card */}
             <a
               href="https://gesh.iitb.ac.in/"

@@ -99,7 +99,7 @@ export default function Navbar() {
             Contact Us
           </Link>
           <a
-            href="https://www.nmbrs26.com/"
+            href="https://brsindia.org.in/"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link"

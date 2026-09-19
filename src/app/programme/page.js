@@ -42,7 +42,7 @@ export default function Programme() {
           </div>
         </div>
 
-        <div style={{ backgroundColor: "var(--agora-card-bg)", padding: "48px", borderRadius: "12px", border: "1px solid var(--agora-border-light)", boxShadow: "var(--shadow-agora)" }}>
+        <div className="programme-schedule-card" style={{ backgroundColor: "var(--agora-card-bg)", padding: "48px", borderRadius: "12px", border: "1px solid var(--agora-border-light)", boxShadow: "var(--shadow-agora)" }}>
           <div style={{ display: "flex", gap: "16px", borderBottom: "2px solid var(--agora-border-light)", marginBottom: "24px", flexWrap: "wrap" }}>
             <button onClick={() => setActiveDay(1)} className={`agora-schedule-tab ${activeDay === 1 ? "active" : ""}`}>
               DAY #1 (22 NOV)
@@ -67,11 +67,11 @@ export default function Programme() {
           <div>
             {scheduleData[activeDay].map((item, idx) => (
               <div key={idx} className="agora-schedule-row" style={{ padding: "20px 0" }}>
-                <div style={{ flex: "0 0 210px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.05rem" }}>
+                <div className="schedule-time-badge" style={{ flex: "0 0 210px", fontWeight: "700", color: "var(--agora-blue)", fontSize: "1.05rem" }}>
                   {item.time}
                 </div>
-                <div style={{ flex: "1 1 auto" }}>
-                  <h3 style={{ fontSize: "1.25rem", marginBottom: "4px" }}>{item.title}</h3>
+                <div style={{ flex: "1 1 auto", minWidth: 0 }}>
+                  <h3 style={{ fontSize: "1.25rem", marginBottom: "4px", wordBreak: "break-word" }}>{item.title}</h3>
                   {item.details && (
                     <p style={{ fontSize: "0.95rem", color: "var(--agora-text-dark)", marginBottom: "6px" }}>
                       {item.details}
