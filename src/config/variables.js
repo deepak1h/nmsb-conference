@@ -3,7 +3,7 @@ export const config = {
   showSponsors: true, // Enable full Sponsorship page and inquiry portal
   conference: {
     name: "2nd National Meeting on Sodium(-ion) Batteries",
-    shortName: "NMSB2",
+    shortName: "NMSB-2",
     dates: "22-24 November 2026",
     venue: "ASPIRE - IIT Bombay Research Park, Mumbai, India",
     tagline: "Building on the success of NMSB-1 (in 2024), NMSB-2 will again bring together representatives from academia, industry/startups, and government agencies to discuss, deliberate, and pave the way towards advancing Sodium Ion battery technology, deployment, and commercialisation.",

@@ -106,23 +106,8 @@ export default function Home() {
             {/* Left Column: Headline & Content */}
             <div style={{ textAlign: "left", maxWidth: "850px", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
               {/* Top Venue & Date Badge (Above Title) */}
-              <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "10px 22px",
-                backgroundColor: "rgba(67, 97, 238, 0.15)",
-                border: "1px solid rgba(67, 97, 238, 0.4)",
-                borderRadius: "50px",
-                color: "#60A5FA",
-                fontSize: "1.05rem",
-                fontWeight: "700",
-                letterSpacing: "1.2px",
-                textTransform: "uppercase",
-                marginBottom: "20px",
-                backdropFilter: "blur(8px)"
-              }}>
-                <svg width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+              <div className="hero-venue-date-badge">
+                <svg width="17" height="17" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" style={{ flexShrink: 0 }}>
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
