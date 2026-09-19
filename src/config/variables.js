@@ -1,6 +1,6 @@
 export const config = {
   showSpeakers: false, // Set to true to reveal the full Speakers page and homepage section
-  showSponsors: false, // Set to true to reveal the full Sponsorship page and inquiry portal
+  showSponsors: true, // Enable full Sponsorship page and inquiry portal
   conference: {
     name: "2nd National Meeting on Sodium(-ion) Batteries",
     shortName: "NMSB-2",
@@ -9,6 +9,7 @@ export const config = {
     tagline: "Building on the success of NMSB-1 (in 2024), NMSB-2 will again bring together representatives from academia, industry/startups, and government agencies to discuss, deliberate, and pave the way towards advancing Sodium Ion battery technology, deployment, and commercialisation.",
     contactEmail: "nmsb.iitb@gmail.com",
     pdfScheduleUrl: "/files/NMSB-2_Programme_Schedule.pdf",
+    pdfSponsorshipUrl: "/files/NMSB-2_Sponsorship_brochure.pdf",
   },
   schedule: {
     1: [
@@ -88,7 +89,8 @@ export const config = {
     ]
   },
   sponsors: {
-    email: "nmsb.iitb@gmail.com"
+    email: "nmsb.iitb@gmail.com",
+    pdfBrochureUrl: "/files/NMSB-2_Sponsorship_brochure.pdf"
   },
   payment: {
     bankDetails: {

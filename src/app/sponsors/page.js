@@ -14,422 +14,809 @@ export default function Sponsors() {
     message: ""
   });
 
+  const brochureUrl = config.sponsors?.pdfBrochureUrl || "/files/NMSB-2_Sponsorship_brochure.pdf";
+
   const handleInquirySubmit = (e) => {
     e.preventDefault();
     setInquirySubmitted(true);
   };
 
-  if (!config.showSponsors) {
-    return (
-      <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "100px 0", minHeight: "85vh", display: "flex", alignItems: "center" }}>
-        <div className="container" style={{ maxWidth: "1000px" }}>
-          <div style={{
-            backgroundColor: "#FFFFFF",
-            borderRadius: "24px",
-            border: "1px solid var(--agora-border-light)",
-            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.08)",
-            padding: "60px 40px",
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden"
-          }}>
-            {/* Ambient Background Glow */}
-            <div style={{
-              position: "absolute",
-              top: "-100px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "400px",
-              height: "400px",
-              background: "radial-gradient(circle, rgba(67, 97, 238, 0.12) 0%, rgba(255, 255, 255, 0) 70%)",
-              pointerEvents: "none"
-            }} />
-
-            {/* Subtitle Badge */}
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
-              <span className="agora-subtitle-badge" style={{ margin: 0 }}>SPONSORSHIP PORTAL</span>
-              <span style={{
-                backgroundColor: "var(--agora-blue)",
-                color: "#FFFFFF",
-                fontSize: "0.7rem",
-                fontWeight: "800",
-                padding: "4px 12px",
-                borderRadius: "12px",
-                letterSpacing: "1px"
-              }}>
-                OPENS SHORTLY
-              </span>
-            </div>
-
-            {/* Animated Micro Icon */}
-            <div style={{
-              width: "90px",
-              height: "90px",
-              borderRadius: "50%",
-              backgroundColor: "rgba(67, 97, 238, 0.08)",
-              border: "2px solid var(--agora-blue)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              margin: "0 auto 28px",
-              color: "var(--agora-blue)",
-              boxShadow: "0 10px 25px rgba(67, 97, 238, 0.18)"
-            }}>
-              <svg width="44" height="44" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </div>
-
-            <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "clamp(2.5rem, 5vw, 3.8rem)", marginBottom: "16px" }}>
-              COMING SOON
-            </h1>
-
-            <p style={{ color: "var(--agora-text-muted)", fontSize: "1.15rem", lineHeight: "1.7", maxWidth: "720px", margin: "0 auto 40px" }}>
-              Sponsorship tiers (Platinum, Gold, Silver), booth allocation details, and Start-up Showcase applications for <strong>NMSB-2</strong> will be officially launched shortly.
-            </p>
-
-            {/* Feature Highlights Grid */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "24px",
-              textAlign: "left",
-              marginBottom: "44px"
-            }}>
-              <div style={{
-                backgroundColor: "var(--agora-light-bg)",
-                padding: "24px",
-                borderRadius: "16px",
-                border: "1px solid var(--agora-border-light)"
-              }}>
-                <div style={{ color: "var(--agora-blue)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                  </svg>
-                  <strong style={{ fontSize: "1rem", color: "var(--agora-text-dark)" }}>Exhibition Booths</strong>
-                </div>
-                <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)", margin: 0, lineHeight: "1.5" }}>
-                  Dedicated stall spaces at ASPIRE - IIT Bombay Research Park for showcasing battery hardware & analytical instruments.
-                </p>
-              </div>
-
-              <div style={{
-                backgroundColor: "var(--agora-light-bg)",
-                padding: "24px",
-                borderRadius: "16px",
-                border: "1px solid var(--agora-border-light)"
-              }}>
-                <div style={{ color: "var(--agora-blue)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                  </svg>
-                  <strong style={{ fontSize: "1rem", color: "var(--agora-text-dark)" }}>Start-up Showcase</strong>
-                </div>
-                <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)", margin: 0, lineHeight: "1.5" }}>
-                  10-minute live investor pitch slot, exhibition space, and profile feature in the NMSB-2 Abstract Book.
-                </p>
-              </div>
-
-              <div style={{
-                backgroundColor: "var(--agora-light-bg)",
-                padding: "24px",
-                borderRadius: "16px",
-                border: "1px solid var(--agora-border-light)"
-              }}>
-                <div style={{ color: "var(--agora-blue)", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                  </svg>
-                  <strong style={{ fontSize: "1rem", color: "var(--agora-text-dark)" }}>High-Impact Branding</strong>
-                </div>
-                <p style={{ fontSize: "0.88rem", color: "var(--agora-text-muted)", margin: 0, lineHeight: "1.5" }}>
-                  Prominent placement across conference backdrops, website, banners, delegate kits, and technical session hosting.
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom Contact Callout */}
-            <div style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "16px",
-              backgroundColor: "rgba(67, 97, 238, 0.05)",
-              padding: "16px 28px",
-              borderRadius: "50px",
-              border: "1px solid rgba(67, 97, 238, 0.2)",
-              flexWrap: "wrap",
-              justifyContent: "center"
-            }}>
-              <span style={{ fontSize: "0.95rem", color: "var(--agora-text-dark)", fontWeight: "600" }}>
-                For early sponsorship inquiries or custom partnerships:
-              </span>
-              <a href="mailto:nmsb.iitb@gmail.com" className="btn-agora-blue" style={{ padding: "8px 20px", fontSize: "0.8rem" }}>
-                CONTACT SECRETARIAT →
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const handleTierClick = (tierName) => {
+    setFormData((prev) => ({ ...prev, tier: tierName }));
+    setShowInquiry(true);
+    // Smooth scroll to form if already open
+    const formElement = document.getElementById("sponsorship-inquiry-section");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0" }}>
+    <div style={{ backgroundColor: "var(--agora-light-bg)", padding: "80px 0", minHeight: "100vh" }}>
       <div className="container">
-        
-        {/* Header Title */}
+
+        {/* Hero Header */}
         <div style={{ textAlign: "center", marginBottom: "50px" }}>
-          <span className="agora-subtitle-badge">INDUSTRY & SPONSORSHIP PORTAL</span>
-          <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "3.2rem" }}>
-            SPONSORSHIPS & EXHIBITION
+          <span className="agora-subtitle-badge">NMSB-2 — SPONSORSHIP OPPORTUNITIES</span>
+          <h1 className="agora-hero-headline" style={{ color: "var(--agora-text-dark)", fontSize: "clamp(2.5rem, 5vw, 3.8rem)", marginTop: "10px" }}>
+            PARTNER & SPONSOR NMSB-2
           </h1>
-          <p style={{ color: "var(--agora-text-muted)", fontSize: "1.1rem", marginTop: "10px", maxWidth: "750px", margin: "10px auto 0" }}>
-            Showcase your sodium-ion battery innovations, cell manufacturing technologies, and active materials to top researchers, investors, and policymakers at IIT Bombay.
+          <p style={{ color: "var(--agora-text-muted)", fontSize: "1.15rem", marginTop: "16px", maxWidth: "850px", margin: "16px auto 0", lineHeight: "1.75" }}>
+            As a sponsor, your organization will play a pivotal role towards enabling the organization of NMSB-2. Your support will enable us to bring academia, national laboratories, industries and start-ups together to discuss Na-ion battery science, showcase technologies and promote collaboration/leadership pertaining to sustainable and India-centric energy storage solutions.
           </p>
+
+          {/* Action Buttons: Download Brochure & Inquire */}
+          <div style={{ display: "flex", gap: "16px", justifyContent: "center", marginTop: "32px", flexWrap: "wrap" }}>
+            <a
+              href={brochureUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="NMSB-2_Sponsorship_brochure.pdf"
+              className="btn-agora-blue"
+              style={{ padding: "14px 28px", fontSize: "0.95rem", display: "inline-flex", alignItems: "center", gap: "10px" }}
+            >
+              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>DOWNLOAD SPONSORSHIP BROCHURE (PDF)</span>
+            </a>
+
+            <button
+              onClick={() => handleTierClick("Platinum Sponsor")}
+              className="btn-agora-outlined"
+              style={{ padding: "14px 28px", fontSize: "0.95rem" }}
+            >
+              BECOME A SPONSOR →
+            </button>
+          </div>
         </div>
 
-        {/* Start-up Showcase Banner (Opening Shortly Notice) */}
+        {/* Top Featured Sponsor Logos Showcase */}
         <div style={{
-          backgroundColor: "var(--agora-dark-bg)",
-          color: "#FFFFFF",
-          borderRadius: "8px",
-          padding: "48px",
-          marginBottom: "60px",
-          boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "40px",
-          alignItems: "center"
+          backgroundColor: "#FFFFFF",
+          borderRadius: "20px",
+          border: "1px solid var(--agora-border-light)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+          padding: "36px 40px",
+          marginBottom: "50px",
+          textAlign: "center"
         }}>
-          <div>
-            <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "12px" }}>
-              <span className="agora-subtitle-badge" style={{ color: "var(--agora-blue)", borderBottomColor: "var(--agora-blue)" }}>
-                PITCH & EXHIBIT
-              </span>
-              <span className="pill-badge" style={{ backgroundColor: "var(--agora-blue)", color: "#FFFFFF", padding: "4px 12px", borderRadius: "12px", fontSize: "0.7rem", fontWeight: "800" }}>
-                OPENS SHORTLY
-              </span>
-            </div>
-            <h2 style={{ fontSize: "2.4rem", lineHeight: "1.2", margin: "16px 0", color: "#FFFFFF" }}>
-              START-UP SHOWCASE PORTAL
-            </h2>
-            <p style={{ fontSize: "1.05rem", color: "#A0A5B5", lineHeight: "1.7", marginBottom: "24px" }}>
-              Participating start-ups receive a dedicated exhibition table, a 10-minute investor pitch slot during Session 2, full delegate passes, and inclusion in the NMSB-2 abstract book. Online application opens shortly.
-            </p>
+          <h2 style={{ fontSize: "2rem", color: "var(--agora-text-dark)", fontWeight: "900", marginBottom: "28px" }}>
+            SPONSORS
+          </h2>
 
-            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              <button className="btn-agora-outlined" disabled={true} style={{ color: "#A0A5B5", borderColor: "#A0A5B5", opacity: 0.7, cursor: "not-allowed" }}>
-                START-UP APPLICATION OPENS SHORTLY
-              </button>
-              <button className="btn-agora-outlined" style={{ color: "#FFFFFF", borderColor: "#FFFFFF" }} onClick={() => alert("Downloading Start-up Showcase Info (.pdf)...")}>
-                DOWNLOAD START-UP BROCHURE
-              </button>
+          <div style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "56px",
+            flexWrap: "wrap"
+          }}>
+            {/* VaultIonix Energy Logo Card */}
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "12px"
+            }}>
+              <div className="speaker-card-hover" style={{
+                width: "150px",
+                height: "105px",
+                borderRadius: "16px",
+                backgroundColor: "#FFFFFF",
+                padding: "14px",
+                border: "2px solid rgba(67, 97, 238, 0.25)",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+                <img
+                  src="/images/logo/vaultonix.jpg"
+                  alt="VaultIonix Energy Logo"
+                  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+                />
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <span style={{ fontSize: "1.1rem", fontWeight: "800", color: "var(--agora-text-dark)", display: "block" }}>
+                  VaultIonix Energy
+                </span>
+                <span style={{ fontSize: "0.82rem", color: "var(--agora-blue)", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                  Sponsor
+                </span>
+              </div>
             </div>
+
+            {/* Central Divider */}
+            <div style={{ width: "2px", height: "80px", backgroundColor: "var(--agora-border-light)", borderRadius: "2px" }} />
+
+            {/* GESH IIT Bombay Logo Card */}
+            <a
+              href="https://gesh.iitb.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "12px",
+                textDecoration: "none"
+              }}
+            >
+              <div className="speaker-card-hover" style={{
+                width: "150px",
+                height: "105px",
+                borderRadius: "16px",
+                backgroundColor: "#FFFFFF",
+                padding: "14px",
+                border: "2px solid rgba(67, 97, 238, 0.25)",
+                boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+                <img
+                  src="/images/logo/gesh.jpg"
+                  alt="GESH IIT Bombay Logo"
+                  style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
+                />
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <span style={{ fontSize: "1.1rem", fontWeight: "800", color: "var(--agora-text-dark)", display: "block" }}>
+                  GESH • IIT Bombay
+                </span>
+                <span style={{ fontSize: "0.82rem", color: "var(--agora-blue)", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+                  Sponsor
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        {/* Event Key Details Banner */}
+        <div style={{
+          backgroundColor: "#FFFFFF",
+          borderRadius: "20px",
+          border: "1px solid var(--agora-border-light)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+          padding: "32px 36px",
+          marginBottom: "60px"
+        }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "24px"
+          }}>
+            <div style={{ borderLeft: "4px solid var(--agora-blue)", paddingLeft: "16px" }}>
+              <div style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "1px", color: "var(--agora-text-muted)", fontWeight: "700", marginBottom: "4px" }}>
+                EVENT & DATES
+              </div>
+              <div style={{ fontSize: "1.05rem", fontWeight: "800", color: "var(--agora-text-dark)" }}>
+                NMSB-2 • 22–24 Nov 2026
+              </div>
+            </div>
+
+            <div style={{ borderLeft: "4px solid var(--agora-blue)", paddingLeft: "16px" }}>
+              <div style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "1px", color: "var(--agora-text-muted)", fontWeight: "700", marginBottom: "4px" }}>
+                VENUE
+              </div>
+              <div style={{ fontSize: "1.05rem", fontWeight: "800", color: "var(--agora-text-dark)" }}>
+                Research Park (ASPIRE), IIT Bombay
+              </div>
+            </div>
+
+            <div style={{ borderLeft: "4px solid var(--agora-blue)", paddingLeft: "16px" }}>
+              <div style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "1px", color: "var(--agora-text-muted)", fontWeight: "700", marginBottom: "4px" }}>
+                CO-ORGANIZED BY
+              </div>
+              <div style={{ fontSize: "0.95rem", fontWeight: "800", color: "var(--agora-text-dark)" }}>
+                GESH, IIT Bombay & BRS India
+              </div>
+            </div>
+
+            <div style={{ borderLeft: "4px solid var(--agora-blue)", paddingLeft: "16px" }}>
+              <div style={{ fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "1px", color: "var(--agora-text-muted)", fontWeight: "700", marginBottom: "4px" }}>
+                SUPPORTED BY
+              </div>
+              <div style={{ fontSize: "0.95rem", fontWeight: "800", color: "var(--agora-text-dark)" }}>
+                Institute of Eminence (IoE), IIT Bombay
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4 Sponsorship Tiers Section (Platinum, Gold, Silver, Bronze) */}
+        <div style={{ marginBottom: "70px" }}>
+          <div style={{ textAlign: "center", marginBottom: "44px" }}>
+            <span className="agora-subtitle-badge">SPONSORSHIP PACKAGES</span>
+            <h2 style={{ fontSize: "2.4rem", color: "var(--agora-text-dark)", marginTop: "6px" }}>
+              SELECT YOUR SPONSORSHIP TIER
+            </h2>
+            <p style={{ color: "var(--agora-text-muted)", fontSize: "1.05rem", marginTop: "8px" }}>
+              Comprehensive packages designed for maximum brand exposure, presentation slots, and exhibition stalls.
+            </p>
           </div>
 
           <div style={{
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
-            padding: "32px",
-            borderRadius: "6px",
-            border: "1px solid rgba(255, 255, 255, 0.12)"
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
+            gap: "28px"
           }}>
-            <h4 style={{ fontSize: "1.2rem", color: "#FFFFFF", marginBottom: "16px" }}>START-UP PARTICIPATION BENEFITS</h4>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: "0.95rem", color: "#D0D5E5", display: "flex", flexDirection: "column", gap: "12px" }}>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated Exhibition Table & Display Space</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 10-Min Live Investor & VC Pitch Slot</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 Full Technical Delegate Passes</li>
-              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Logo & Profile in Conference Abstract Book</li>
-            </ul>
-          </div>
-        </div>
 
-        {/* Sponsorship Tiers Section */}
-        <div style={{ marginBottom: "60px" }}>
-          <div style={{ textAlign: "center", marginBottom: "40px" }}>
-            <span className="agora-subtitle-badge">SPONSORSHIP PACKAGES</span>
-            <h2 style={{ fontSize: "2.5rem" }}>PARTNER WITH NMSB-2</h2>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "30px" }}>
-            
-            {/* Platinum Tier */}
-            <div style={{ backgroundColor: "var(--agora-card-bg)", padding: "36px", borderRadius: "8px", border: "2px solid #E5E4E2", boxShadow: "var(--shadow-agora)", position: "relative" }}>
-              <div style={{ position: "absolute", top: "-12px", right: "20px", background: "#E5E4E2", color: "#0B0C10", padding: "4px 12px", borderRadius: "12px", fontSize: "0.75rem", fontWeight: "900" }}>
+            {/* 1. Platinum Sponsor */}
+            <div
+              className="agora-pricing-card speaker-card-hover"
+              style={{
+                backgroundColor: "#FFFFFF",
+                padding: "36px 28px",
+                borderRadius: "20px",
+                border: "2px solid #E5E4E2",
+                boxShadow: "0 12px 36px rgba(0, 0, 0, 0.08)",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between"
+              }}
+            >
+              <div style={{
+                position: "absolute",
+                top: "-14px",
+                right: "24px",
+                background: "linear-gradient(135deg, #E5E4E2 0%, #B4B4B4 100%)",
+                color: "#0B0C10",
+                padding: "4px 14px",
+                borderRadius: "14px",
+                fontSize: "0.75rem",
+                fontWeight: "900",
+                letterSpacing: "1px",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.15)"
+              }}>
                 PLATINUM TIER
               </div>
-              <h3 style={{ fontSize: "1.6rem", marginBottom: "12px" }}>PLATINUM SPONSOR</h3>
-              <p style={{ color: "var(--agora-text-muted)", fontSize: "0.9rem", marginBottom: "20px" }}>Prime branding, keynote slot, and maximum visibility.</p>
-              
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", fontSize: "0.9rem", color: "var(--agora-text-dark)", display: "flex", flexDirection: "column", gap: "10px" }}>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Prime Exhibition Booth in Main Hall</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 15-Min Keynote Industry Session Slot</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 5 Complimentary Delegate Passes</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Full Back-Cover Ad in Abstract Book</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> VIP Conference Dinner Hosting Rights</li>
-              </ul>
 
-              <button className="btn-agora-blue" style={{ width: "100%" }} onClick={() => { setFormData({ ...formData, tier: "Platinum Sponsor" }); setShowInquiry(true); }}>
+              <div>
+                <div style={{ fontSize: "0.8rem", color: "var(--agora-blue)", fontWeight: "800", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>
+                  PREMIUM PARTNER
+                </div>
+                <h3 style={{ fontSize: "1.75rem", fontWeight: "900", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                  PLATINUM SPONSOR
+                </h3>
+                <div style={{ fontSize: "2.2rem", fontWeight: "900", color: "var(--agora-blue)", marginBottom: "20px" }}>
+                  ₹3.5 Lakh
+                </div>
+
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", fontSize: "0.92rem", color: "var(--agora-text-dark)", display: "flex", flexDirection: "column", gap: "12px", textAlign: "left" }}>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span><strong>10 min Presentation Slot</strong> during main conference session</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span><strong>Premium Stall Space</strong> at ASPIRE Research Park</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Name + Logo in all materials pre-event, event and post-event, banners, kits, memento etc.</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Mention during inaugural and closing remarks</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                className="btn-agora-blue"
+                style={{ width: "100%", padding: "12px", fontSize: "0.85rem" }}
+                onClick={() => handleTierClick("Platinum Sponsor")}
+              >
                 INQUIRE PLATINUM TIER →
               </button>
             </div>
 
-            {/* Gold Tier */}
-            <div style={{ backgroundColor: "var(--agora-card-bg)", padding: "36px", borderRadius: "8px", border: "2px solid #FFD700", boxShadow: "var(--shadow-agora)", position: "relative" }}>
-              <div style={{ position: "absolute", top: "-12px", right: "20px", background: "#FFD700", color: "#0B0C10", padding: "4px 12px", borderRadius: "12px", fontSize: "0.75rem", fontWeight: "900" }}>
+            {/* 2. Gold Sponsor */}
+            <div
+              className="agora-pricing-card speaker-card-hover"
+              style={{
+                backgroundColor: "#FFFFFF",
+                padding: "36px 28px",
+                borderRadius: "20px",
+                border: "2px solid #D4AF37",
+                boxShadow: "0 12px 36px rgba(0, 0, 0, 0.08)",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between"
+              }}
+            >
+              <div style={{
+                position: "absolute",
+                top: "-14px",
+                right: "24px",
+                background: "linear-gradient(135deg, #FFD700 0%, #D4AF37 100%)",
+                color: "#0B0C10",
+                padding: "4px 14px",
+                borderRadius: "14px",
+                fontSize: "0.75rem",
+                fontWeight: "900",
+                letterSpacing: "1px",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.15)"
+              }}>
                 GOLD TIER
               </div>
-              <h3 style={{ fontSize: "1.6rem", marginBottom: "12px" }}>GOLD SPONSOR</h3>
-              <p style={{ color: "var(--agora-text-muted)", fontSize: "0.9rem", marginBottom: "20px" }}>High-profile exhibition and technical session sponsorship.</p>
-              
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", fontSize: "0.9rem", color: "var(--agora-text-dark)", display: "flex", flexDirection: "column", gap: "10px" }}>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Standard Exhibition Booth</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Technical Session Co-sponsorship</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 3 Complimentary Delegate Passes</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Full-Page Ad in Abstract Book</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Logo on Banners & Website</li>
-              </ul>
 
-              <button className="btn-agora-blue" style={{ width: "100%" }} onClick={() => { setFormData({ ...formData, tier: "Gold Sponsor" }); setShowInquiry(true); }}>
+              <div>
+                <div style={{ fontSize: "0.8rem", color: "#D4AF37", fontWeight: "800", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>
+                  HIGH VISIBILITY
+                </div>
+                <h3 style={{ fontSize: "1.75rem", fontWeight: "900", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                  GOLD SPONSOR
+                </h3>
+                <div style={{ fontSize: "2.2rem", fontWeight: "900", color: "var(--agora-text-dark)", marginBottom: "20px" }}>
+                  ₹3.0 Lakh
+                </div>
+
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", fontSize: "0.92rem", color: "var(--agora-text-dark)", display: "flex", flexDirection: "column", gap: "12px", textAlign: "left" }}>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span><strong>10 min Presentation Slot</strong> during main conference session</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span><strong>Standard Stall Space</strong> at ASPIRE Research Park</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Name + Logo in all materials pre-event, event and post-event, banners, kits, memento etc.</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Mention during inaugural and closing remarks</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                className="btn-agora-blue"
+                style={{ width: "100%", padding: "12px", fontSize: "0.85rem" }}
+                onClick={() => handleTierClick("Gold Sponsor")}
+              >
                 INQUIRE GOLD TIER →
               </button>
             </div>
 
-            {/* Silver Tier */}
-            <div style={{ backgroundColor: "var(--agora-card-bg)", padding: "36px", borderRadius: "8px", border: "2px solid #C0C0C0", boxShadow: "var(--shadow-agora)", position: "relative" }}>
-              <div style={{ position: "absolute", top: "-12px", right: "20px", background: "#C0C0C0", color: "#0B0C10", padding: "4px 12px", borderRadius: "12px", fontSize: "0.75rem", fontWeight: "900" }}>
+            {/* 3. Silver Sponsor */}
+            <div
+              className="agora-pricing-card speaker-card-hover"
+              style={{
+                backgroundColor: "#FFFFFF",
+                padding: "36px 28px",
+                borderRadius: "20px",
+                border: "2px solid #A0A0A0",
+                boxShadow: "0 12px 36px rgba(0, 0, 0, 0.08)",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between"
+              }}
+            >
+              <div style={{
+                position: "absolute",
+                top: "-14px",
+                right: "24px",
+                background: "linear-gradient(135deg, #C0C0C0 0%, #909090 100%)",
+                color: "#FFFFFF",
+                padding: "4px 14px",
+                borderRadius: "14px",
+                fontSize: "0.75rem",
+                fontWeight: "900",
+                letterSpacing: "1px",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.15)"
+              }}>
                 SILVER TIER
               </div>
-              <h3 style={{ fontSize: "1.6rem", marginBottom: "12px" }}>SILVER SPONSOR</h3>
-              <p style={{ color: "var(--agora-text-muted)", fontSize: "0.9rem", marginBottom: "20px" }}>Ideal for component suppliers and analytical instrument vendors.</p>
-              
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", fontSize: "0.9rem", color: "var(--agora-text-dark)", display: "flex", flexDirection: "column", gap: "10px" }}>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Table-Top Exhibition Stall</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 Complimentary Delegate Passes</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Half-Page Ad in Abstract Book</li>
-                <li style={{ display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Logo on Website & Backdrop</li>
-              </ul>
 
-              <button className="btn-agora-outlined" style={{ width: "100%" }} onClick={() => { setFormData({ ...formData, tier: "Silver Sponsor" }); setShowInquiry(true); }}>
+              <div>
+                <div style={{ fontSize: "0.8rem", color: "#808080", fontWeight: "800", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>
+                  FEATURED PARTNER
+                </div>
+                <h3 style={{ fontSize: "1.75rem", fontWeight: "900", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                  SILVER SPONSOR
+                </h3>
+                <div style={{ fontSize: "2.2rem", fontWeight: "900", color: "var(--agora-text-dark)", marginBottom: "20px" }}>
+                  ₹2.5 Lakh
+                </div>
+
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", fontSize: "0.92rem", color: "var(--agora-text-dark)", display: "flex", flexDirection: "column", gap: "12px", textAlign: "left" }}>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span><strong>5 min Presentation Slot</strong> during main conference session</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span><strong>Standard Stall Space</strong> at ASPIRE Research Park</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Name + Logo in all materials pre-event, event and post-event, banners, kits, memento etc.</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Mention during inaugural and closing remarks</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                className="btn-agora-blue"
+                style={{ width: "100%", padding: "12px", fontSize: "0.85rem" }}
+                onClick={() => handleTierClick("Silver Sponsor")}
+              >
                 INQUIRE SILVER TIER →
+              </button>
+            </div>
+
+            {/* 4. Bronze Sponsor */}
+            <div
+              className="agora-pricing-card speaker-card-hover"
+              style={{
+                backgroundColor: "#FFFFFF",
+                padding: "36px 28px",
+                borderRadius: "20px",
+                border: "2px solid #CD7F32",
+                boxShadow: "0 12px 36px rgba(0, 0, 0, 0.08)",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between"
+              }}
+            >
+              <div style={{
+                position: "absolute",
+                top: "-14px",
+                right: "24px",
+                background: "linear-gradient(135deg, #CD7F32 0%, #8B5A2B 100%)",
+                color: "#FFFFFF",
+                padding: "4px 14px",
+                borderRadius: "14px",
+                fontSize: "0.75rem",
+                fontWeight: "900",
+                letterSpacing: "1px",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.15)"
+              }}>
+                BRONZE TIER
+              </div>
+
+              <div>
+                <div style={{ fontSize: "0.8rem", color: "#CD7F32", fontWeight: "800", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "4px" }}>
+                  ASSOCIATE PARTNER
+                </div>
+                <h3 style={{ fontSize: "1.75rem", fontWeight: "900", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                  BRONZE SPONSOR
+                </h3>
+                <div style={{ fontSize: "2.2rem", fontWeight: "900", color: "var(--agora-text-dark)", marginBottom: "20px" }}>
+                  ₹2.0 Lakh
+                </div>
+
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 28px", fontSize: "0.92rem", color: "var(--agora-text-dark)", display: "flex", flexDirection: "column", gap: "12px", textAlign: "left" }}>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span><strong>Standard Stall Space</strong> at ASPIRE Research Park</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Name + Logo in all promotional materials pre-event, event and post-event, banners, kits, memento etc.</span>
+                  </li>
+                  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", lineHeight: "1.4" }}>
+                    <svg width="18" height="18" fill="none" stroke="var(--agora-blue)" strokeWidth="2.5" viewBox="0 0 24 24" style={{ flexShrink: 0, marginTop: "2px" }}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Mention during inaugural and closing remarks</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                className="btn-agora-blue"
+                style={{ width: "100%", padding: "12px", fontSize: "0.85rem" }}
+                onClick={() => handleTierClick("Bronze Sponsor")}
+              >
+                INQUIRE BRONZE TIER →
               </button>
             </div>
 
           </div>
         </div>
 
-        {/* Interactive Sponsorship Inquiry Form Modal / Card */}
-        {showInquiry && (
-          <div style={{ backgroundColor: "var(--agora-card-bg)", padding: "40px", borderRadius: "8px", border: "1px solid var(--agora-border-light)", maxWidth: "800px", margin: "0 auto 60px", boxShadow: "var(--shadow-agora)" }}>
-            <h3 style={{ fontSize: "1.6rem", marginBottom: "8px" }}>SPONSORSHIP INQUIRY</h3>
-            <p style={{ fontSize: "0.95rem", color: "var(--agora-text-muted)", marginBottom: "24px" }}>
-              Submit your company details and our secretariat will get back to you with the custom proposal.
+        {/* Sponsorship Benefits Comparison Matrix */}
+        <div style={{
+          backgroundColor: "#FFFFFF",
+          borderRadius: "20px",
+          border: "1px solid var(--agora-border-light)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+          padding: "40px",
+          marginBottom: "70px",
+          overflowX: "auto"
+        }}>
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
+            <span className="agora-subtitle-badge">BENEFITS COMPARISON MATRIX</span>
+            <h2 style={{ fontSize: "2rem", color: "var(--agora-text-dark)", marginTop: "4px" }}>
+              COMPARE SPONSORSHIP BENEFITS
+            </h2>
+          </div>
+
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "700px" }}>
+            <thead>
+              <tr style={{ borderBottom: "2px solid var(--agora-border-light)" }}>
+                <th style={{ textAlign: "left", padding: "16px 20px", fontSize: "1rem", color: "var(--agora-text-dark)", fontWeight: "800" }}>Sponsorship Deliverable / Benefit</th>
+                <th style={{ textAlign: "center", padding: "16px", fontSize: "0.95rem", color: "var(--agora-blue)", fontWeight: "800", backgroundColor: "rgba(67, 97, 238, 0.05)" }}>Platinum<br /><span style={{ fontSize: "0.8rem", fontWeight: "600" }}>₹3.5 Lakh</span></th>
+                <th style={{ textAlign: "center", padding: "16px", fontSize: "0.95rem", color: "#D4AF37", fontWeight: "800" }}>Gold<br /><span style={{ fontSize: "0.8rem", color: "var(--agora-text-muted)", fontWeight: "600" }}>₹3.0 Lakh</span></th>
+                <th style={{ textAlign: "center", padding: "16px", fontSize: "0.95rem", color: "#707070", fontWeight: "800" }}>Silver<br /><span style={{ fontSize: "0.8rem", color: "var(--agora-text-muted)", fontWeight: "600" }}>₹2.5 Lakh</span></th>
+                <th style={{ textAlign: "center", padding: "16px", fontSize: "0.95rem", color: "#CD7F32", fontWeight: "800" }}>Bronze<br /><span style={{ fontSize: "0.8rem", color: "var(--agora-text-muted)", fontWeight: "600" }}>₹2.0 Lakh</span></th>
+              </tr>
+            </thead>
+            <tbody style={{ fontSize: "0.92rem", color: "var(--agora-text-dark)" }}>
+              <tr style={{ borderBottom: "1px solid var(--agora-border-light)" }}>
+                <td style={{ padding: "16px 20px", fontWeight: "700" }}>Name + Logo on all pre-event, event & post-event materials (banners, kits, memento)</td>
+                <td style={{ textAlign: "center", padding: "16px", backgroundColor: "rgba(67, 97, 238, 0.03)", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+              </tr>
+              <tr style={{ borderBottom: "1px solid var(--agora-border-light)" }}>
+                <td style={{ padding: "16px 20px", fontWeight: "700" }}>Special Mention during Inaugural & Closing Remarks</td>
+                <td style={{ textAlign: "center", padding: "16px", backgroundColor: "rgba(67, 97, 238, 0.03)", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "bold", color: "#2E7D32" }}>✓ Included</td>
+              </tr>
+              <tr style={{ borderBottom: "1px solid var(--agora-border-light)" }}>
+                <td style={{ padding: "16px 20px", fontWeight: "700" }}>Corporate Technical Presentation Slot</td>
+                <td style={{ textAlign: "center", padding: "16px", backgroundColor: "rgba(67, 97, 238, 0.03)", fontWeight: "800", color: "var(--agora-blue)" }}>10 Minutes</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "800", color: "var(--agora-text-dark)" }}>10 Minutes</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "800", color: "var(--agora-text-dark)" }}>5 Minutes</td>
+                <td style={{ textAlign: "center", padding: "16px", color: "var(--agora-text-muted)" }}>—</td>
+              </tr>
+              <tr>
+                <td style={{ padding: "16px 20px", fontWeight: "700" }}>Exhibition Stall Allocation</td>
+                <td style={{ textAlign: "center", padding: "16px", backgroundColor: "rgba(67, 97, 238, 0.03)", fontWeight: "800", color: "var(--agora-blue)" }}>Premium Stall</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "700" }}>Standard Stall</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "700" }}>Standard Stall</td>
+                <td style={{ textAlign: "center", padding: "16px", fontWeight: "700" }}>Standard Stall</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Sponsorship Inquiry Form Section */}
+        <div id="sponsorship-inquiry-section" style={{
+          backgroundColor: "#FFFFFF",
+          borderRadius: "20px",
+          border: "1px solid var(--agora-border-light)",
+          boxShadow: "0 10px 40px rgba(0, 0, 0, 0.08)",
+          padding: "44px",
+          maxWidth: "850px",
+          margin: "0 auto 70px"
+        }}>
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
+            <span className="agora-subtitle-badge">EXPRESS YOUR INTEREST</span>
+            <h3 style={{ fontSize: "2.2rem", color: "var(--agora-text-dark)", marginTop: "6px" }}>
+              SPONSORSHIP & EXHIBITION INQUIRY
+            </h3>
+            <p style={{ color: "var(--agora-text-muted)", fontSize: "0.98rem", marginTop: "8px" }}>
+              Fill out the form below or contact the NMSB-2 Secretariat directly at <a href={`mailto:${config.conference.contactEmail}`} style={{ color: "var(--agora-blue)", fontWeight: "700" }}>{config.conference.contactEmail}</a>.
             </p>
+          </div>
 
-            {inquirySubmitted ? (
-              <div style={{ backgroundColor: "rgba(46, 125, 50, 0.06)", border: "1px solid #A5D6A7", padding: "28px", borderRadius: "6px", textAlign: "center" }}>
-                <h4 style={{ fontSize: "1.3rem", color: "#2E7D32", marginBottom: "6px" }}>INQUIRY RECEIVED!</h4>
-                <p style={{ color: "var(--agora-text-muted)", fontSize: "0.9rem" }}>
-                  Thank you, <strong>{formData.contactPerson}</strong> ({formData.companyName}). Our secretariat will contact you at <strong>{formData.email}</strong>.
-                </p>
-                <button className="btn-agora-outlined" style={{ marginTop: "16px" }} onClick={() => { setInquirySubmitted(false); setShowInquiry(false); }}>
-                  CLOSE FORM
-                </button>
+          {inquirySubmitted ? (
+            <div style={{ backgroundColor: "rgba(46, 125, 50, 0.06)", border: "1.5px solid #A5D6A7", padding: "36px", borderRadius: "16px", textAlign: "center" }}>
+              <div style={{ width: "60px", height: "60px", borderRadius: "50%", backgroundColor: "#2E7D32", color: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+                <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
               </div>
-            ) : (
-              <form onSubmit={handleInquirySubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-                  <div>
-                    <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "700", marginBottom: "6px" }}>Company / Organization Name *</label>
-                    <input 
-                      type="text" 
-                      placeholder="e.g. Sodium Power Systems Pvt Ltd" 
-                      value={formData.companyName}
-                      onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      style={{ width: "100%", padding: "12px 16px", borderRadius: "4px", border: "1px solid var(--agora-border-light)" }}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "700", marginBottom: "6px" }}>Contact Person Name *</label>
-                    <input 
-                      type="text" 
-                      placeholder="e.g. Rajesh Kumar" 
-                      value={formData.contactPerson}
-                      onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
-                      style={{ width: "100%", padding: "12px 16px", borderRadius: "4px", border: "1px solid var(--agora-border-light)" }}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-                  <div>
-                    <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "700", marginBottom: "6px" }}>Corporate Email *</label>
-                    <input 
-                      type="email" 
-                      placeholder="contact@company.com" 
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      style={{ width: "100%", padding: "12px 16px", borderRadius: "4px", border: "1px solid var(--agora-border-light)" }}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "700", marginBottom: "6px" }}>Mobile Number *</label>
-                    <input 
-                      type="tel" 
-                      placeholder="+91 9876543210" 
-                      value={formData.mobile}
-                      onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                      style={{ width: "100%", padding: "12px 16px", borderRadius: "4px", border: "1px solid var(--agora-border-light)" }}
-                      required
-                    />
-                  </div>
-                </div>
-
+              <h4 style={{ fontSize: "1.5rem", color: "#2E7D32", marginBottom: "8px", fontWeight: "800" }}>
+                THANK YOU FOR YOUR INTEREST!
+              </h4>
+              <p style={{ color: "var(--agora-text-dark)", fontSize: "1rem", lineHeight: "1.6", maxWidth: "600px", margin: "0 auto 20px" }}>
+                We have received your sponsorship inquiry for <strong>{formData.companyName || "your organization"}</strong> ({formData.tier}). Our organizing committee will contact <strong>{formData.contactPerson}</strong> at <strong>{formData.email}</strong> shortly.
+              </p>
+              <button
+                className="btn-agora-blue"
+                onClick={() => { setInquirySubmitted(false); }}
+                style={{ padding: "10px 24px" }}
+              >
+                SUBMIT ANOTHER INQUIRY
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleInquirySubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
                 <div>
-                  <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "700", marginBottom: "6px" }}>Sponsorship Tier of Interest *</label>
-                  <select 
-                    value={formData.tier}
-                    onChange={(e) => setFormData({ ...formData, tier: e.target.value })}
-                    style={{ width: "100%", padding: "12px 16px", borderRadius: "4px", border: "1px solid var(--agora-border-light)" }}
-                  >
-                    <option value="Platinum Sponsor">Platinum Sponsor</option>
-                    <option value="Gold Sponsor">Gold Sponsor</option>
-                    <option value="Silver Sponsor">Silver Sponsor</option>
-                    <option value="Custom Exhibition Partner">Custom Exhibition Partner</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "700", marginBottom: "6px" }}>Message / Special Requirements</label>
-                  <textarea 
-                    rows={4}
-                    placeholder="Provide details regarding your exhibition stall or sponsorship query..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    style={{ width: "100%", padding: "12px 16px", borderRadius: "4px", border: "1px solid var(--agora-border-light)", fontFamily: "inherit" }}
+                  <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                    Company / Organization Name *
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Sodium Energy Technologies Pvt Ltd"
+                    value={formData.companyName}
+                    onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "14px 18px",
+                      borderRadius: "10px",
+                      border: "1.5px solid var(--agora-border-light)",
+                      fontSize: "0.95rem",
+                      backgroundColor: "var(--agora-light-bg)",
+                      outline: "none"
+                    }}
+                    required
                   />
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <button type="button" className="btn-agora-outlined" onClick={() => setShowInquiry(false)}>
-                    CANCEL
-                  </button>
-                  <button type="submit" className="btn-agora-blue">
-                    SUBMIT SPONSORSHIP INQUIRY →
-                  </button>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                    Contact Person Name *
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Dr. Rajesh Sharma"
+                    value={formData.contactPerson}
+                    onChange={(e) => setFormData({ ...formData, contactPerson: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "14px 18px",
+                      borderRadius: "10px",
+                      border: "1.5px solid var(--agora-border-light)",
+                      fontSize: "0.95rem",
+                      backgroundColor: "var(--agora-light-bg)",
+                      outline: "none"
+                    }}
+                    required
+                  />
                 </div>
-              </form>
-            )}
+              </div>
 
-          </div>
-        )}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+                <div>
+                  <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                    Corporate Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="corporate@company.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "14px 18px",
+                      borderRadius: "10px",
+                      border: "1.5px solid var(--agora-border-light)",
+                      fontSize: "0.95rem",
+                      backgroundColor: "var(--agora-light-bg)",
+                      outline: "none"
+                    }}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                    Mobile / Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    value={formData.mobile}
+                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                    style={{
+                      width: "100%",
+                      padding: "14px 18px",
+                      borderRadius: "10px",
+                      border: "1.5px solid var(--agora-border-light)",
+                      fontSize: "0.95rem",
+                      backgroundColor: "var(--agora-light-bg)",
+                      outline: "none"
+                    }}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                  Sponsorship Tier of Interest *
+                </label>
+                <select
+                  value={formData.tier}
+                  onChange={(e) => setFormData({ ...formData, tier: e.target.value })}
+                  style={{
+                    width: "100%",
+                    padding: "14px 18px",
+                    borderRadius: "10px",
+                    border: "1.5px solid var(--agora-border-light)",
+                    fontSize: "0.95rem",
+                    backgroundColor: "var(--agora-light-bg)",
+                    outline: "none"
+                  }}
+                >
+                  <option value="Platinum Sponsor">Platinum Sponsor — ₹3.5 Lakh</option>
+                  <option value="Gold Sponsor">Gold Sponsor — ₹3.0 Lakh</option>
+                  <option value="Silver Sponsor">Silver Sponsor — ₹2.5 Lakh</option>
+                  <option value="Bronze Sponsor">Bronze Sponsor — ₹2.0 Lakh</option>
+                  <option value="Custom Exhibition Partner">Custom Exhibition / Startup Partner</option>
+                </select>
+              </div>
+
+              <div>
+                <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "800", color: "var(--agora-text-dark)", marginBottom: "8px" }}>
+                  Message / Special Requirements
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder="Share details regarding your requested stall setup, presentation topic, or partnership query..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  style={{
+                    width: "100%",
+                    padding: "14px 18px",
+                    borderRadius: "10px",
+                    border: "1.5px solid var(--agora-border-light)",
+                    fontSize: "0.95rem",
+                    backgroundColor: "var(--agora-light-bg)",
+                    outline: "none",
+                    fontFamily: "inherit"
+                  }}
+                />
+              </div>
+
+              <div style={{ textAlign: "center", marginTop: "10px" }}>
+                <button
+                  type="submit"
+                  className="btn-agora-blue"
+                  style={{ padding: "14px 36px", fontSize: "1rem" }}
+                >
+                  SUBMIT SPONSORSHIP INQUIRY →
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+
+        {/* Download Brochure Callout Banner */}
+        <div style={{
+          backgroundColor: "var(--agora-dark-navy)",
+          color: "#FFFFFF",
+          borderRadius: "20px",
+          padding: "48px 40px",
+          textAlign: "center",
+          boxShadow: "0 20px 50px rgba(0,0,0,0.15)",
+          position: "relative",
+          overflow: "hidden"
+        }}>
+          <h3 style={{ fontSize: "2rem", fontWeight: "900", marginBottom: "12px", color: "#FFFFFF" }}>
+            DOWNLOAD THE OFFICIAL SPONSORSHIP BROCHURE
+          </h3>
+          <p style={{ color: "#A0A5B5", fontSize: "1.05rem", maxWidth: "700px", margin: "0 auto 28px", lineHeight: "1.6" }}>
+            For more details about sponsorship opportunities, please download the NMSB-2 official brochure PDF or email <strong style={{ color: "#FFFFFF" }}>{config.conference.contactEmail}</strong>.
+          </p>
+
+          <a
+            href={brochureUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="NMSB-2_Sponsorship_brochure.pdf"
+            className="btn-agora-blue"
+            style={{ padding: "14px 32px", fontSize: "0.95rem", display: "inline-flex", alignItems: "center", gap: "10px" }}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>DOWNLOAD NMSB-2 SPONSORSHIP BROCHURE (PDF)</span>
+          </a>
+        </div>
 
       </div>
     </div>
